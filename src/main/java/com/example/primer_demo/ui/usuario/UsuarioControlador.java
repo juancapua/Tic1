@@ -7,9 +7,7 @@ import com.example.primer_demo.business.exceptions.UsuarioNotExist;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.hibernate.type.descriptor.sql.SmallIntTypeDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +21,12 @@ public class UsuarioControlador {
 
     @FXML
     private Button btnVolver;
+
+    @FXML
+    private DatePicker fecha_nac;
+
+    @FXML
+    private ComboBox pais;
 
     @FXML
     private Button btnAgregar;
