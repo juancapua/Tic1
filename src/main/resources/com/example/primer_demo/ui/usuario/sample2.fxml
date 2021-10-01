@@ -9,11 +9,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.image.Image?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="600.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.usuario.UsuarioControlador">
     <children>
         <ImageView fitHeight="393.0" fitWidth="615.0" layoutX="-13.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
             <image>
-<!--                <Image url="images/paisaje.jpg" />-->
+                <Image url="images/paisaje.jpg" />
             </image>
         </ImageView>
         <TextField fx:id="txtCorreo" layoutX="267.0" layoutY="81.0" />

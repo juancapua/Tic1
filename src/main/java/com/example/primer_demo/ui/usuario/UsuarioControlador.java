@@ -1,15 +1,15 @@
 package com.example.primer_demo.ui.usuario;
 
 import com.example.primer_demo.business.UsuarioMgr;
+import com.example.primer_demo.business.entities.Pais;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.business.exceptions.UsuarioAlreadyExist;
-import com.example.primer_demo.business.exceptions.UsuarioNotExist;
+import com.example.primer_demo.persistance.PaisRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.hibernate.type.descriptor.sql.SmallIntTypeDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +18,8 @@ public class UsuarioControlador {
 
     @Autowired
     private UsuarioMgr usuarioMgr;
+    @Autowired
+    private PaisRepository paisRepository;
 
     @FXML
     private Button btnVolver;
@@ -26,7 +28,7 @@ public class UsuarioControlador {
     private DatePicker fecha_nac;
 
     @FXML
-    private ComboBox pais;
+    private ComboBox<String> pais;
 
     @FXML
     private Button btnAgregar;
@@ -43,11 +45,22 @@ public class UsuarioControlador {
     @FXML
     private TextField txtConfContrasena;
 
+
+
     @FXML
     void close(ActionEvent actionEvent) {
         Node source = (Node)  actionEvent.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    public void initialize(){
+        Iterable<Pais> paises = paisRepository.findAll();
+        for(Pais x: paises){
+            pais.getItems().add(x.getNombre());
+        }
+
     }
 
     @FXML

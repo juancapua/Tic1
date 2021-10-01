@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -47,6 +48,7 @@ public class Controlador {
         root = fxmlLoader.load(UsuarioControlador.class.getResourceAsStream("sample2.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("images/logo.png"));
         stage.show();
 
 
@@ -78,6 +80,7 @@ public class Controlador {
                         root = fxmlLoader.load(InicioControlador.class.getResourceAsStream("inicio.fxml"));
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
+                        stage.getIcons().add(new Image("images/logo.png"));
                         stage.show();
 
                     }else{

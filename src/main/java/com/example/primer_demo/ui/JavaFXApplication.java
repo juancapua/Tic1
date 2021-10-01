@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
@@ -24,6 +25,7 @@ public class JavaFXApplication extends Application {
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
         root = fxmlLoader.load(Controlador.class.getResourceAsStream("sample.fxml"));
         primaryStage.setScene(new Scene(root));
+        primaryStage.getIcons().add(new Image("images/logo.png"));
         primaryStage.show();
 
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
