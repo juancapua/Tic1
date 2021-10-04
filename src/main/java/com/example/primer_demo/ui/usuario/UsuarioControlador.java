@@ -74,7 +74,7 @@ public class UsuarioControlador {
                     "Datos faltantes!",
                     "No se ingresaron los datos necesarios para completar el ingreso.");
 
-        }if(txtContrasena.getText() != txtConfContrasena.getText()){
+        }if(!txtContrasena.getText().equals(txtConfContrasena.getText())){
             showAlert("Datos incorrectos", "Las contraseñas no coinciden");
 
         } else {
