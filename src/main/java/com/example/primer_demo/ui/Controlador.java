@@ -48,7 +48,7 @@ public class Controlador {
         root = fxmlLoader.load(UsuarioControlador.class.getResourceAsStream("sample2.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.getIcons().add(new Image("images/logo.png"));
+        stage.getIcons().add(new Image("images/logo_final.png"));
         stage.show();
 
 
@@ -80,7 +80,7 @@ public class Controlador {
                         root = fxmlLoader.load(InicioControlador.class.getResourceAsStream("inicio.fxml"));
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
-                        stage.getIcons().add(new Image("images/logo.png"));
+                        stage.getIcons().add(new Image("images/logo_final.png"));
                         stage.show();
 
                     }else{
