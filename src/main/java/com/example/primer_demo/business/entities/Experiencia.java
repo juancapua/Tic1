@@ -21,7 +21,7 @@ public class Experiencia {
     private LocalTime horario_cierre;
     private Integer aforo;
     private Boolean se_reserva;
-    private Iterable<Etiquetas> etiquetas;
+//    private Iterable<Etiquetas> etiquetas;
 
     public Experiencia() {
     }

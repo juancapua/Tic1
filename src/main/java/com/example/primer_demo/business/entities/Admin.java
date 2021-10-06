@@ -6,10 +6,6 @@ import javax.persistence.*;
 @Table(name = "administradores")
 public class Admin extends Usuario{
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
-
     public Admin() {
     }
 

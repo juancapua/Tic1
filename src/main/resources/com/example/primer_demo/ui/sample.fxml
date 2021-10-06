@@ -3,11 +3,14 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+
+<!--color que uso #154360-->
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="326.0" prefWidth="600.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.Controlador">
     <children>
@@ -17,7 +20,6 @@
          </font>
       </Label>
       <TextField fx:id="txtUsuario" layoutX="319.0" layoutY="95.0" promptText="Usuario:" />
-      <TextField fx:id="txtContrasena" layoutX="319.0" layoutY="140.0" promptText="Contraseña:" />
       <Button fx:id="btnLogin" layoutX="323.0" layoutY="193.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: #154360;" text="Ingresar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -55,8 +57,6 @@
             <Font name="Britannic Bold" size="14.0" />
          </font>
       </Label>
+      <PasswordField fx:id="txtContrasena" layoutX="319.0" layoutY="140.0" promptText="Contraseña:" />
     </children>
 </AnchorPane>
-
-
-<!--color que uso #154360-->
