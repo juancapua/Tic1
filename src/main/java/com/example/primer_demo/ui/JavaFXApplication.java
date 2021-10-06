@@ -26,6 +26,7 @@ public class JavaFXApplication extends Application {
         root = fxmlLoader.load(Controlador.class.getResourceAsStream("sample.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.getIcons().add(new Image("images/logo_final.png"));
+        primaryStage.setResizable(false);
         primaryStage.show();
 
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));

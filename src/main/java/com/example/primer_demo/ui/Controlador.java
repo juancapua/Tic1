@@ -4,6 +4,7 @@ import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.UsuarioMgr;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.business.exceptions.UsuarioNotExist;
+import com.example.primer_demo.persistance.UsuarioRepository;
 import com.example.primer_demo.ui.Inicio.InicioControlador;
 import com.example.primer_demo.ui.usuario.UsuarioControlador;
 import javafx.event.ActionEvent;
@@ -28,6 +29,9 @@ public class Controlador {
     @Autowired
     private UsuarioMgr usuarioMgr;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     @FXML
     private Button btnAgregar;
 
@@ -49,6 +53,7 @@ public class Controlador {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.getIcons().add(new Image("images/logo_final.png"));
+        stage.setResizable(false);
         stage.show();
 
 
@@ -81,6 +86,9 @@ public class Controlador {
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
                         stage.getIcons().add(new Image("images/logo_final.png"));
+                        stage.setResizable(false);
+                        InicioControlador controlador = fxmlLoader.getController();
+                        controlador.setLabel(usuarioRepository.findById(usuario).get().getNombreDeUsuario());
                         stage.show();
 
                     }else{
