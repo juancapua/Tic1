@@ -1,17 +1,20 @@
 package com.example.primer_demo.business.entities;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Departamento")
 public class Departamento {
+
     @Id
     private String nombre;
-    private ArrayList<Ciudad> ciudades;
+    @OneToMany
+    private List<Ciudad> ciudades;
 
     public String getNombre() {
         return nombre;
@@ -21,7 +24,7 @@ public class Departamento {
         this.nombre = nombre;
     }
 
-    public ArrayList<Ciudad> getCiudades() {
+    public List<Ciudad> getCiudades() {
         return ciudades;
     }
 
