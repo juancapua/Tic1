@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Usuario {
 
 
-
+    //LA ID TIENE QUE SER EL MAIL
     @Id
     private String nombreDeUsuario;
     private String mail;
