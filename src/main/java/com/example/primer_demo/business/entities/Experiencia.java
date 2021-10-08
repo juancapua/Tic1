@@ -21,6 +21,9 @@ public class Experiencia {
     private LocalTime horario_cierre;
     private Integer aforo;
     private Boolean se_reserva;
+    @ManyToOne(targetEntity = Destino.class)
+    private Destino destino;
+
 
     public Experiencia() {
     }

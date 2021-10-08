@@ -11,18 +11,15 @@ import java.util.List;
 
 @Entity
 @Table(name = "etiquetas")
-public class Etiquetas {
+public class Etiqueta {
 
     @Id
     private String nombre;
 
-    @ManyToMany
-    private List<Turista> turistaList;
-
-    public Etiquetas() {
+    public Etiqueta() {
     }
 
-    public Etiquetas(String nombre) {
+    public Etiqueta(String nombre) {
         this.nombre = nombre;
     }
 

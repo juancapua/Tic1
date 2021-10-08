@@ -1,6 +1,7 @@
 package com.example.primer_demo.business.entities;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,6 +11,7 @@ import javax.persistence.Table;
 public class Entrada {
 
     @Id
+    @GeneratedValue
     private String id;
 
     private String titulo;

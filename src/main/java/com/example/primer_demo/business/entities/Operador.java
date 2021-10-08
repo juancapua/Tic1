@@ -5,30 +5,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "operadores")
-public class Operador {
+public class Operador extends Usuario{
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
-    private String empresa;
     private String telefono;
-    private String email;
 
-    public Operador() {
-    }
-
-    public Operador(String empresa, String telefono, String email) {
-        this.empresa = empresa;
+    public Operador(String empresa, String telefono, String email, String contresena) {
+        super(empresa, email, contresena);
         this.telefono = telefono;
-        this.email = email;
-    }
-
-    public String getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(String empresa) {
-        this.empresa = empresa;
     }
 
     public String getTelefono() {
@@ -39,11 +22,11 @@ public class Operador {
         this.telefono = telefono;
     }
 
-    public String getEmail() {
-        return email;
+    public String getMail() {
+        return super.getMail();
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        super.setMail(email);
     }
 }

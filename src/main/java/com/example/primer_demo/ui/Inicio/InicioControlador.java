@@ -1,8 +1,11 @@
 package com.example.primer_demo.ui.Inicio;
 
 import com.example.primer_demo.PrimerDemoApplication;
+import com.example.primer_demo.business.entities.Destino;
 import com.example.primer_demo.business.entities.Usuario;
+import com.example.primer_demo.persistance.DestinoRespository;
 import com.example.primer_demo.ui.Controlador;
+import com.example.primer_demo.ui.destino.DestinoControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
@@ -21,6 +26,9 @@ import java.io.IOException;
 
 @Component
 public class InicioControlador {
+
+    @Autowired
+    private DestinoRespository destinoRespository;
 
     private Parent root;
 
@@ -74,4 +82,19 @@ public class InicioControlador {
         alert.showAndWait();
     }
 
+    public void test(ActionEvent event) throws Exception {
+        cargarDestino(destinoRespository.findById(1).get());
+    }
+
+    private void cargarDestino(Destino destino) throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+        root = fxmlLoader.load(DestinoControlador.class.getResourceAsStream("destination.fxml"));
+        DestinoControlador destinoControlador = fxmlLoader.getController();
+        destinoControlador.init(destino);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
+    }
 }

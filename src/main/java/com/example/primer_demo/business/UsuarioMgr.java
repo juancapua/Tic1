@@ -1,10 +1,12 @@
 package com.example.primer_demo.business;
 
 
+import com.example.primer_demo.business.entities.Turista;
 import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.business.exceptions.UsuarioAlreadyExist;
 import com.example.primer_demo.business.exceptions.UsuarioNotExist;
+import com.example.primer_demo.persistance.TuristaRepository;
 import com.example.primer_demo.persistance.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class UsuarioMgr {
     @Autowired
 
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private TuristaRepository turistaRepository;
 
 //    @PostMapping
 //    public @ResponseBody String agregarUsuario(@RequestParam String nombre, @RequestParam String mail, @RequestParam String contrasena){
@@ -53,6 +58,7 @@ public class UsuarioMgr {
 
         Usuario nuevoUsuario = new Usuario(nombre, mail, contrasena);
         usuarioRepository.save(nuevoUsuario);
+        turistaRepository.save(new Turista(nombre,mail,contrasena,null));
 
     }
 

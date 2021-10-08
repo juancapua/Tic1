@@ -1,15 +1,18 @@
 package com.example.primer_demo.business.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Usuario implements Serializable {
 
-
+    //LA ID TIENE QUE SER EL MAIL
     @Id
-    private String nombreDeUsuario;
+    @Column(name = "mail", unique = true, nullable = false)
     private String mail;
+    private String nombreDeUsuario;
     private String contrasena;
 
 

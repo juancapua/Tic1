@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Ciudad {
 
     @Id
-    private String nombre;
+    private String nombre_pk;
 
 
 }
