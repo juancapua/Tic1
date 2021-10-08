@@ -9,8 +9,8 @@ public class Operador extends Usuario{
 
     private String telefono;
 
-    public Operador(String empresa, String telefono, String email, String contresena) {
-        super(empresa, email, contresena);
+    public Operador(String empresa, String telefono, String email, String contresena, String documento) {
+        super(empresa, email, contresena, documento);
         this.telefono = telefono;
     }
 

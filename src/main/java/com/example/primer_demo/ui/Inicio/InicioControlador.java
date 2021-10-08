@@ -45,7 +45,7 @@ public class InicioControlador {
 
     public void setLabel(String x){
 
-        texto.setText("Usuario: " + x);
+        texto.setText(x);
     }
 
     @FXML
@@ -86,7 +86,7 @@ public class InicioControlador {
         cargarDestino(destinoRespository.findById(1).get());
     }
 
-    private void cargarDestino(Destino destino) throws Exception{
+     void cargarDestino(Destino destino) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
         root = fxmlLoader.load(DestinoControlador.class.getResourceAsStream("destination.fxml"));
@@ -97,4 +97,5 @@ public class InicioControlador {
         stage.setResizable(false);
         stage.show();
     }
+
 }

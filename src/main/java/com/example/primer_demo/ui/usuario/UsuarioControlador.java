@@ -45,6 +45,9 @@ public class UsuarioControlador {
     @FXML
     private TextField txtConfContrasena;
 
+    @FXML
+    private TextField txtDocumento;
+
 
 
     @FXML
@@ -68,7 +71,8 @@ public class UsuarioControlador {
         if (txtUsuario.getText() == null || txtUsuario.getText().equals("") ||
                 txtCorreo.getText() == null || txtCorreo.getText().equals("") ||
                 txtContrasena.getText() == null || txtContrasena.getText().equals("") ||
-                txtConfContrasena.getText() == null || txtConfContrasena.getText().equals("")) {
+                txtConfContrasena.getText() == null || txtConfContrasena.getText().equals("") ||
+                txtDocumento.getText() == null || txtDocumento.getText().equals("")) {
 
             showAlert(
                     "Datos faltantes!",
@@ -84,11 +88,12 @@ public class UsuarioControlador {
                 String usuario = txtUsuario.getText();
                 String correo = txtCorreo.getText();
                 String contrasena = txtContrasena.getText();
+                String documento= txtDocumento.getText();
 
 
                 try {
 
-                    usuarioMgr.agregarUsuario(usuario, correo, contrasena);
+                    usuarioMgr.agregarUsuario(usuario, correo, contrasena, documento);
 
                     showAlert("Cliente agregado", "Se agrego con exito el cliente!");
 

@@ -14,17 +14,18 @@ public class Usuario implements Serializable {
     private String mail;
     private String nombreDeUsuario;
     private String contrasena;
-
+    private String documento;
 
 
     public Usuario(){
 
     }
 
-    public Usuario(String nombreDeUsuario, String mail, String contrasena) {
+    public Usuario(String nombreDeUsuario, String mail, String contrasena, String documento) {
         this.nombreDeUsuario = nombreDeUsuario;
         this.mail = mail;
         this.contrasena = contrasena;
+        this.documento = documento;
     }
 
 
@@ -50,5 +51,13 @@ public class Usuario implements Serializable {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 }

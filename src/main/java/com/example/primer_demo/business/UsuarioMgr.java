@@ -46,7 +46,7 @@ public class UsuarioMgr {
 //    }
 
 
-    public void agregarUsuario (String nombre, String mail, String contrasena) throws InvalidInformation, UsuarioAlreadyExist {
+    public void agregarUsuario (String nombre, String mail, String contrasena, String documento) throws InvalidInformation, UsuarioAlreadyExist {
 
         if(nombre == null || "".equals(nombre) || mail == null || "".equals(mail) || contrasena == null || "".equals(contrasena)){
             throw new InvalidInformation("Alguno de los datos ingresados no es correcto");
@@ -56,9 +56,9 @@ public class UsuarioMgr {
             throw new UsuarioAlreadyExist("El nombre de usuario ya esta utilizado");
         }
 
-        Usuario nuevoUsuario = new Usuario(nombre, mail, contrasena);
+        Usuario nuevoUsuario = new Usuario(nombre, mail, contrasena, documento);
         usuarioRepository.save(nuevoUsuario);
-        turistaRepository.save(new Turista(nombre,mail,contrasena,null));
+        turistaRepository.save(new Turista(nombre,mail,contrasena, documento));
 
     }
 

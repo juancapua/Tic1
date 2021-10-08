@@ -14,9 +14,11 @@ public class Turista extends Usuario {
     private List<Etiqueta> etiquetas;
 
 
-    public Turista(String usuario, String mail, String contrasena, List<Etiqueta> etiquetas){
-        super(usuario, mail,contrasena);
+    public Turista(String usuario, String mail, String contrasena,String documento, List<Etiqueta> etiquetas){
+        super(usuario, mail,contrasena, documento);
         this.etiquetas=etiquetas;
     }
 
+    public Turista(String nombre, String mail, String contrasena, String documento) {
+    }
 }

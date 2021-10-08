@@ -11,10 +11,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="600.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.usuario.UsuarioControlador">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="600.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.usuario.UsuarioControlador">
     <children>
         <TextField fx:id="txtCorreo" layoutX="267.0" layoutY="81.0" />
-        <Button fx:id="btnAgregar" layoutX="267.0" layoutY="300.0" mnemonicParsing="false" onAction="#addClient" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #154360;" text="Registrar" textFill="WHITE">
+        <Button fx:id="btnAgregar" layoutX="267.0" layoutY="442.0" mnemonicParsing="false" onAction="#addClient" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #154360;" text="Registrar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -29,9 +29,8 @@
         <PasswordField fx:id="txtConfContrasena" layoutX="267.0" layoutY="251.0" />
         <Label layoutX="198.0" layoutY="175.0" text="Pais:" />
       <ComboBox fx:id="pais" layoutX="268.0" layoutY="171.0" prefWidth="150.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#154360" height="384.0" layoutX="517.0" layoutY="-5.0" stroke="#154360"
-                 strokeType="INSIDE" width="83.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#154360" height="384.0" layoutY="-5.0" stroke="#154360" strokeType="INSIDE" width="83.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#154360" height="487.0" layoutX="517.0" layoutY="-5.0" stroke="#154360" strokeType="INSIDE" width="83.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#154360" height="487.0" layoutY="-5.0" stroke="#154360" strokeType="INSIDE" width="83.0" />
         <Button fx:id="btnVolver" alignment="BOTTOM_RIGHT" layoutX="-21.0" layoutY="-24.0" mnemonicParsing="false" onAction="#close" prefHeight="68.0" prefWidth="83.0" style="-fx-background-color: transparenr;" text="←" textFill="WHITE">
          <font>
             <Font size="36.0" />
@@ -39,5 +38,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
+      <Label layoutX="158.0" layoutY="306.0" text="Documento:" />
+      <TextField layoutX="267.0" layoutY="302.0" />
     </children>
 </AnchorPane>
