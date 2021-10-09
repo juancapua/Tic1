@@ -8,10 +8,16 @@ import javax.persistence.*;
 public class Operador extends Usuario{
 
     private String telefono;
+    private Boolean estado;
 
     public Operador(String empresa, String telefono, String email, String contresena, String documento) {
         super(empresa, email, contresena, documento);
         this.telefono = telefono;
+        this.estado = true;
+    }
+
+    public Operador() {
+
     }
 
     public String getTelefono() {
@@ -28,5 +34,14 @@ public class Operador extends Usuario{
 
     public void setEmail(String email) {
         super.setMail(email);
+    }
+
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 }

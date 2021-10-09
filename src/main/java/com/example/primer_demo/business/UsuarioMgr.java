@@ -69,7 +69,7 @@ public class UsuarioMgr {
         }
 
         if(!usuarioRepository.existsById(nombre)){
-            throw new UsuarioNotExist("El nombre de usuario ya esta utilizado");
+            throw new UsuarioNotExist("El nombre de usuario no existe");
         }
         if(usuarioRepository.findById(nombre).get().getContrasena().equals(contrasena)){
             return true;
