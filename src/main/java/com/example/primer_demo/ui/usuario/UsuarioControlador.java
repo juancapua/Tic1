@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Component
 public class UsuarioControlador {
 
@@ -48,6 +51,8 @@ public class UsuarioControlador {
     @FXML
     private TextField txtDocumento;
 
+    @FXML
+    private CheckBox esta_vacunado;
 
 
     @FXML
@@ -72,7 +77,9 @@ public class UsuarioControlador {
                 txtCorreo.getText() == null || txtCorreo.getText().equals("") ||
                 txtContrasena.getText() == null || txtContrasena.getText().equals("") ||
                 txtConfContrasena.getText() == null || txtConfContrasena.getText().equals("") ||
-                txtDocumento.getText() == null || txtDocumento.getText().equals("")) {
+                txtDocumento.getText() == null || txtDocumento.getText().equals("") || pais.getValue() == null || pais.getValue().equals("")
+                || fecha_nac.getValue() == null || fecha_nac.getValue().equals("")
+        ) {
 
             showAlert(
                     "Datos faltantes!",
@@ -88,12 +95,16 @@ public class UsuarioControlador {
                 String usuario = txtUsuario.getText();
                 String correo = txtCorreo.getText();
                 String contrasena = txtContrasena.getText();
-                String documento= txtDocumento.getText();
+                Long documento = Long.valueOf(txtDocumento.getText());
+                String pais_origen = pais.getValue();
+                LocalDate fec_nac = fecha_nac.getValue();
+                Boolean vacunado = esta_vacunado.isSelected();
+
 
 
                 try {
 
-                    usuarioMgr.agregarUsuario(usuario, correo, contrasena, documento);
+                    usuarioMgr.agregarUsuario(usuario, correo, contrasena, documento, pais_origen, fec_nac, vacunado);
 
                     showAlert("Cliente agregado", "Se agrego con exito el cliente!");
 

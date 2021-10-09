@@ -5,13 +5,13 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.admin.Admin">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.admin.adminControlador">
    <children>
       <AnchorPane layoutY="-1.0" prefHeight="406.0" prefWidth="169.0" style="-fx-background-color: #154360;">
          <children>
-            <Button layoutX="29.0" layoutY="44.0" mnemonicParsing="false" style="-fx-background-color: White;" text="Agregar operador" textFill="#154360" />
+            <Button layoutX="29.0" layoutY="44.0" mnemonicParsing="false" onAction="#agregarOperador" style="-fx-background-color: White;" text="Agregar operador" textFill="#154360" />
             <Button layoutX="27.0" layoutY="84.0" mnemonicParsing="false" style="-fx-background-color: White;" text="Bloquear operador" textFill="#154360" />
+            <Button fx:id="exit" layoutX="42.0" layoutY="367.0" mnemonicParsing="false" onAction="#cerrarSesion" style="-fx-background-color: white;" text="Cerrar sesion" textFill="#154360" />
          </children>
       </AnchorPane>
       <TableView layoutX="204.0" layoutY="31.0" prefHeight="343.0" prefWidth="371.0">

@@ -9,6 +9,7 @@ import com.example.primer_demo.persistance.AdminRepository;
 import com.example.primer_demo.persistance.OperadorRepository;
 import com.example.primer_demo.persistance.UsuarioRepository;
 import com.example.primer_demo.ui.Inicio.InicioControlador;
+import com.example.primer_demo.ui.admin.adminControlador;
 import com.example.primer_demo.ui.usuario.UsuarioControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -94,7 +95,7 @@ public class Controlador {
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
 
-                        root = fxmlLoader.load(InicioControlador.class.getResourceAsStream("admin.fxml"));
+                        root = fxmlLoader.load(adminControlador.class.getResourceAsStream("admin.fxml"));
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
                         stage.getIcons().add(new Image("images/logo_final.png"));
@@ -104,7 +105,7 @@ public class Controlador {
 
                     }
 
-                    if (usuarioMgr.ingresar(usuario, contrasena)){
+                    else if (usuarioMgr.ingresar(usuario, contrasena)){
                         close(event);
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);

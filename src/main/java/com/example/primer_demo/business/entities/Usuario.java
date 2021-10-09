@@ -1,33 +1,42 @@
 package com.example.primer_demo.business.entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.*;
 
 @Entity
 @Table(name = "usuarios")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario implements Serializable {
+public class Usuario {
 
     //LA ID TIENE QUE SER EL MAIL
     @Id
-    @Column(name = "mail", unique = true, nullable = false)
-    private String mail;
     private String nombreDeUsuario;
+    private String mail;
     private String contrasena;
-    private String documento;
+    private Long documento;
+    private String pais;
+    private LocalDate fechaNac;
+    private Boolean vacunado;
+
+    @ManyToMany
+    private Set<Etiqueta> etiquetas;
 
 
-    public Usuario(){
+    public Usuario() {
 
     }
 
-    public Usuario(String nombreDeUsuario, String mail, String contrasena, String documento) {
+
+    public Usuario(String nombreDeUsuario, String mail, String contrasena, Long documento, String pais, LocalDate fechaNac, Boolean vacunado) {
         this.nombreDeUsuario = nombreDeUsuario;
         this.mail = mail;
         this.contrasena = contrasena;
         this.documento = documento;
-    }
+        this.pais = pais;
+        this.fechaNac = fechaNac;
+        this.vacunado = vacunado;
 
+    }
 
     public String getNombreDeUsuario() {
         return nombreDeUsuario;
@@ -53,11 +62,45 @@ public class Usuario implements Serializable {
         this.contrasena = contrasena;
     }
 
-    public String getDocumento() {
+    public Long getDocumento() {
         return documento;
     }
 
-    public void setDocumento(String documento) {
+    public void setDocumento(Long documento) {
         this.documento = documento;
     }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public LocalDate getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(LocalDate fechaNac) {
+        this.fechaNac = fechaNac;
+    }
+
+    public Boolean getVacunado() {
+        return vacunado;
+    }
+
+    public void setVacunado(Boolean vacunado) {
+        this.vacunado = vacunado;
+    }
+
+    public Set<Etiqueta> getEtiquetas() {
+        return etiquetas;
+    }
+
+    public void setEtiquetas(Set<Etiqueta> etiquetas) {
+        this.etiquetas = etiquetas;
+    }
 }
+
+
