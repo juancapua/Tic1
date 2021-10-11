@@ -1,32 +1,42 @@
-package com.example.primer_demo.ui.operador;
-
+package com.example.primer_demo.ui.usuarioOperador;
 
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.OperadorMgr;
-import com.example.primer_demo.business.entities.Pais;
+import com.example.primer_demo.business.UsuarioOperadorMgr;
+import com.example.primer_demo.business.entities.Operador;
+import com.example.primer_demo.business.entities.UsuarioOperador;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.business.exceptions.UsuarioAlreadyExist;
+import com.example.primer_demo.persistance.OperadorRepository;
 import com.example.primer_demo.ui.admin.adminControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.time.LocalDate;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 @Component
-public class operadorControlador {
+public class UsuarioOperadorControlador implements Initializable {
 
     @Autowired
-    private OperadorMgr operadorMgr;
+    private UsuarioOperadorMgr usuarioOperadorMgr;
+
+    @Autowired
+    private OperadorRepository operadorRepository;
 
     private Parent root;
 
@@ -50,10 +60,7 @@ public class operadorControlador {
     private TextField txtConfContrasena;
 
     @FXML
-    private TextField txtTelefono;
-
-    @FXML
-    private TextField txtDireccion;
+    private ComboBox<String> operador;
 
     @FXML
     void close(ActionEvent actionEvent) {
@@ -64,13 +71,11 @@ public class operadorControlador {
 
 
     @FXML
-    void addOperador(ActionEvent event) {
+    void addUsuarioOperador(ActionEvent event) {
         if (txtUsuario.getText() == null || txtUsuario.getText().equals("") ||
                 txtCorreo.getText() == null || txtCorreo.getText().equals("") ||
                 txtContrasena.getText() == null || txtContrasena.getText().equals("") ||
-                txtConfContrasena.getText() == null || txtConfContrasena.getText().equals("") ||
-                txtTelefono.getText() == null || txtTelefono.getText().equals("")||
-                txtDireccion.getText() == null || txtDireccion.getText().equals("")
+                txtConfContrasena.getText() == null || txtConfContrasena.getText().equals("")
 
         ) {
 
@@ -88,13 +93,12 @@ public class operadorControlador {
                 String usuario = txtUsuario.getText();
                 String correo = txtCorreo.getText();
                 String contrasena = txtContrasena.getText();
-                int telefono = Integer.parseInt(txtTelefono.getText());
-                String direccion = txtDireccion.getText();
+                Operador id_operador = operadorRepository.findByNombreDeUsuario(operador.getValue());
 
 
                 try {
 
-                    operadorMgr.agregarOperador(usuario, correo, contrasena, telefono, direccion);
+                    usuarioOperadorMgr.agregarUsuarioOperador(usuario, correo, contrasena, id_operador);
 
                     showAlert("Cliente agregado", "Se agrego con exito el operador!");
 
@@ -147,5 +151,13 @@ public class operadorControlador {
         alert.setHeaderText(null);
         alert.setContentText(contextText);
         alert.showAndWait();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Iterable<Operador> operadores = operadorRepository.findAll();
+        for(Operador x: operadores){
+            operador.getItems().add(x.getNombreDeUsuario());
+        }
     }
 }

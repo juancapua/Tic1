@@ -2,6 +2,8 @@ package com.example.primer_demo.business.entities;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "operadores")
@@ -11,17 +13,21 @@ public class Operador {
     private String nombreDeUsuario;
     private String mail;
     private String contrasena;
-    private Long telefono;
+    private int telefono;
     private String direccion;
     private Boolean estado;
 
-    public Operador(String nombreDeUsuario, String mail, String contrasena, Long telefono, String direccion) {
+    @OneToMany(mappedBy = "nombreDeUsuario")
+    private List<UsuarioOperador> usuarioOperadorList;
+
+    public Operador(String nombreDeUsuario, String mail, String contrasena, int telefono, String direccion) {
         this.nombreDeUsuario = nombreDeUsuario;
         this.mail = mail;
         this.contrasena = contrasena;
         this.telefono = telefono;
         this.direccion = direccion;
         this.estado = false;
+        this.usuarioOperadorList = new ArrayList<>();
     }
 
     public Operador() {
@@ -52,11 +58,11 @@ public class Operador {
         this.contrasena = contrasena;
     }
 
-    public Long getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Long telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
@@ -74,5 +80,13 @@ public class Operador {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public List<UsuarioOperador> getUsuarioOperadorList() {
+        return usuarioOperadorList;
+    }
+
+    public void setUsuarioOperadorList(UsuarioOperador usuarioOperador) {
+        this.usuarioOperadorList.add(usuarioOperador);
     }
 }

@@ -10,15 +10,17 @@
       <AnchorPane layoutY="-1.0" prefHeight="406.0" prefWidth="169.0" style="-fx-background-color: #154360;">
          <children>
             <Button layoutX="29.0" layoutY="44.0" mnemonicParsing="false" onAction="#agregarOperador" style="-fx-background-color: White;" text="Agregar operador" textFill="#154360" />
-            <Button layoutX="27.0" layoutY="84.0" mnemonicParsing="false" style="-fx-background-color: White;" text="Bloquear operador" textFill="#154360" />
+            <Button fx:id="bloquearOperador" layoutX="27.0" layoutY="84.0" mnemonicParsing="false" onAction="#bloquearOperador" style="-fx-background-color: White;" text="Bloquear operador" textFill="#154360" />
             <Button fx:id="exit" layoutX="42.0" layoutY="367.0" mnemonicParsing="false" onAction="#cerrarSesion" style="-fx-background-color: white;" text="Cerrar sesion" textFill="#154360" />
+            <Button fx:id="habilitarOperador" layoutX="30.0" layoutY="124.0" mnemonicParsing="false" onAction="#habilitarOperador" style="-fx-background-color: White;" text="Habilitar operador" textFill="#154360" />
+            <Button layoutX="7.0" layoutY="203.0" mnemonicParsing="false" onAction="#agregarUsuarioOperador" style="-fx-background-color: white;" text="Agregar usuario Operador" textFill="#154360" />
          </children>
       </AnchorPane>
-      <TableView layoutX="204.0" layoutY="31.0" prefHeight="343.0" prefWidth="371.0">
+      <TableView fx:id="tabla" layoutX="204.0" layoutY="31.0" prefHeight="343.0" prefWidth="371.0" style="-fx-background-color: white;">
         <columns>
-          <TableColumn prefWidth="139.0" text="Operador" />
+          <TableColumn fx:id="nombreOperador" prefWidth="139.0" text="Operador" />
           <TableColumn prefWidth="116.0" text="Usuario" />
-            <TableColumn prefWidth="113.0" text="Estado" />
+            <TableColumn fx:id="estadoOperador" prefWidth="113.0" text="Estado" />
         </columns>
       </TableView>
    </children>

@@ -2,6 +2,7 @@ package com.example.primer_demo.ui;
 
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.AdminMgr;
+import com.example.primer_demo.business.OperadorMgr;
 import com.example.primer_demo.business.UsuarioMgr;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.business.exceptions.UsuarioNotExist;
@@ -10,6 +11,7 @@ import com.example.primer_demo.persistance.OperadorRepository;
 import com.example.primer_demo.persistance.UsuarioRepository;
 import com.example.primer_demo.ui.Inicio.InicioControlador;
 import com.example.primer_demo.ui.admin.adminControlador;
+import com.example.primer_demo.ui.operador.operadorControlador;
 import com.example.primer_demo.ui.usuario.UsuarioControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,6 +31,9 @@ import org.springframework.stereotype.Component;
 public class Controlador {
 
     private Parent root;
+
+    @Autowired
+    private OperadorMgr operadorMgr;
 
     @Autowired
     private UsuarioMgr usuarioMgr;
@@ -96,6 +101,21 @@ public class Controlador {
                         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
 
                         root = fxmlLoader.load(adminControlador.class.getResourceAsStream("admin.fxml"));
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(root));
+                        stage.getIcons().add(new Image("images/logo_final.png"));
+                        stage.setResizable(false);
+                        stage.show();
+
+
+                    }
+
+                    else if(operadorMgr.ingresar(usuario, contrasena)){
+                        close(event);
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+                        root = fxmlLoader.load(operadorControlador.class.getResourceAsStream("operador.fxml"));
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
                         stage.getIcons().add(new Image("images/logo_final.png"));

@@ -1,11 +1,13 @@
 package com.example.primer_demo.ui.admin;
 
 import com.example.primer_demo.PrimerDemoApplication;
+import com.example.primer_demo.business.OperadorMgr;
 import com.example.primer_demo.business.entities.Operador;
 import com.example.primer_demo.persistance.OperadorRepository;
 import com.example.primer_demo.ui.Controlador;
 import com.example.primer_demo.ui.operador.operadorControlador;
 import com.example.primer_demo.ui.usuario.UsuarioControlador;
+import com.example.primer_demo.ui.usuarioOperador.UsuarioOperadorControlador;
 import javafx.beans.Observable;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
@@ -39,6 +41,9 @@ public class adminControlador implements Initializable {
     private Parent root;
 
     @Autowired
+    private OperadorMgr operadorMgr;
+
+    @Autowired
     private OperadorRepository operadorRepository;
 
     @FXML
@@ -50,10 +55,17 @@ public class adminControlador implements Initializable {
     @FXML
     private TableColumn<Operador, String> estadoOperador;
 
+    @FXML
+    private Button bloquearOperador;
+
+    @FXML
+    private Button habilitarOperador;
+
     ObservableList<Operador> listaObservable;
 
     @FXML
     void agregarOperador(ActionEvent event) throws IOException {
+        close(event);
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
 
@@ -63,6 +75,71 @@ public class adminControlador implements Initializable {
         stage.getIcons().add(new Image("images/logo_final.png"));
         stage.setResizable(false);
         stage.show();
+
+
+    }
+
+    @FXML
+    void agregarUsuarioOperador(ActionEvent event) throws IOException {
+        close(event);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+        root = fxmlLoader.load(UsuarioOperadorControlador.class.getResourceAsStream("usuarioOperador.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("images/logo_final.png"));
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @FXML
+    void bloquearOperador(ActionEvent event){
+
+        Operador operador = tabla.getSelectionModel().getSelectedItem();
+        operadorMgr.bloaquear(operador);
+
+        List<Operador> operadores = (List<Operador>) operadorRepository.findAll();
+        listaObservable = FXCollections.observableArrayList();
+        listaObservable.addAll(operadores);
+        tabla.setItems(listaObservable);
+        nombreOperador.setCellValueFactory(new PropertyValueFactory<>("nombreDeUsuario"));
+        estadoOperador.setCellValueFactory(cellData -> {
+            boolean estado = cellData.getValue().getEstado();
+            String estadoAsString;
+            if(!estado) {
+                estadoAsString = "Bloqueado";
+            }
+            else {
+                estadoAsString = "Habilitado";
+            }
+            return new ReadOnlyStringWrapper(estadoAsString);
+        });
+
+    }
+
+    @FXML
+    void habilitarOperador(ActionEvent event){
+
+        Operador operador = tabla.getSelectionModel().getSelectedItem();
+        operadorMgr.habilitar(operador);
+
+        List<Operador> operadores = (List<Operador>) operadorRepository.findAll();
+        listaObservable = FXCollections.observableArrayList();
+        listaObservable.addAll(operadores);
+        tabla.setItems(listaObservable);
+        nombreOperador.setCellValueFactory(new PropertyValueFactory<>("nombreDeUsuario"));
+        estadoOperador.setCellValueFactory(cellData -> {
+            boolean estado = cellData.getValue().getEstado();
+            String estadoAsString;
+            if(!estado) {
+                estadoAsString = "Bloqueado";
+            }
+            else {
+                estadoAsString = "Habilitado";
+            }
+            return new ReadOnlyStringWrapper(estadoAsString);
+        });
 
 
     }
@@ -109,11 +186,11 @@ public class adminControlador implements Initializable {
         listaObservable = FXCollections.observableArrayList();
         listaObservable.addAll(operadores);
         tabla.setItems(listaObservable);
-        nombreOperador.setCellValueFactory(new PropertyValueFactory<>("Operador"));
+        nombreOperador.setCellValueFactory(new PropertyValueFactory<>("nombreDeUsuario"));
         estadoOperador.setCellValueFactory(cellData -> {
             boolean estado = cellData.getValue().getEstado();
             String estadoAsString;
-            if(estado) {
+            if(!estado) {
                 estadoAsString = "Bloqueado";
             }
             else {
