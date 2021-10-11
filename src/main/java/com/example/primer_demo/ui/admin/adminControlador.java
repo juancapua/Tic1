@@ -160,7 +160,7 @@ public class adminControlador implements Initializable {
         stage.setResizable(false);
         stage.show();
 
-        showAlert("Nos vemos pronto", "Se ha cerrado csesion correctamentez");
+        showAlert("Nos vemos pronto", "Se ha cerrado sesion correctamente");
     }
 
 

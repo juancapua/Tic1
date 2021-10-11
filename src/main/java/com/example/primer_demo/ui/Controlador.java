@@ -110,7 +110,7 @@ public class Controlador {
 
                     }
 
-                    else if(operadorMgr.ingresar(usuario, contrasena)){
+                    else if(operadorMgr.ingresar(usuario, contrasena) && operadorRepository.findByNombreDeUsuarioAndContrasena(usuario, contrasena).getEstado()){
                         close(event);
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);

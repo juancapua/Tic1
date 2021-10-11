@@ -13,6 +13,7 @@
             <Button layoutX="27.0" layoutY="84.0" mnemonicParsing="false" style="-fx-background-color: White;" text="Bloquear usuario" textFill="#154360" />
             <Button layoutX="19.0" layoutY="129.0" mnemonicParsing="false" style="-fx-background-color: White;" text="Agregar experiencia" textFill="#154360" />
             <Button layoutX="17.0" layoutY="167.0" mnemonicParsing="false" style="-fx-background-color: White;" text="Bloquear experiencia" textFill="#154360" />
+            <Button layoutX="42.0" layoutY="367.0" mnemonicParsing="false" onAction="#cerrarSesion" style="-fx-background-color: white;" text="Cerrar sesion" textFill="#154360" />
          </children>
       </AnchorPane>
       <TableView layoutX="204.0" layoutY="31.0" prefHeight="343.0" prefWidth="371.0">

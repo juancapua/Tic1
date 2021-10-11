@@ -62,7 +62,7 @@ public class InicioControlador {
         stage.setResizable(false);
         stage.show();
 
-        showAlert("Nos vemos pronto", "Se ha cerrado csesion correctamentez");
+        showAlert("Nos vemos pronto", "Se ha cerrado sesion correctamente");
     }
 
 
