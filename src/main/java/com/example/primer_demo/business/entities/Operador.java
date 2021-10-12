@@ -3,7 +3,9 @@ package com.example.primer_demo.business.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "operadores")
@@ -17,8 +19,8 @@ public class Operador {
     private String direccion;
     private Boolean estado;
 
-    @OneToMany(mappedBy = "nombreDeUsuario")
-    private List<UsuarioOperador> usuarioOperadorList;
+    @OneToMany(mappedBy = "nombreDeUsuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<UsuarioOperador> usuarioOperadorList;
 
     public Operador(String nombreDeUsuario, String mail, String contrasena, int telefono, String direccion) {
         this.nombreDeUsuario = nombreDeUsuario;
@@ -27,7 +29,7 @@ public class Operador {
         this.telefono = telefono;
         this.direccion = direccion;
         this.estado = false;
-        this.usuarioOperadorList = new ArrayList<>();
+        this.usuarioOperadorList = new HashSet<>();
     }
 
     public Operador() {
@@ -82,11 +84,15 @@ public class Operador {
         this.direccion = direccion;
     }
 
-    public List<UsuarioOperador> getUsuarioOperadorList() {
+    public Set<UsuarioOperador> getUsuarioOperadorList() {
         return usuarioOperadorList;
     }
 
-    public void setUsuarioOperadorList(UsuarioOperador usuarioOperador) {
+    public void addUsuarioOperadorList(UsuarioOperador usuarioOperador) {
         this.usuarioOperadorList.add(usuarioOperador);
+    }
+
+    public void setUsuarioOperadorList(Set<UsuarioOperador> usuarioOperadorList) {
+        this.usuarioOperadorList = usuarioOperadorList;
     }
 }

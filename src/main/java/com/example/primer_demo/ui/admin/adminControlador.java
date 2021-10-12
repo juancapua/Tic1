@@ -5,6 +5,7 @@ import com.example.primer_demo.business.OperadorMgr;
 import com.example.primer_demo.business.entities.Operador;
 import com.example.primer_demo.persistance.OperadorRepository;
 import com.example.primer_demo.ui.Controlador;
+import com.example.primer_demo.ui.operador.VistaAdminOperadorControlador;
 import com.example.primer_demo.ui.operador.operadorControlador;
 import com.example.primer_demo.ui.usuario.UsuarioControlador;
 import com.example.primer_demo.ui.usuarioOperador.UsuarioOperadorControlador;
@@ -141,6 +142,27 @@ public class adminControlador implements Initializable {
             return new ReadOnlyStringWrapper(estadoAsString);
         });
 
+
+    }
+
+    @FXML
+    void verOperador(ActionEvent event) throws IOException {
+
+        Operador operador = tabla.getSelectionModel().getSelectedItem();
+        if(operador != null) {
+            close(event);
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+            root = fxmlLoader.load(VistaAdminOperadorControlador.class.getResourceAsStream("vistaAdminOperador.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(new Image("images/logo_final.png"));
+            stage.setResizable(false);
+            VistaAdminOperadorControlador controlador = fxmlLoader.getController();
+            controlador.setOperador(operador);
+            stage.show();
+        }
 
     }
 

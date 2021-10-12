@@ -8,6 +8,7 @@ import com.example.primer_demo.business.entities.UsuarioOperador;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.business.exceptions.UsuarioAlreadyExist;
 import com.example.primer_demo.persistance.OperadorRepository;
+import com.example.primer_demo.ui.Controlador;
 import com.example.primer_demo.ui.admin.adminControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -67,6 +68,23 @@ public class UsuarioOperadorControlador implements Initializable {
         Node source = (Node)  actionEvent.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    void cerrarSesion(ActionEvent event) throws IOException {
+
+        close(event);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+        root = fxmlLoader.load(adminControlador.class.getResourceAsStream("admin.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("images/logo_final.png"));
+        stage.setResizable(false);
+        stage.show();
+
+        showAlert("Nos vemos pronto", "Se ha cerrado sesion correctamente");
     }
 
 

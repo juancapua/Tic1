@@ -150,8 +150,6 @@ public class operadorControlador {
         showAlert("Nos vemos pronto", "Se ha cerrado sesion correctamente");
     }
 
-
-
     private void clean() {
         txtUsuario.setText(null);
         txtCorreo.setText(null);

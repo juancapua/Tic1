@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.operador.VistaAdminOperadorControlador">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #154360;">
+         <children>
+            <Label fx:id="txtEmpresa" layoutX="17.0" layoutY="84.0" style="-fx-background-color: transpatent;" text="Empresa:" textFill="WHITE">
+               <font>
+                  <Font name="Britannic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtMail" layoutX="16.0" layoutY="124.0" style="-fx-background-color: transparent;" text="mail:" textFill="WHITE">
+               <font>
+                  <Font name="Britannic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtTelefono" layoutX="16.0" layoutY="157.0" style="-fx-background-color: transparent;" text="telefono:" textFill="WHITE">
+               <font>
+                  <Font name="Britannic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtDireccion" layoutX="16.0" layoutY="191.0" style="-fx-background-color: transparent;" text="Direccion:" textFill="WHITE">
+               <font>
+                  <Font name="Britannic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="69.0" layoutY="286.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Bloquear" textFill="#154360" />
+            <Button layoutX="71.0" layoutY="331.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Habilitar" textFill="#154360" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tabla" layoutX="257.0" layoutY="44.0" prefHeight="343.0" prefWidth="257.0">
+        <columns>
+          <TableColumn fx:id="columnaUsuarios" prefWidth="127.0" text="Usuario" />
+          <TableColumn fx:id="columnaEstado" prefWidth="129.0" text="Estado" />
+        </columns>
+      </TableView>
+      <Label layoutX="350.0" layoutY="14.0" style="-fx-background-color: transparent;" text="Empleados:" textFill="#154360">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnVolver" alignment="BOTTOM_RIGHT" layoutX="-17.0" layoutY="-24.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="83.0" style="-fx-background-color: transparenr;" text="←" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
