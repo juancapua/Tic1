@@ -62,12 +62,9 @@ public class VistaAdminOperadorControlador{
         txtDireccion.setText("Direccion: " + operador.getDireccion());
         txtTelefono.setText("Telefono: "+ operador.getTelefono());
 
-//        Set<UsuarioOperador> usuarios = operador.getUsuarioOperadorList();
         List<UsuarioOperador> usuarios = new ArrayList<>();
-        for(UsuarioOperador x: usuarioOperadorRepository.findAll()){
-            if(x.getOperador().getNombreDeUsuario().equals(operador.getNombreDeUsuario())){
-                usuarios.add(x);
-            }
+        for(UsuarioOperador x: usuarioOperadorRepository.findAllByOperador(operador)){
+            usuarios.add(x);
         }
         listaObservable = FXCollections.observableArrayList();
         listaObservable.addAll(usuarios);
@@ -143,10 +140,8 @@ public class VistaAdminOperadorControlador{
         usuarioOperadorMgr.bloaquear(usuarioOperador);
 
         List<UsuarioOperador> usuarios = new ArrayList<>();
-        for(UsuarioOperador x: usuarioOperadorRepository.findAll()){
-            if(x.getOperador().getNombreDeUsuario().equals(operador.getNombreDeUsuario())){
-                usuarios.add(x);
-            }
+        for(UsuarioOperador x: usuarioOperadorRepository.findAllByOperador(operador)){
+            usuarios.add(x);
         }
         listaObservable = FXCollections.observableArrayList();
         listaObservable.addAll(usuarios);
@@ -171,10 +166,8 @@ public class VistaAdminOperadorControlador{
         usuarioOperadorMgr.habilitar(usuarioOperador);
 
         List<UsuarioOperador> usuarios = new ArrayList<>();
-        for(UsuarioOperador x: usuarioOperadorRepository.findAll()){
-            if(x.getOperador().getNombreDeUsuario().equals(operador.getNombreDeUsuario())){
-                usuarios.add(x);
-            }
+        for(UsuarioOperador x: usuarioOperadorRepository.findAllByOperador(operador)){
+            usuarios.add(x);
         }
         listaObservable = FXCollections.observableArrayList();
         listaObservable.addAll(usuarios);

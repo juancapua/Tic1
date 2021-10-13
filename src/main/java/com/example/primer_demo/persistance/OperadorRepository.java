@@ -9,4 +9,5 @@ public interface OperadorRepository extends CrudRepository<Operador, String> {
 
     Operador findByNombreDeUsuario(String nombre);
 
+
 }

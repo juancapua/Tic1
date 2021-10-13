@@ -2,8 +2,11 @@ package com.example.primer_demo.ui.admin;
 
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.OperadorMgr;
+import com.example.primer_demo.business.UsuarioOperadorMgr;
 import com.example.primer_demo.business.entities.Operador;
+import com.example.primer_demo.business.entities.UsuarioOperador;
 import com.example.primer_demo.persistance.OperadorRepository;
+import com.example.primer_demo.persistance.UsuarioOperadorRepository;
 import com.example.primer_demo.ui.Controlador;
 import com.example.primer_demo.ui.operador.VistaAdminOperadorControlador;
 import com.example.primer_demo.ui.operador.operadorControlador;
@@ -45,7 +48,13 @@ public class adminControlador implements Initializable {
     private OperadorMgr operadorMgr;
 
     @Autowired
+    private UsuarioOperadorMgr usuarioOperadorMgr;
+
+    @Autowired
     private OperadorRepository operadorRepository;
+
+    @Autowired
+    private UsuarioOperadorRepository usuarioOperadorRepository;
 
     @FXML
     private TableView<Operador> tabla;
@@ -100,7 +109,9 @@ public class adminControlador implements Initializable {
         Operador operador = tabla.getSelectionModel().getSelectedItem();
         if(operador != null) {
             operadorMgr.bloaquear(operador);
-
+            for(UsuarioOperador x: usuarioOperadorRepository.findAllByOperador(operador)){
+                usuarioOperadorMgr.bloaquear(x);
+            }
             List<Operador> operadores = (List<Operador>) operadorRepository.findAll();
             listaObservable = FXCollections.observableArrayList();
             listaObservable.addAll(operadores);

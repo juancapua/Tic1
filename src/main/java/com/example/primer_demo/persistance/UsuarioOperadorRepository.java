@@ -6,6 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UsuarioOperadorRepository extends CrudRepository<UsuarioOperador, String> {
 
-    Operador findByNombreDeUsuarioAndContrasena(String nombre, String contrasena);
+    UsuarioOperador findByNombreDeUsuarioAndContrasena(String nombre, String contrasena);
+
+    Iterable<UsuarioOperador> findAllByOperador(Operador operador);
 
 }
