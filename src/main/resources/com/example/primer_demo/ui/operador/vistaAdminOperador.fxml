@@ -32,8 +32,22 @@
                   <Font name="Britannic Bold" size="14.0" />
                </font>
             </Label>
-            <Button layoutX="69.0" layoutY="286.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Bloquear" textFill="#154360" />
-            <Button layoutX="71.0" layoutY="331.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Habilitar" textFill="#154360" />
+            <Button layoutX="10.0" layoutY="286.0" mnemonicParsing="false" onAction="#bloquearUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white;" text="Bloquear" textFill="#154360">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor></Button>
+            <Button layoutX="9.0" layoutY="331.0" mnemonicParsing="false" onAction="#habilitarUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white;" text="Habilitar" textFill="#154360">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor></Button>
+            <Button layoutX="-23.0" layoutY="-31.0" mnemonicParsing="false" onAction="#atras" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="←" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
       <TableView fx:id="tabla" layoutX="257.0" layoutY="44.0" prefHeight="343.0" prefWidth="257.0">
@@ -47,13 +61,5 @@
             <Font name="Britannic Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btnVolver" alignment="BOTTOM_RIGHT" layoutX="-17.0" layoutY="-24.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="83.0" style="-fx-background-color: transparenr;" text="←" textFill="WHITE">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
    </children>
 </AnchorPane>

@@ -98,24 +98,25 @@ public class adminControlador implements Initializable {
     void bloquearOperador(ActionEvent event){
 
         Operador operador = tabla.getSelectionModel().getSelectedItem();
-        operadorMgr.bloaquear(operador);
+        if(operador != null) {
+            operadorMgr.bloaquear(operador);
 
-        List<Operador> operadores = (List<Operador>) operadorRepository.findAll();
-        listaObservable = FXCollections.observableArrayList();
-        listaObservable.addAll(operadores);
-        tabla.setItems(listaObservable);
-        nombreOperador.setCellValueFactory(new PropertyValueFactory<>("nombreDeUsuario"));
-        estadoOperador.setCellValueFactory(cellData -> {
-            boolean estado = cellData.getValue().getEstado();
-            String estadoAsString;
-            if(!estado) {
-                estadoAsString = "Bloqueado";
-            }
-            else {
-                estadoAsString = "Habilitado";
-            }
-            return new ReadOnlyStringWrapper(estadoAsString);
-        });
+            List<Operador> operadores = (List<Operador>) operadorRepository.findAll();
+            listaObservable = FXCollections.observableArrayList();
+            listaObservable.addAll(operadores);
+            tabla.setItems(listaObservable);
+            nombreOperador.setCellValueFactory(new PropertyValueFactory<>("nombreDeUsuario"));
+            estadoOperador.setCellValueFactory(cellData -> {
+                boolean estado = cellData.getValue().getEstado();
+                String estadoAsString;
+                if (!estado) {
+                    estadoAsString = "Bloqueado";
+                } else {
+                    estadoAsString = "Habilitado";
+                }
+                return new ReadOnlyStringWrapper(estadoAsString);
+            });
+        }
 
     }
 
@@ -123,24 +124,25 @@ public class adminControlador implements Initializable {
     void habilitarOperador(ActionEvent event){
 
         Operador operador = tabla.getSelectionModel().getSelectedItem();
-        operadorMgr.habilitar(operador);
+        if(operador != null) {
+            operadorMgr.habilitar(operador);
 
-        List<Operador> operadores = (List<Operador>) operadorRepository.findAll();
-        listaObservable = FXCollections.observableArrayList();
-        listaObservable.addAll(operadores);
-        tabla.setItems(listaObservable);
-        nombreOperador.setCellValueFactory(new PropertyValueFactory<>("nombreDeUsuario"));
-        estadoOperador.setCellValueFactory(cellData -> {
-            boolean estado = cellData.getValue().getEstado();
-            String estadoAsString;
-            if(!estado) {
-                estadoAsString = "Bloqueado";
-            }
-            else {
-                estadoAsString = "Habilitado";
-            }
-            return new ReadOnlyStringWrapper(estadoAsString);
-        });
+            List<Operador> operadores = (List<Operador>) operadorRepository.findAll();
+            listaObservable = FXCollections.observableArrayList();
+            listaObservable.addAll(operadores);
+            tabla.setItems(listaObservable);
+            nombreOperador.setCellValueFactory(new PropertyValueFactory<>("nombreDeUsuario"));
+            estadoOperador.setCellValueFactory(cellData -> {
+                boolean estado = cellData.getValue().getEstado();
+                String estadoAsString;
+                if (!estado) {
+                    estadoAsString = "Bloqueado";
+                } else {
+                    estadoAsString = "Habilitado";
+                }
+                return new ReadOnlyStringWrapper(estadoAsString);
+            });
+        }
 
 
     }
