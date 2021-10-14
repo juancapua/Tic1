@@ -3,6 +3,7 @@ package com.example.primer_demo.business.entities;
 import javax.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="Destino")
@@ -12,22 +13,23 @@ public class Destino {
     private int id;
     private String nombre;
     private String contacto;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> images;
+    @OneToMany(fetch = FetchType.EAGER,targetEntity = Experiencia.class)
+    private Set<Experiencia> experiencias;
 
     public Destino(){
 
     }
 
-    public Destino(String nombre, String contacto, Departamento departamento){
+    public Destino(String nombre, String contacto, List<String> images, Departamento departamento){
+        this.setImages(images);
         this.setNombre(nombre);
         this.setContacto(contacto);
         this.departamento = departamento;
     }
 
-    @OneToMany
-    private List<Experiencia> experiencias;
-
     @ManyToOne(targetEntity = Departamento.class)
-    @OneToMany(mappedBy = "id_destino")
     private Departamento departamento;
 
     @OneToMany(targetEntity = Entrada.class)
@@ -47,5 +49,21 @@ public class Destino {
 
     public void setContacto(String contacto) {
         this.contacto = contacto;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    public Set<Experiencia> getExperiencias() {
+        return experiencias;
+    }
+
+    public void setExperiencias(Set<Experiencia> experiencias) {
+        this.experiencias = experiencias;
     }
 }

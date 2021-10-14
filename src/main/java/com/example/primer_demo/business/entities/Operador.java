@@ -22,6 +22,11 @@ public class Operador {
     @OneToMany(mappedBy = "nombreDeUsuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UsuarioOperador> usuarioOperadorList;
 
+    @OneToMany(targetEntity = Destino.class)
+    private Set<Destino> destinos;
+
+
+
     public Operador(String nombreDeUsuario, String mail, String contrasena, int telefono, String direccion) {
         this.nombreDeUsuario = nombreDeUsuario;
         this.mail = mail;
@@ -94,5 +99,13 @@ public class Operador {
 
     public void setUsuarioOperadorList(Set<UsuarioOperador> usuarioOperadorList) {
         this.usuarioOperadorList = usuarioOperadorList;
+    }
+
+    public Set<Destino> getDestinos() {
+        return destinos;
+    }
+
+    public void setDestinos(Set<Destino> destinos) {
+        this.destinos = destinos;
     }
 }

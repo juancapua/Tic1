@@ -91,11 +91,11 @@ public class InicioControlador {
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
         root = fxmlLoader.load(DestinoControlador.class.getResourceAsStream("destination.fxml"));
         DestinoControlador destinoControlador = fxmlLoader.getController();
-        destinoControlador.init(destino);
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.show();
+        destinoControlador.init(destino);
     }
 
 }
