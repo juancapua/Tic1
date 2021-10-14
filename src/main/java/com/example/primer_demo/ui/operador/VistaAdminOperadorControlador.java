@@ -66,6 +66,7 @@ public class VistaAdminOperadorControlador{
         for(UsuarioOperador x: usuarioOperadorRepository.findAllByOperador(operador)){
             usuarios.add(x);
         }
+//        Set<UsuarioOperador> usuarios = operador.getUsuarioOperadorList();
         listaObservable = FXCollections.observableArrayList();
         listaObservable.addAll(usuarios);
         tabla.setItems(listaObservable);
