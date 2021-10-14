@@ -1,6 +1,7 @@
 package com.example.primer_demo.ui.operador;
 
 import com.example.primer_demo.PrimerDemoApplication;
+import com.example.primer_demo.business.UsuarioOperadorMgr;
 import com.example.primer_demo.business.entities.Operador;
 import com.example.primer_demo.business.entities.UsuarioOperador;
 import com.example.primer_demo.persistance.OperadorRepository;
@@ -17,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -41,6 +43,9 @@ public class VistaAdminOperadorControlador{
     private OperadorRepository operadorRepository;
 
     @Autowired
+    private UsuarioOperadorMgr usuarioOperadorMgr;
+
+    @Autowired
     private UsuarioOperadorRepository usuarioOperadorRepository;
 
     private Operador operador;
@@ -57,13 +62,11 @@ public class VistaAdminOperadorControlador{
         txtDireccion.setText("Direccion: " + operador.getDireccion());
         txtTelefono.setText("Telefono: "+ operador.getTelefono());
 
-//        Set<UsuarioOperador> usuarios = operador.getUsuarioOperadorList();
         List<UsuarioOperador> usuarios = new ArrayList<>();
-        for(UsuarioOperador x: usuarioOperadorRepository.findAll()){
-            if(x.getOperador().getNombreDeUsuario().equals(operador.getNombreDeUsuario())){
-                usuarios.add(x);
-            }
+        for(UsuarioOperador x: usuarioOperadorRepository.findAllByOperador(operador)){
+            usuarios.add(x);
         }
+//        Set<UsuarioOperador> usuarios = operador.getUsuarioOperadorList();
         listaObservable = FXCollections.observableArrayList();
         listaObservable.addAll(usuarios);
         tabla.setItems(listaObservable);
@@ -104,6 +107,12 @@ public class VistaAdminOperadorControlador{
     private Label txtTelefono;
 
     @FXML
+    private Button btnBloquear;
+
+    @FXML
+    private Button btnHabilitar;
+
+    @FXML
     void atras(ActionEvent event) throws IOException {
 
         close(event);
@@ -125,7 +134,61 @@ public class VistaAdminOperadorControlador{
         stage.close();
     }
 
-    
+    @FXML
+    void bloquearUsuarioOperador(ActionEvent event){
+
+        UsuarioOperador usuarioOperador = tabla.getSelectionModel().getSelectedItem();
+        usuarioOperadorMgr.bloaquear(usuarioOperador);
+
+        List<UsuarioOperador> usuarios = new ArrayList<>();
+        for(UsuarioOperador x: usuarioOperadorRepository.findAllByOperador(operador)){
+            usuarios.add(x);
+        }
+        listaObservable = FXCollections.observableArrayList();
+        listaObservable.addAll(usuarios);
+        tabla.setItems(listaObservable);
+        columnaUsuarios.setCellValueFactory(new PropertyValueFactory<>("nombreDeUsuario"));
+        columnaEstado.setCellValueFactory(cellData -> {
+            boolean estado = cellData.getValue().getEstado();
+            String estadoAsString;
+            if (!estado) {
+                estadoAsString = "Bloqueado";
+            } else {
+                estadoAsString = "Habilitado";
+            }
+            return new ReadOnlyStringWrapper(estadoAsString);
+        });
+    }
+
+    @FXML
+    void habilitarUsuarioOperador(ActionEvent event){
+
+        UsuarioOperador usuarioOperador = tabla.getSelectionModel().getSelectedItem();
+        usuarioOperadorMgr.habilitar(usuarioOperador);
+
+        List<UsuarioOperador> usuarios = new ArrayList<>();
+        for(UsuarioOperador x: usuarioOperadorRepository.findAllByOperador(operador)){
+            usuarios.add(x);
+        }
+        listaObservable = FXCollections.observableArrayList();
+        listaObservable.addAll(usuarios);
+        tabla.setItems(listaObservable);
+        columnaUsuarios.setCellValueFactory(new PropertyValueFactory<>("nombreDeUsuario"));
+        columnaEstado.setCellValueFactory(cellData -> {
+            boolean estado = cellData.getValue().getEstado();
+            String estadoAsString;
+            if (!estado) {
+                estadoAsString = "Bloqueado";
+            } else {
+                estadoAsString = "Habilitado";
+            }
+            return new ReadOnlyStringWrapper(estadoAsString);
+        });
+
+
+    }
+
+
 
 
 //    @Override

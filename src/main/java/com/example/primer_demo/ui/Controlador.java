@@ -4,15 +4,18 @@ import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.AdminMgr;
 import com.example.primer_demo.business.OperadorMgr;
 import com.example.primer_demo.business.UsuarioMgr;
+import com.example.primer_demo.business.UsuarioOperadorMgr;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.business.exceptions.UsuarioNotExist;
 import com.example.primer_demo.persistance.AdminRepository;
 import com.example.primer_demo.persistance.OperadorRepository;
+import com.example.primer_demo.persistance.UsuarioOperadorRepository;
 import com.example.primer_demo.persistance.UsuarioRepository;
 import com.example.primer_demo.ui.Inicio.InicioControlador;
 import com.example.primer_demo.ui.admin.adminControlador;
 import com.example.primer_demo.ui.operador.operadorControlador;
 import com.example.primer_demo.ui.usuario.UsuarioControlador;
+import com.example.primer_demo.ui.usuarioOperador.HomeUsuarioOperador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,10 +45,16 @@ public class Controlador {
     private AdminMgr adminMgr;
 
     @Autowired
+    private UsuarioOperadorMgr usuarioOperadorMgr;
+
+    @Autowired
     private UsuarioRepository usuarioRepository;
 
     @Autowired
     private AdminRepository adminRepository;
+
+    @Autowired
+    private UsuarioOperadorRepository usuarioOperadorRepository;
 
     @Autowired
     private OperadorRepository operadorRepository;
@@ -125,7 +134,20 @@ public class Controlador {
 
                     }
 
-                    else if (usuarioMgr.ingresar(usuario, contrasena)){
+                    else if(usuarioOperadorMgr.ingresar(usuario, contrasena) && usuarioOperadorRepository.findByNombreDeUsuarioAndContrasena(usuario, contrasena).getEstado()){
+                        close(event);
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+                        root = fxmlLoader.load(HomeUsuarioOperador.class.getResourceAsStream("homeUsuarioOperador"));
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(root));
+                        stage.getIcons().add(new Image("images/logo_final.png"));
+                        stage.setResizable(false);
+                        stage.show();
+                    }
+
+                    else if(usuarioMgr.ingresar(usuario, contrasena)){
                         close(event);
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);

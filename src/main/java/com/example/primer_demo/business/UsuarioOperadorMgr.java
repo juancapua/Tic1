@@ -42,9 +42,7 @@ public class UsuarioOperadorMgr {
 
         UsuarioOperador nuevoUsuario = new UsuarioOperador(nombre, mail, contrasena, operador);
         usuarioOperadorRepository.save(nuevoUsuario);
-//        Set<UsuarioOperador> usuarios = operador.getUsuarioOperadorList();
-//        usuarios.add(nuevoUsuario);
-//        operador.setUsuarioOperadorList(usuarios);
+//        operador.addUsuarioOperadorList(nuevoUsuario);
 //        operadorRepository.save(operador);
 
     }

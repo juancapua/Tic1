@@ -149,6 +149,21 @@ public class operadorControlador {
 
         showAlert("Nos vemos pronto", "Se ha cerrado sesion correctamente");
     }
+    
+    @FXML
+    void volverAtras(ActionEvent event) throws IOException {
+        close(event);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+        root = fxmlLoader.load(adminControlador.class.getResourceAsStream("admin.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("images/logo_final.png"));
+        stage.setResizable(false);
+        stage.show();
+        
+    }
 
     private void clean() {
         txtUsuario.setText(null);
