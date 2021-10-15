@@ -2,6 +2,7 @@ package com.example.primer_demo.ui.operador;
 
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.UsuarioOperadorMgr;
+import com.example.primer_demo.business.entities.Experiencia;
 import com.example.primer_demo.business.entities.Operador;
 import com.example.primer_demo.business.entities.UsuarioOperador;
 import com.example.primer_demo.persistance.OperadorRepository;
@@ -52,6 +53,8 @@ public class VistaAdminOperadorControlador{
 
     ObservableList<UsuarioOperador> listaObservable;
 
+    ObservableList<Experiencia> listaObservable2;
+
     public VistaAdminOperadorControlador() {
     }
 
@@ -82,6 +85,8 @@ public class VistaAdminOperadorControlador{
             return new ReadOnlyStringWrapper(estadoAsString);
         });
 
+        //falta agregar la vista de las tabla de las experiencias
+
     }
 
 
@@ -93,6 +98,15 @@ public class VistaAdminOperadorControlador{
 
     @FXML
     private TableView<UsuarioOperador> tabla;
+
+    @FXML
+    private TableView<Experiencia> tabla2;
+
+    @FXML
+    private TableColumn<Experiencia, String> columnaExperiencias;
+
+    @FXML
+    private TableColumn<Experiencia, String> columnaEstadoExperiencias;
 
     @FXML
     private Label txtDireccion;

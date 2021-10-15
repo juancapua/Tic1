@@ -139,7 +139,7 @@ public class Controlador {
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
 
-                        root = fxmlLoader.load(HomeUsuarioOperador.class.getResourceAsStream("homeUsuarioOperador"));
+                        root = fxmlLoader.load(HomeUsuarioOperador.class.getResourceAsStream("homeUsuarioOperador.fxml"));
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
                         stage.getIcons().add(new Image("images/logo_final.png"));

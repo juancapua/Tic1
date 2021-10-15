@@ -18,7 +18,7 @@ public class Usuario {
     private LocalDate fechaNac;
     private Boolean vacunado;
 
-    @ManyToMany
+    @ManyToMany()
     private Set<Etiqueta> etiquetas;
 
 

@@ -33,7 +33,8 @@
             <Button layoutX="5.0" layoutY="203.0" mnemonicParsing="false" onAction="#verOperador" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: white;" text="Ver operador" textFill="#154360">
                <font>
                   <Font name="Britannic Bold" size="12.0" />
-               </font></Button>
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <TableView fx:id="tabla" layoutX="204.0" layoutY="31.0" prefHeight="343.0" prefWidth="371.0" style="-fx-background-color: white;">
