@@ -19,7 +19,7 @@ public class Operador {
     private String direccion;
     private Boolean estado;
 
-    @OneToMany(mappedBy = "operador", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "operador", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<UsuarioOperador> usuarioOperadorList;
 
     @OneToMany(targetEntity = Destino.class)
