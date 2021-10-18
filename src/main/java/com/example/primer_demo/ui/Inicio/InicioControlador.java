@@ -92,7 +92,9 @@ public class InicioControlador {
         root = fxmlLoader.load(DestinoControlador.class.getResourceAsStream("destination.fxml"));
         DestinoControlador destinoControlador = fxmlLoader.getController();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(DestinoControlador.class.getResource("style.css").toExternalForm());
+        stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
         destinoControlador.init(destino);

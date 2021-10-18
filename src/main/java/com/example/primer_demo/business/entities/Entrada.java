@@ -1,10 +1,6 @@
 package com.example.primer_demo.business.entities;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="Entrada")
@@ -17,6 +13,10 @@ public class Entrada {
     private String titulo;
     private String texto;
 
+
+    public Entrada(){
+
+    }
 
     public String getId() {
         return id;

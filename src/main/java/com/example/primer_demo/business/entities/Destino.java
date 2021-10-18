@@ -15,8 +15,12 @@ public class Destino {
     private String contacto;
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> images;
-    @OneToMany(fetch = FetchType.EAGER,targetEntity = Experiencia.class)
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "destino_id")
     private Set<Experiencia> experiencias;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_destino")
+    private Set<Entrada> entradas;
 
     public Destino(){
 
@@ -31,9 +35,6 @@ public class Destino {
 
     @ManyToOne(targetEntity = Departamento.class)
     private Departamento departamento;
-
-    @OneToMany(targetEntity = Entrada.class)
-    private List<Entrada> entrada;
 
     public String getNombre() {
         return nombre;
@@ -65,5 +66,13 @@ public class Destino {
 
     public void setExperiencias(Set<Experiencia> experiencias) {
         this.experiencias = experiencias;
+    }
+
+    public Set<Entrada> getEntradas() {
+        return entradas;
+    }
+
+    public void setEntradas(Set<Entrada> entradas) {
+        this.entradas = entradas;
     }
 }
