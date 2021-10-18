@@ -65,11 +65,11 @@ public class VistaAdminOperadorControlador{
         txtDireccion.setText("Direccion: " + operador.getDireccion());
         txtTelefono.setText("Telefono: "+ operador.getTelefono());
 
-        List<UsuarioOperador> usuarios = new ArrayList<>();
-        for(UsuarioOperador x: usuarioOperadorRepository.findAllByOperador(operador)){
-            usuarios.add(x);
-        }
-//        Set<UsuarioOperador> usuarios = operador.getUsuarioOperadorList();
+//        List<UsuarioOperador> usuarios = new ArrayList<>();
+//        for(UsuarioOperador x: usuarioOperadorRepository.findAllByOperador(operador)){
+//            usuarios.add(x);
+//        }
+        Set<UsuarioOperador> usuarios = operador.getUsuarioOperadorList();
         listaObservable = FXCollections.observableArrayList();
         listaObservable.addAll(usuarios);
         tabla.setItems(listaObservable);
