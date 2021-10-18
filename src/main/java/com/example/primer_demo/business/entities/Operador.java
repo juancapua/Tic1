@@ -22,9 +22,8 @@ public class Operador {
     @OneToMany(mappedBy = "operador", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<UsuarioOperador> usuarioOperadorList;
 
-    @OneToMany(targetEntity = Destino.class)
+    @OneToMany(mappedBy = "operador", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Destino> destinos;
-
 
 
     public Operador(String nombreDeUsuario, String mail, String contrasena, int telefono, String direccion) {

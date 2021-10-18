@@ -1,5 +1,4 @@
 package com.example.primer_demo.business.entities;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.*;

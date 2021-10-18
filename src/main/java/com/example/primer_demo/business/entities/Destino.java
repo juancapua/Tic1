@@ -10,6 +10,7 @@ import java.util.Set;
 public class Destino {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nombre;
     private String contacto;
@@ -21,6 +22,9 @@ public class Destino {
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_destino")
     private Set<Entrada> entradas;
+    @ManyToOne
+    @JoinColumn(name = "id_operador")
+    private Operador operador;
 
     public Destino(){
 
@@ -32,6 +36,8 @@ public class Destino {
         this.setContacto(contacto);
         this.departamento = departamento;
     }
+
+
 
     @ManyToOne(targetEntity = Departamento.class)
     private Departamento departamento;

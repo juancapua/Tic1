@@ -8,4 +8,7 @@ import java.util.Optional;
 public interface DestinoRespository extends CrudRepository<Destino, Integer> {
 
 
+    Destino findByNombre(String nombre);
+
+
 }
