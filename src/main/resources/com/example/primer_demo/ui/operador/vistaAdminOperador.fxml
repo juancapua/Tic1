@@ -67,7 +67,7 @@
             <TableColumn fx:id="columnaEstadoExperiencias" prefWidth="129.0" text="Estado" />
          </columns>
       </TableView>
-      <Label layoutX="614.0" layoutY="12.0" text="Experiencias:" textFill="#154360">
+      <Label layoutX="630.0" layoutY="12.0" text="Destino:" textFill="#154360">
          <font>
             <Font name="Britannic Bold" size="14.0" />
          </font>

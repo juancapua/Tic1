@@ -2,6 +2,7 @@ package com.example.primer_demo.business.entities;
 
 import javax.persistence.*;
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
 
@@ -14,6 +15,9 @@ public class Destino {
     private int id;
     private String nombre;
     private String contacto;
+    private Integer aforo;
+    private LocalTime horario_apertura;
+    private LocalTime horario_cierre;
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> images;
     @OneToMany(fetch = FetchType.EAGER)
@@ -80,5 +84,45 @@ public class Destino {
 
     public void setEntradas(Set<Entrada> entradas) {
         this.entradas = entradas;
+    }
+
+    public Integer getAforo() {
+        return aforo;
+    }
+
+    public void setAforo(Integer aforo) {
+        this.aforo = aforo;
+    }
+
+    public LocalTime getHorario_apertura() {
+        return horario_apertura;
+    }
+
+    public void setHorario_apertura(LocalTime horario_apertura) {
+        this.horario_apertura = horario_apertura;
+    }
+
+    public LocalTime getHorario_cierre() {
+        return horario_cierre;
+    }
+
+    public void setHorario_cierre(LocalTime horario_cierre) {
+        this.horario_cierre = horario_cierre;
+    }
+
+    public Operador getOperador() {
+        return operador;
+    }
+
+    public void setOperador(Operador operador) {
+        this.operador = operador;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 }
