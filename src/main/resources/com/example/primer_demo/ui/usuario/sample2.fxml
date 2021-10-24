@@ -9,29 +9,30 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="600.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.usuario.UsuarioControlador">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="600.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.usuario.UsuarioControlador">
     <children>
-        <TextField fx:id="txtCorreo" layoutX="267.0" layoutY="81.0" />
-        <Button fx:id="btnAgregar" layoutX="267.0" layoutY="442.0" mnemonicParsing="false" onAction="#addClient" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #154360;" text="Registrar" textFill="WHITE">
+        <TextField fx:id="txtCorreo" layoutX="268.0" layoutY="57.0" />
+        <Button fx:id="btnAgregar" layoutX="269.0" layoutY="470.0" mnemonicParsing="false" onAction="#addClient" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #154360;" text="Registrar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Label layoutX="188.0" layoutY="43.0" text="Usuario:" />
-        <Label layoutX="108.0" layoutY="255.0" text="Confirmar contraseña:" />
-        <Label layoutX="190.0" layoutY="85.0" text="Correo:" />
-        <Label layoutX="159.0" layoutY="215.0" text="Contraseña:" />
-        <TextField fx:id="txtUsuario" layoutX="267.0" layoutY="39.0" />
-        <DatePicker fx:id="fecha_nac" layoutX="268.0" layoutY="123.0" prefHeight="17.0" prefWidth="149.0" />
-        <Label layoutX="119.0" layoutY="127.0" text="Fecha de nacimiento:" />
-        <PasswordField fx:id="txtContrasena" layoutX="268.0" layoutY="211.0" />
-        <PasswordField fx:id="txtConfContrasena" layoutX="267.0" layoutY="251.0" />
-        <Label layoutX="198.0" layoutY="175.0" text="Pais:" />
-      <ComboBox fx:id="pais" layoutX="268.0" layoutY="171.0" prefWidth="150.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#154360" height="487.0" layoutX="517.0" layoutY="-5.0" stroke="#154360" strokeType="INSIDE" width="83.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#154360" height="487.0" layoutY="-5.0" stroke="#154360" strokeType="INSIDE" width="83.0" />
+        <Label layoutX="189.0" layoutY="19.0" text="Usuario:" />
+        <Label layoutX="109.0" layoutY="231.0" text="Confirmar contraseña:" />
+        <Label layoutX="191.0" layoutY="61.0" text="Correo:" />
+        <Label layoutX="160.0" layoutY="191.0" text="Contraseña:" />
+        <TextField fx:id="txtUsuario" layoutX="268.0" layoutY="15.0" />
+        <DatePicker fx:id="fecha_nac" layoutX="269.0" layoutY="99.0" prefHeight="17.0" prefWidth="149.0" />
+        <Label layoutX="120.0" layoutY="103.0" text="Fecha de nacimiento:" />
+        <PasswordField fx:id="txtContrasena" layoutX="269.0" layoutY="187.0" />
+        <PasswordField fx:id="txtConfContrasena" layoutX="268.0" layoutY="227.0" />
+        <Label layoutX="199.0" layoutY="151.0" text="Pais:" />
+      <ComboBox fx:id="pais" layoutX="269.0" layoutY="147.0" prefWidth="150.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#154360" height="520.0" layoutX="517.0" layoutY="-5.0" stroke="#154360" strokeType="INSIDE" width="83.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#154360" height="520.0" layoutY="-5.0" stroke="#154360" strokeType="INSIDE" width="83.0" />
         <Button fx:id="btnVolver" alignment="BOTTOM_RIGHT" layoutX="-21.0" layoutY="-24.0" mnemonicParsing="false" onAction="#close" prefHeight="68.0" prefWidth="83.0" style="-fx-background-color: transparenr;" text="←" textFill="WHITE">
          <font>
             <Font size="36.0" />
@@ -39,8 +40,10 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label layoutX="158.0" layoutY="306.0" text="Documento:" />
-      <TextField fx:id="txtDocumento" layoutX="267.0" layoutY="302.0" />
-      <CheckBox fx:id="esta_vacunado" layoutX="242.0" layoutY="363.0" mnemonicParsing="false" text="Esta vacunado/a para el COVID19" textFill="#154360" />
+      <Label layoutX="159.0" layoutY="270.0" text="Documento:" />
+      <TextField fx:id="txtDocumento" layoutX="268.0" layoutY="266.0" />
+      <CheckBox fx:id="esta_vacunado" layoutX="243.0" layoutY="301.0" mnemonicParsing="false" text="Esta vacunado/a para el COVID19" textFill="#154360" />
+      <VBox fx:id="listaIntereses" layoutX="269.0" layoutY="334.0" prefHeight="126.0" prefWidth="149.0" />
+      <Label layoutX="167.0" layoutY="334.0" text="Intereses:" />
     </children>
 </AnchorPane>

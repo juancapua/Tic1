@@ -1,6 +1,8 @@
 package com.example.primer_demo.ui.usuario;
 
 import com.example.primer_demo.business.UsuarioMgr;
+import com.example.primer_demo.business.entities.Etiqueta;
+import com.example.primer_demo.business.EtiquetaMgr;
 import com.example.primer_demo.business.entities.Pais;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.business.exceptions.UsuarioAlreadyExist;
@@ -9,12 +11,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.*;
 
 @Component
 public class UsuarioControlador {
@@ -23,6 +26,9 @@ public class UsuarioControlador {
     private UsuarioMgr usuarioMgr;
     @Autowired
     private PaisRepository paisRepository;
+
+    @Autowired
+    private EtiquetaMgr etiquetaMgr;
 
     @FXML
     private Button btnVolver;
@@ -54,6 +60,9 @@ public class UsuarioControlador {
     @FXML
     private CheckBox esta_vacunado;
 
+    @FXML
+    private VBox listaIntereses;
+
 
     @FXML
     void close(ActionEvent actionEvent) {
@@ -67,6 +76,12 @@ public class UsuarioControlador {
         Iterable<Pais> paises = paisRepository.findAll();
         for(Pais x: paises){
             pais.getItems().add(x.getNombre());
+        }
+
+        for(Etiqueta x: etiquetaMgr.listaEtiquetas()){
+            CheckBox interestCheckBox = new CheckBox(x.getNombre());
+            interestCheckBox.setUserData(x);
+            listaIntereses.getChildren().add(interestCheckBox);
         }
 
     }
@@ -99,12 +114,20 @@ public class UsuarioControlador {
                 String pais_origen = pais.getValue();
                 LocalDate fec_nac = fecha_nac.getValue();
                 Boolean vacunado = esta_vacunado.isSelected();
+                Set<Etiqueta> etiquetas = new HashSet<>();
+
+                for(Node node:listaIntereses.getChildren()){
+                    CheckBox checkBox = (CheckBox) node;
+                    if(checkBox.isSelected()){
+                        etiquetas.add((Etiqueta) checkBox.getUserData());
+                    }
+                }
 
 
 
                 try {
 
-                    usuarioMgr.agregarUsuario(usuario, correo, contrasena, documento, pais_origen, fec_nac, vacunado);
+                    usuarioMgr.agregarUsuario(usuario, correo, contrasena, documento, pais_origen, fec_nac, vacunado, etiquetas);
 
                     showAlert("Cliente agregado", "Se agrego con exito el cliente!");
 

@@ -17,7 +17,7 @@ public class Usuario {
     private LocalDate fechaNac;
     private Boolean vacunado;
 
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Etiqueta> etiquetas;
 
 
@@ -34,6 +34,7 @@ public class Usuario {
         this.pais = pais;
         this.fechaNac = fechaNac;
         this.vacunado = vacunado;
+        this.etiquetas = new HashSet<>();
 
     }
 
@@ -99,6 +100,11 @@ public class Usuario {
 
     public void setEtiquetas(Set<Etiqueta> etiquetas) {
         this.etiquetas = etiquetas;
+    }
+    public void addEtiquetas(Set<Etiqueta> etiquetas){
+        for(Etiqueta x: etiquetas){
+            this.etiquetas.add(x);
+        }
     }
 }
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="211.0" prefWidth="406.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.etiqueta.etiquetaControlador">
+   <children>
+      <Label layoutX="23.0" layoutY="98.0" style="-fx-background-color: transparent;" text="Identificador:" textFill="#154360">
+         <font>
+            <Font name="Britannic Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nuevaEtiqueta" layoutX="137.0" layoutY="94.0" prefHeight="25.0" prefWidth="210.0" promptText="Ingrese aqui:" />
+      <Button fx:id="button" layoutX="204.0" layoutY="139.0" mnemonicParsing="false" onAction="#addEtiqueta" prefHeight="25.0" prefWidth="76.0" text="Agregar" textFill="#154360">
+         <font>
+            <Font name="Britannic Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

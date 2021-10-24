@@ -8,6 +8,7 @@ import com.example.primer_demo.business.entities.UsuarioOperador;
 import com.example.primer_demo.persistance.OperadorRepository;
 import com.example.primer_demo.persistance.UsuarioOperadorRepository;
 import com.example.primer_demo.ui.Controlador;
+import com.example.primer_demo.ui.etiqueta.etiquetaControlador;
 import com.example.primer_demo.ui.operador.VistaAdminOperadorControlador;
 import com.example.primer_demo.ui.operador.operadorControlador;
 import com.example.primer_demo.ui.usuario.UsuarioControlador;
@@ -87,6 +88,19 @@ public class adminControlador implements Initializable {
         stage.show();
 
 
+    }
+
+    @FXML
+    void agregarInteres(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+        root = fxmlLoader.load(etiquetaControlador.class.getResourceAsStream("addEtiqueta.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("images/logo_final.png"));
+        stage.setResizable(false);
+        stage.show();
     }
 
     @FXML
