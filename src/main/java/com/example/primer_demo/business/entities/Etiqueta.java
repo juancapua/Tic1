@@ -18,6 +18,9 @@ public class Etiqueta {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Usuario> usuarios;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Destino> destinos;
+
     public Etiqueta() {
     }
 
@@ -40,5 +43,18 @@ public class Etiqueta {
 
     public void addUsuario(Usuario usuario){
         this.usuarios.add(usuario);
+    }
+
+    public Set<Destino> getDestinos() {
+        return destinos;
+    }
+
+    public void setDestinos(Set<Destino> destinos) {
+        this.destinos = destinos;
+    }
+
+    public void addDestino(Destino destino){
+        this.destinos.add(destino);
+
     }
 }

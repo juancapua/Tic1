@@ -38,5 +38,6 @@
       <TextField fx:id="txtTelefono" layoutX="267.0" layoutY="228.0" />
       <TextField fx:id="txtDireccion" layoutX="267.0" layoutY="273.0" />
       <Label layoutX="174.0" layoutY="277.0" text="Direccion:" />
+      <Label layoutX="187.0" layoutY="135.0" text="Aforo:" />
    </children>
 </AnchorPane>

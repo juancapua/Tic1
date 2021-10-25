@@ -3,6 +3,7 @@ package com.example.primer_demo.business.entities;
 import javax.persistence.*;
 
 import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -29,7 +30,10 @@ public class Destino {
     @ManyToOne
     @JoinColumn(name = "id_operador")
     private Operador operador;
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Etiqueta> etiquetas;
+    @ManyToOne(targetEntity = Departamento.class)
+    private Departamento departamento;
     public Destino(){
 
     }
@@ -39,12 +43,9 @@ public class Destino {
         this.setNombre(nombre);
         this.setContacto(contacto);
         this.departamento = departamento;
+        this.etiquetas = new HashSet<>();
     }
 
-
-
-    @ManyToOne(targetEntity = Departamento.class)
-    private Departamento departamento;
 
     public String getNombre() {
         return nombre;
@@ -125,4 +126,13 @@ public class Destino {
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
+
+    public Set<Etiqueta> getEtiquetas() {
+        return etiquetas;
+    }
+
+    public void setEtiquetas(Set<Etiqueta> etiquetas) {
+        this.etiquetas = etiquetas;
+    }
+
 }
