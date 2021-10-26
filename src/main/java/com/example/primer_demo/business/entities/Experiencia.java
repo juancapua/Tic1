@@ -1,10 +1,13 @@
 package com.example.primer_demo.business.entities;
 
 
+import com.sun.javadoc.SerialFieldTag;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "experiencias")
@@ -23,6 +26,9 @@ public class Experiencia {
     private Boolean se_reserva;
     @ManyToOne(targetEntity = Destino.class)
     private Destino destino;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Usuario> usuarios;
 
 
     public Experiencia() {

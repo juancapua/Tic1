@@ -20,6 +20,9 @@ public class Usuario {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Etiqueta> etiquetas;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Experiencia> experiencias;
+
 
     public Usuario() {
 
