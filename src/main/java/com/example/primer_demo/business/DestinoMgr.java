@@ -1,14 +1,18 @@
 package com.example.primer_demo.business;
 
+import com.example.primer_demo.business.entities.Destino;
 import com.example.primer_demo.business.entities.Operador;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.persistance.DestinoRespository;
 import com.example.primer_demo.persistance.OperadorRepository;
 import javafx.scene.control.Alert;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.Access;
+import java.util.Set;
 
+@Service
 public class DestinoMgr {
 
     @Autowired
@@ -39,5 +43,9 @@ public class DestinoMgr {
         alert.setHeaderText(null);
         alert.setContentText(contextText);
         alert.showAndWait();
+    }
+
+    public Iterable<Destino> allDestinos(){
+        return destinoRespository.findAll();
     }
 }

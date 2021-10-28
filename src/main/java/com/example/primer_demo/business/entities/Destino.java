@@ -19,6 +19,8 @@ public class Destino {
     private Integer aforo;
     private LocalTime horario_apertura;
     private LocalTime horario_cierre;
+    private Boolean habilitada;
+    private String descripcion;
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> images;
     @OneToMany(fetch = FetchType.EAGER)
@@ -135,4 +137,19 @@ public class Destino {
         this.etiquetas = etiquetas;
     }
 
+    public Boolean getHabilitada() {
+        return habilitada;
+    }
+
+    public void setHabilitada(Boolean habilitada) {
+        this.habilitada = habilitada;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 }
