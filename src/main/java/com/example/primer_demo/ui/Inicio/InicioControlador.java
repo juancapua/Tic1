@@ -102,7 +102,8 @@ public class InicioControlador implements Initializable {
     }
 
     public void test(ActionEvent event) throws Exception {
-        cargarDestino(destinoRespository.findById(1).get());
+        System.out.println(destinoRespository.count());
+        cargarDestino(destinoRespository.findAll().iterator().next());
     }
 
      void cargarDestino(Destino destino) throws Exception{
@@ -117,7 +118,7 @@ public class InicioControlador implements Initializable {
         stage.setResizable(false);
         stage.show();
         destinoControlador.init(destino);
-    }
+     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

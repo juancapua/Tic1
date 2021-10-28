@@ -17,11 +17,8 @@ public class Usuario {
     private LocalDate fechaNac;
     private Boolean vacunado;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "usuarios")
     private Set<Etiqueta> etiquetas;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Experiencia> experiencias;
 
 
     public Usuario() {

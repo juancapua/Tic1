@@ -10,6 +10,7 @@ import javafx.beans.property.Property;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -79,15 +80,16 @@ public class DestinoControlador {
     @FXML
     private Button prevBtn;
 
+    @FXML
+    private Text departamento;
 
     public void scrolling(){
         System.out.println(scrollPane.getVvalue());
         if(scrollPane.getVvalue() == 0.3){
-            nombre_destino.setVisible(false);
+            nombre_destino.setVisible   (false);
             nombre_container.setVisible(false);
 
         }
-
     }
 
     public void init(Destino destino) throws IOException {
@@ -96,6 +98,10 @@ public class DestinoControlador {
         this.destino = destino;
         setNombre_destino(destino.getNombre());
         scrollPane.setBackground(new Background(new BackgroundImage(new Image(destino.getImages().get(0)),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
         //makeFrosty(nombre_container,base_bg);
         int currentY = 0;
         for (Entrada entrada: destino.getEntradas()) {
@@ -108,15 +114,26 @@ public class DestinoControlador {
             currentY++;
         }
         entries.setVgap(48);
-        entries.setStyle("-fx-pref-width: 100%");
-
+        entries.setAlignment(Pos.CENTER);
+        for (Node node: entries.getChildren()) {
+            entries.setValignment(node, VPos.CENTER);
+        }
         //makeFrosty(entriesPane,body);
         //makeFrosty(experiencesPane,body);
+
+        experiences.setVgap(48);
+        experiences.setHgap(24);
+        for (Node node: experiences.getChildren()) {
+            experiences.setValignment(node, VPos.CENTER);
+        }
+
 
         images = new ArrayList<>();
         for (String imagen: destino.getImages()) {
             images.add(new Image(imagen));
         }
+
+        departamento.setText(destino.getDepartamento().getNombre_pk());
 
     }
 
@@ -141,21 +158,17 @@ public class DestinoControlador {
         AnchorPane entrada_container = fxmlLoader.load(EntradaControlador.class.getResourceAsStream("entrada.fxml"));
         EntradaControlador entradaControlador = fxmlLoader.getController();
         entradaControlador.init(entrada);
-        FrostyEffect effect = new FrostyEffect(); // Instantiates the effect. The parameters are optional and default to (0.5, 10)
-        FrostyBox box = new FrostyBox(effect, entrada_container); // Instantiates a container with frosty effect
-        box.setAntialiasingLevel(0.4); // See notes below
-        entries.add(box,0,currentY); // Adds the container to the scene
+        entrada_container.setId("entry");
+        entries.add(entrada_container,0,currentY); // Adds the container to the scene
     }
 
     private void agregarExperiencia(Experiencia experiencia, int currentY) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        AnchorPane entrada_container = fxmlLoader.load(EntradaControlador.class.getResourceAsStream("experienciaThumbnail.fxml"));
+        AnchorPane experienciaContainer = fxmlLoader.load(ExperienciaThumbnailControlador.class.getResourceAsStream("experienciaThumbnail.fxml"));
         ExperienciaThumbnailControlador experienciaThumbnailControlador = fxmlLoader.getController();
         experienciaThumbnailControlador.init(experiencia);
-        FrostyEffect effect = new FrostyEffect(); // Instantiates the effect. The parameters are optional and default to (0.5, 10)
-        FrostyBox box = new FrostyBox(effect, entrada_container); // Instantiates a container with frosty effect
-        box.setAntialiasingLevel(0.4); // See notes below
-        experiences.add(box,0,currentY); // Adds the container to the scene
+        experienciaContainer.setId("experience");
+        experiences.add(experienciaContainer,0,currentY); // Adds the container to the scene
     }
 
     /*

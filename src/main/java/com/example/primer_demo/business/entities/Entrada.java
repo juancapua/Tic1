@@ -13,6 +13,9 @@ public class Entrada {
     private String titulo;
     private String texto;
 
+    @ManyToOne
+    @JoinColumn(name = "destino")
+    private Destino destino;
 
     public Entrada(){
 

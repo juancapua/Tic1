@@ -1,3 +1,46 @@
 #scrollPane > .viewport {
    -fx-background-color: transparent;
 }
+
+#nextBtn {
+   -fx-background-color: rgba(255, 255, 255, 0);
+   -fx-font-size: 48px;
+   -fx-pref-height: 200px;
+   -fx-pref-width: 100px;
+   -fx-alignment: right;
+}
+
+#prevBtn {
+   -fx-background-color: transparent;
+   -fx-font-size: 48px;
+   -fx-pref-height: 200px;
+   -fx-pref-width: 100px;
+   -fx-alignment: left;
+}
+
+#experiences{
+   -fx-padding: 48px 0px 0px 32px;
+   -fx-alignment: left;
+   -fx-pref-width: 375px;
+   -fx-pref-height: 800px;
+   -fx-background-color: transparent;
+}
+
+#entries{
+   -fx-padding: 48px 0px 0px 48px;
+   -fx-background-color: transparent;
+}
+
+#entriesPane{
+   -fx-background-color: rgba(140,140,140,0.8);
+}
+
+#experiencesPane{
+   -fx-background-color: rgba(77,77,77,0.8);
+   -fx-pref-width: 370px;
+
+}
+
+#nombre_container{
+   -fx-background-color: rgba(128, 128, 128, 0.2);
+}

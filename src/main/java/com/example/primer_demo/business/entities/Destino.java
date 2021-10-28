@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="Destino")
-public class Destino {
+public class Destino{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,31 +21,38 @@ public class Destino {
     private LocalTime horario_cierre;
     private Boolean habilitada;
     private String descripcion;
+
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> images;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "destino_id")
+
+    //mappedBy es el atributo tipo Destino de la clase especificada en la lista
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "destino")
     private Set<Experiencia> experiencias;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_destino")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "destino")
     private Set<Entrada> entradas;
+
+    //JoinColumn es la columna que referenciará a la entidad target
     @ManyToOne
-    @JoinColumn(name = "id_operador")
+    @JoinColumn(name = "id_operador", insertable = false, updatable = false)
     private Operador operador;
-    @ManyToMany(fetch = FetchType.EAGER)
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "destinos")
     private Set<Etiqueta> etiquetas;
+
     @ManyToOne(targetEntity = Departamento.class)
     private Departamento departamento;
+
     public Destino(){
 
     }
 
-    public Destino(String nombre, String contacto, List<String> images, Departamento departamento){
+    public Destino(String nombre, String contacto, List<String> images, Departamento departamento, Operador operador){
         this.setImages(images);
         this.setNombre(nombre);
         this.setContacto(contacto);
         this.departamento = departamento;
         this.etiquetas = new HashSet<>();
+        this.operador = operador;
     }
 
 

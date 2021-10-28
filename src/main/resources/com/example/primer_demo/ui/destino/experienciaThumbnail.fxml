@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane fx:id="base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="249.0" prefWidth="371.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.destino.ExperienciaThumbnailControlador">
+<AnchorPane fx:id="base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.8" prefHeight="250.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.destino.ExperienciaThumbnailControlador">
+   <background>
+   </background>
    <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" height="250.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
       <Text fx:id="title" layoutX="33.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="title">
          <font>
             <Font name="Segoe UI" size="32.0" />
@@ -19,7 +23,10 @@
             <Font name="Segoe UI" size="20.0" />
          </font>
       </Text>
-      <MFXButton fx:id="reservaBtn" depthLevel="LEVEL0" layoutX="277.0" layoutY="198.0" text="Reservar" />
-      <Text layoutX="128.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponibilidad:" />
+      <MFXButton fx:id="reservaBtn" onAction="#abrirExperiencia" depthLevel="LEVEL0" layoutX="214.0" layoutY="196.0" text="Reservar" />
+      <Text layoutX="73.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponibilidad:" />
    </children>
+   <padding>
+      <Insets top="48.0" />
+   </padding>
 </AnchorPane>

@@ -15,10 +15,26 @@ public class Etiqueta {
     @Id
     private String nombre;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(
+            name = "intereses_usuarios",
+            joinColumns = {@JoinColumn(name = "etiqueta")},
+            inverseJoinColumns = {@JoinColumn(name = "username")}
+    )
     private Set<Usuario> usuarios;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(
+            name = "etiquetas_destinos",
+            joinColumns = {@JoinColumn(name = "etiqueta")},
+            inverseJoinColumns = {@JoinColumn(name = "id_destino")}
+    )
     private Set<Destino> destinos;
 
     public Etiqueta() {
