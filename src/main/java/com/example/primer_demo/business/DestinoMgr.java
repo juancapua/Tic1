@@ -45,6 +45,10 @@ public class DestinoMgr {
         alert.showAndWait();
     }
 
+    public Iterable<Destino> filtroDeBusqueda(String filtro){
+        return destinoRespository.findAllByNombreContaining(filtro);
+    }
+
     public Iterable<Destino> allDestinos(){
         return destinoRespository.findAll();
     }

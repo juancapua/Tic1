@@ -35,6 +35,7 @@ public class miniaturaDestinoControlador {
         desc.setText(destino.getDescripcion());
         desc.setWrapText(true);
 
+
 //        falta ver tema imagen
 //
 //        if(destino.getImages() != null){

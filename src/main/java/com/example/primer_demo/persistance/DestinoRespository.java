@@ -6,4 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface DestinoRespository extends CrudRepository<Destino, Integer> {
     Destino findByNombre(String nombre);
 
+    Iterable<Destino> findAllByNombreContaining(String filtro);
+
 }

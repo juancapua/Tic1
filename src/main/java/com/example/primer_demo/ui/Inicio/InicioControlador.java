@@ -17,10 +17,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -58,6 +61,9 @@ public class InicioControlador implements Initializable {
 
     @FXML
     private GridPane gridPane;
+
+    @FXML
+    private TextField busqueda;
 
     @FXML
     private AnchorPane anchorPane;
@@ -120,6 +126,30 @@ public class InicioControlador implements Initializable {
         destinoControlador.init(destino);
      }
 
+     @FXML
+     void busquedaDinamica(KeyEvent event){
+        gridPane.getChildren().clear();
+        Iterable<Destino> destinosFiltrados = destinoMgr.filtroDeBusqueda(busqueda.getText());
+        int fila = 1;
+        for(Destino x: destinosFiltrados){
+            if(x.getHabilitada()){
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("miniaturaDestino.fxml"));
+                fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+                try {
+                    AnchorPane pane = fxmlLoader.load();
+                    miniaturaDestinoControlador = fxmlLoader.getController();
+                    miniaturaDestinoControlador.setData(x);
+                    miniaturaDestinoControlador.setAnchorPane(anchorPane);
+                    gridPane.addRow(fila, pane);
+                    fila++;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Iterable<Destino> destinos = destinoMgr.allDestinos();
@@ -134,7 +164,16 @@ public class InicioControlador implements Initializable {
                     miniaturaDestinoControlador = fxmlLoader.getController();
                     miniaturaDestinoControlador.setData(x);
                     miniaturaDestinoControlador.setAnchorPane(anchorPane);
-                    gridPane.addColumn(fila, pane);
+                    gridPane.addRow(fila, pane);
+
+                    gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+                    gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                    gridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                    gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+                    gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                    gridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
                     fila++;
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -142,4 +181,5 @@ public class InicioControlador implements Initializable {
             }
         }
     }
+
 }

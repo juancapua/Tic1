@@ -37,9 +37,9 @@
                 <Font name="Britannic Bold" size="18.0" />
             </font>
         </Label>
-      <ScrollPane layoutX="236.0" layoutY="324.0" prefHeight="166.0" prefWidth="708.0">
+      <ScrollPane layoutX="236.0" layoutY="324.0" prefHeight="389.0" prefWidth="708.0">
          <content>
-            <GridPane fx:id="gridPane" prefHeight="164.0" prefWidth="708.0">
+            <GridPane fx:id="gridPane" prefHeight="372.0" prefWidth="701.0">
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
@@ -47,7 +47,7 @@
          </content>
       </ScrollPane>
         
-        <TextField layoutX="388.0" layoutY="164.0" prefHeight="48.0" prefWidth="404.0" promptText="¿Que quieres visitar?" style="-fx-background-radius: 50; -fx-background-color: white;">
+        <TextField fx:id="busqueda" layoutX="388.0" layoutY="164.0" onKeyTyped="#busquedaDinamica" prefHeight="48.0" prefWidth="404.0" promptText="¿Que quieres visitar?" style="-fx-background-radius: 50; -fx-background-color: white;">
             <font>
                 <Font name="Britannic Bold" size="18.0" />
             </font>
