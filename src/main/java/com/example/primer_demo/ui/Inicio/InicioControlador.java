@@ -142,6 +142,15 @@ public class InicioControlador implements Initializable {
                     miniaturaDestinoControlador.setData(x);
                     miniaturaDestinoControlador.setAnchorPane(anchorPane);
                     gridPane.addRow(fila, pane);
+
+                    gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+                    gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                    gridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                    gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+                    gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                    gridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
                     fila++;
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -37,9 +37,9 @@
                 <Font name="Britannic Bold" size="18.0" />
             </font>
         </Label>
-      <ScrollPane layoutX="236.0" layoutY="324.0" prefHeight="389.0" prefWidth="708.0">
+      <ScrollPane layoutX="236.0" layoutY="324.0" prefHeight="389.0" prefWidth="705.0" style="-fx-background-color: transparent;">
          <content>
-            <GridPane fx:id="gridPane" prefHeight="372.0" prefWidth="701.0">
+            <GridPane fx:id="gridPane" prefHeight="372.0" prefWidth="705.0" style="-fx-background-color: transparent;">
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
