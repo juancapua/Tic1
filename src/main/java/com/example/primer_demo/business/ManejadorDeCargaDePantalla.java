@@ -11,16 +11,17 @@ import java.io.IOException;
 
 public abstract class ManejadorDeCargaDePantalla {
 
-    public static void cargarPantallaAnchoPane(String fmxlfile, Class controlador) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
+    public static Object cargarPantallaAnchoPane(String fmxlfile, Class controlador) throws IOException {
+        /*FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
         AnchorPane container = fxmlLoader.load(controlador.getClass().getResourceAsStream(fmxlfile));
-        DestinoControlador destinoControlador = fxmlLoader.getController();
+        controlador.class claseControlador = fxmlLoader.getController();
         Stage stage = new Stage();
         Scene scene = new Scene(container);
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.show();
+        stage.show();*/
+        return null;
     }
 
 }
