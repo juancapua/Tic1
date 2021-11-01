@@ -107,4 +107,12 @@ public class Experiencia {
     public void setSe_reserva(Boolean se_reserva) {
         this.se_reserva = se_reserva;
     }
+
+    public Destino getDestino() {
+        return destino;
+    }
+
+    public void setDestino(Destino destino) {
+        this.destino = destino;
+    }
 }

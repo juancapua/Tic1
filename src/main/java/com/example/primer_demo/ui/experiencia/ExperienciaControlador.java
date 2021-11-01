@@ -21,6 +21,7 @@ public class ExperienciaControlador {
 
     public void init(Experiencia experiencia) {
         experiencia_nombre.setText(experiencia.getNombre());
+        destino_nombre.setText(experiencia.getDestino().getNombre());
     }
 
     public void clicked(){
