@@ -1,7 +1,9 @@
 package com.example.primer_demo.ui.operador;
 
 import com.example.primer_demo.PrimerDemoApplication;
+import com.example.primer_demo.business.DestinoMgr;
 import com.example.primer_demo.business.UsuarioOperadorMgr;
+import com.example.primer_demo.business.entities.Destino;
 import com.example.primer_demo.business.entities.Experiencia;
 import com.example.primer_demo.business.entities.Operador;
 import com.example.primer_demo.business.entities.UsuarioOperador;
@@ -44,6 +46,9 @@ public class VistaAdminOperadorControlador{
     private OperadorRepository operadorRepository;
 
     @Autowired
+    DestinoMgr destinoMgr;
+
+    @Autowired
     private UsuarioOperadorMgr usuarioOperadorMgr;
 
     @Autowired
@@ -53,7 +58,7 @@ public class VistaAdminOperadorControlador{
 
     ObservableList<UsuarioOperador> listaObservable;
 
-    ObservableList<Experiencia> listaObservable2;
+    ObservableList<Destino> listaObservable2;
 
     public VistaAdminOperadorControlador() {
     }
@@ -85,7 +90,21 @@ public class VistaAdminOperadorControlador{
             return new ReadOnlyStringWrapper(estadoAsString);
         });
 
-        //falta agregar la vista de las tabla de las experiencias
+        Set<Destino> destinos = operador.getDestinos();
+        listaObservable2 = FXCollections.observableArrayList();
+        listaObservable2.addAll(destinos);
+        tabla2.setItems(listaObservable2);
+        columnaDestino.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnaEstadoDestino.setCellValueFactory(cellData -> {
+            boolean estado = cellData.getValue().getHabilitada();
+            String estadoAsString;
+            if (!estado) {
+                estadoAsString = "Bloqueado";
+            } else {
+                estadoAsString = "Habilitado";
+            }
+            return new ReadOnlyStringWrapper(estadoAsString);});
+
 
     }
 
@@ -100,13 +119,13 @@ public class VistaAdminOperadorControlador{
     private TableView<UsuarioOperador> tabla;
 
     @FXML
-    private TableView<Experiencia> tabla2;
+    private TableView<Destino> tabla2;
 
     @FXML
-    private TableColumn<Experiencia, String> columnaExperiencias;
+    private TableColumn<Destino, String> columnaDestino;
 
     @FXML
-    private TableColumn<Experiencia, String> columnaEstadoExperiencias;
+    private TableColumn<Destino, String> columnaEstadoDestino;
 
     @FXML
     private Label txtDireccion;

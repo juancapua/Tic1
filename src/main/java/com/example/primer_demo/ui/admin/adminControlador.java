@@ -1,8 +1,10 @@
 package com.example.primer_demo.ui.admin;
 
 import com.example.primer_demo.PrimerDemoApplication;
+import com.example.primer_demo.business.DestinoMgr;
 import com.example.primer_demo.business.OperadorMgr;
 import com.example.primer_demo.business.UsuarioOperadorMgr;
+import com.example.primer_demo.business.entities.Destino;
 import com.example.primer_demo.business.entities.Operador;
 import com.example.primer_demo.business.entities.UsuarioOperador;
 import com.example.primer_demo.persistance.OperadorRepository;
@@ -47,6 +49,9 @@ public class adminControlador implements Initializable {
 
     @Autowired
     private OperadorMgr operadorMgr;
+
+    @Autowired
+    private DestinoMgr destinoMgr;
 
     @Autowired
     private UsuarioOperadorMgr usuarioOperadorMgr;
@@ -126,6 +131,7 @@ public class adminControlador implements Initializable {
             for(UsuarioOperador x: usuarioOperadorRepository.findAllByOperador(operador)){
                 usuarioOperadorMgr.bloaquear(x);
             }
+            destinoMgr.bloquearDestinosParaOperador(operador);
             List<Operador> operadores = (List<Operador>) operadorRepository.findAll();
             listaObservable = FXCollections.observableArrayList();
             listaObservable.addAll(operadores);
@@ -151,6 +157,7 @@ public class adminControlador implements Initializable {
         Operador operador = tabla.getSelectionModel().getSelectedItem();
         if(operador != null) {
             operadorMgr.habilitar(operador);
+            destinoMgr.desbloquearDestinoParaOperador(operador);
 
             List<Operador> operadores = (List<Operador>) operadorRepository.findAll();
             listaObservable = FXCollections.observableArrayList();

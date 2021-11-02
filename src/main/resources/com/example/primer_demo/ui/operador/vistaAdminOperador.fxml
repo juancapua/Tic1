@@ -32,11 +32,11 @@
                   <Font name="Britannic Bold" size="14.0" />
                </font>
             </Label>
-            <Button layoutX="10.0" layoutY="286.0" mnemonicParsing="false" onAction="#bloquearUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white;" text="Bloquear" textFill="#154360">
+            <Button layoutX="10.0" layoutY="286.0" mnemonicParsing="false" onAction="#bloquearUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white;" text="Bloquear empleado" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor></Button>
-            <Button layoutX="9.0" layoutY="331.0" mnemonicParsing="false" onAction="#habilitarUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white;" text="Habilitar" textFill="#154360">
+            <Button layoutX="9.0" layoutY="331.0" mnemonicParsing="false" onAction="#habilitarUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white;" text="Habilitar empleado" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor></Button>
@@ -63,8 +63,8 @@
       </Label>
       <TableView fx:id="tabla2" layoutX="527.0" layoutY="44.0" prefHeight="343.0" prefWidth="257.0">
          <columns>
-            <TableColumn fx:id="columnaExperiencias" prefWidth="127.0" text="Experiencia" />
-            <TableColumn fx:id="columnaEstadoExperiencias" prefWidth="129.0" text="Estado" />
+            <TableColumn fx:id="columnaDestino" prefWidth="127.0" text="Destino" />
+            <TableColumn fx:id="columnaEstadoDestino" prefWidth="129.0" text="Estado" />
          </columns>
       </TableView>
       <Label layoutX="630.0" layoutY="12.0" text="Destino:" textFill="#154360">

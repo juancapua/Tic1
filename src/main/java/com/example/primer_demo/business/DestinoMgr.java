@@ -33,8 +33,24 @@ public class DestinoMgr {
         }
 
 
+    }
 
+    public void bloquearDestinosParaOperador(Operador operador){
+        for(Destino destino: destinoRespository.findAllByOperador(operador)){
+            destino.setHabilitada(false);
+            destinoRespository.save(destino);
+        }
+    }
 
+    public void desbloquearDestinoParaOperador(Operador operador){
+        for(Destino destino: destinoRespository.findAllByOperador(operador)){
+            destino.setHabilitada(true);
+            destinoRespository.save(destino);
+        }
+    }
+
+    public Iterable<Destino> listaDestinosOperador(Operador operador){
+        return destinoRespository.findAllByOperador(operador);
     }
 
     private void showAlert(String title, String contextText) {
