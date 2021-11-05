@@ -8,7 +8,9 @@ import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.business.exceptions.UsuarioAlreadyExist;
 import com.example.primer_demo.ui.Controlador;
 import com.example.primer_demo.ui.admin.adminControlador;
+import com.example.primer_demo.ui.destino.addDestinoControlador;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -20,6 +22,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -61,6 +64,20 @@ public class operadorControlador {
         Node source = (Node)  actionEvent.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    void addDestino(Event event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+        root = fxmlLoader.load(addDestinoControlador.class.getResourceAsStream("addDestino.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("images/logo_final.png"));
+        stage.setResizable(false);
+        stage.show();
+
     }
 
 
@@ -132,6 +149,8 @@ public class operadorControlador {
         }
 
     }
+
+
 
     @FXML
     void cerrarSesion(ActionEvent event) throws IOException {

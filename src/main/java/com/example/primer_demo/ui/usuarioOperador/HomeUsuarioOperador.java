@@ -2,6 +2,7 @@ package com.example.primer_demo.ui.usuarioOperador;
 
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.ui.Controlador;
+import com.example.primer_demo.ui.destino.addDestinoControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +36,20 @@ public class HomeUsuarioOperador {
         stage.show();
 
         showAlert("Nos vemos pronto", "Se ha cerrado sesion correctamente");
+    }
+
+    @FXML
+    void addDestino(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+        root = fxmlLoader.load(addDestinoControlador.class.getResourceAsStream("addDestino.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("images/logo_final.png"));
+        stage.setResizable(false);
+        stage.show();
+
     }
 
     private void close(ActionEvent event) {
