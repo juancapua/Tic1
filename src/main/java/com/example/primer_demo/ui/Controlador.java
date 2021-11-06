@@ -129,6 +129,8 @@ public class Controlador {
                         stage.setScene(new Scene(root));
                         stage.getIcons().add(new Image("images/logo_final.png"));
                         stage.setResizable(false);
+                        operadorControlador operadorControlador = fxmlLoader.getController();
+                        operadorControlador.setOperador(usuario);
                         stage.show();
 
 
@@ -144,6 +146,8 @@ public class Controlador {
                         stage.setScene(new Scene(root));
                         stage.getIcons().add(new Image("images/logo_final.png"));
                         stage.setResizable(false);
+                        HomeUsuarioOperador homeUsuarioOperador = fxmlLoader.getController();
+                        homeUsuarioOperador.setOperador(usuario);
                         stage.show();
                     }
 

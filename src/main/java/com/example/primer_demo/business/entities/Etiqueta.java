@@ -29,7 +29,8 @@ public class Etiqueta {
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
-    })
+
+    }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "etiquetas_destinos",
             joinColumns = {@JoinColumn(name = "etiqueta")},

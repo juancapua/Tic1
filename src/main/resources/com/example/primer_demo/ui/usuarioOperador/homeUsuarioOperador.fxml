@@ -14,10 +14,10 @@
             <Button layoutX="13.0" layoutY="367.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white;" text="Cerrar sesion" textFill="#154360" />
          </children>
       </AnchorPane>
-      <TableView layoutX="204.0" layoutY="31.0" prefHeight="343.0" prefWidth="371.0">
+      <TableView fx:id="tabla" layoutX="204.0" layoutY="31.0" prefHeight="343.0" prefWidth="371.0">
          <columns>
-            <TableColumn prefWidth="139.0" text="Destino" />
-            <TableColumn prefWidth="138.0" text="Estado" />
+            <TableColumn fx:id="columnaDetinos" prefWidth="181.0" text="Destino" />
+            <TableColumn fx:id="columnaEstado" prefWidth="187.0" text="Estado" />
          </columns>
       </TableView>
    </children>

@@ -1,12 +1,11 @@
 package com.example.primer_demo.business;
 
-import com.example.primer_demo.business.entities.Ciudad;
 import com.example.primer_demo.business.entities.Departamento;
 import com.example.primer_demo.persistance.DepartamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.Optional;
 
 @Service
 public class DepartamentoMgr {
@@ -18,7 +17,14 @@ public class DepartamentoMgr {
         return departamentoRepository.findAll();
     }
 
-    public Set<Ciudad> buscarCiudades(String nombre){
-        return departamentoRepository.findById(nombre).get().getCiudades();
+    public Departamento traerDepartamento(String nombre){
+        Iterable<Departamento> departamentos = departamentoRepository.findAll();
+        for(Departamento x: departamentos){
+            if(x.getNombre_pk().equals(nombre)){
+                return x;
+            }
+        }
+        return null;
     }
+
 }

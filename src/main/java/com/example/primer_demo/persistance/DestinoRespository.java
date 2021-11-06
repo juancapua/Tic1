@@ -11,4 +11,6 @@ public interface DestinoRespository extends CrudRepository<Destino, Integer> {
 
     Iterable<Destino> findAllByOperador(Operador operador);
 
+    Boolean existsByNombre(String nombre);
+
 }

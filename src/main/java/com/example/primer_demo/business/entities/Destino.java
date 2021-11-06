@@ -21,6 +21,7 @@ public class Destino{
     private LocalTime horario_cierre;
     private Boolean habilitada;
     private String descripcion;
+    private String direccion;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> images;
@@ -46,13 +47,17 @@ public class Destino{
 
     }
 
-    public Destino(String nombre, String contacto, List<String> images, Departamento departamento, Operador operador){
-        this.setImages(images);
-        this.setNombre(nombre);
-        this.setContacto(contacto);
+    public Destino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador){
+        this.nombre = nombre;
+        this.contacto = contacto;
+        this.aforo = aforo;
+        this.horario_apertura = horario_apertura;
+        this.horario_cierre = horario_cierre;
+        this.direccion = direccion;
         this.departamento = departamento;
-        this.etiquetas = new HashSet<>();
         this.operador = operador;
+        this.etiquetas = new HashSet<>();
+        this.habilitada = false;
     }
 
 
@@ -158,5 +163,11 @@ public class Destino{
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public void addEtiquetas(Set<Etiqueta> etiquetas){
+        for(Etiqueta x: etiquetas){
+            this.etiquetas.add(x);
+        }
     }
 }

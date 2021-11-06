@@ -1,15 +1,20 @@
 package com.example.primer_demo.business;
 
+import com.example.primer_demo.business.entities.Departamento;
 import com.example.primer_demo.business.entities.Destino;
+import com.example.primer_demo.business.entities.Etiqueta;
 import com.example.primer_demo.business.entities.Operador;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.persistance.DestinoRespository;
+import com.example.primer_demo.persistance.EtiquetasRepository;
 import com.example.primer_demo.persistance.OperadorRepository;
 import javafx.scene.control.Alert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Access;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.time.LocalTime;
 import java.util.Set;
 
 @Service
@@ -19,10 +24,13 @@ public class DestinoMgr {
     private DestinoRespository destinoRespository;
 
     @Autowired
+    private EtiquetasRepository etiquetasRepository;
+
+    @Autowired
     private OperadorRepository operadorRepository;
 
 
-    public void agregarDestino(String nombre, String contacto, Operador operador) throws InvalidInformation {
+    public void agregarDestino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, Set<Etiqueta> etiquetas) throws InvalidInformation {
 
         if(nombre == null || "".equals(nombre) || contacto == null || "".equals(contacto) || operador == null || "".equals(operador)){
             throw new InvalidInformation("Alguno de los datos ingresados no es correcto");
@@ -32,7 +40,18 @@ public class DestinoMgr {
             showAlert("Destino ya ingresado", "El destino ya ha sido registrado en el sistema");
         }
 
+        Destino nuevoDestino = new Destino(nombre,contacto,aforo,horario_apertura,horario_cierre,direccion,departamento,operador);
+        nuevoDestino.addEtiquetas(etiquetas);
+        destinoRespository.save(nuevoDestino);
+        for(Etiqueta x: etiquetas){
+            x.addDestino(nuevoDestino);
+            etiquetasRepository.save(x);
+        }
 
+    }
+
+    public Boolean existeDestino(String nombre){
+        return destinoRespository.existsByNombre(nombre);
     }
 
     public void bloquearDestinosParaOperador(Operador operador){

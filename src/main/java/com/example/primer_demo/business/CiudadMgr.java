@@ -6,13 +6,12 @@ import com.example.primer_demo.persistance.CiudadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CiudadMgr {
 
     @Autowired
     private CiudadRepository ciudadRepository;
 
-    public Iterable<Ciudad> ciudadesDeDepartamento(Departamento departamento){
-        return ciudadRepository.findAllByDepartamento(departamento);
-    }
 }
