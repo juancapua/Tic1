@@ -30,7 +30,7 @@ public class DestinoMgr {
     private OperadorRepository operadorRepository;
 
 
-    public void agregarDestino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, Set<Etiqueta> etiquetas) throws InvalidInformation {
+    public void agregarDestino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, Set<Etiqueta> etiquetas, String desc) throws InvalidInformation {
 
         if(nombre == null || "".equals(nombre) || contacto == null || "".equals(contacto) || operador == null || "".equals(operador)){
             throw new InvalidInformation("Alguno de los datos ingresados no es correcto");
@@ -40,7 +40,7 @@ public class DestinoMgr {
             showAlert("Destino ya ingresado", "El destino ya ha sido registrado en el sistema");
         }
 
-        Destino nuevoDestino = new Destino(nombre,contacto,aforo,horario_apertura,horario_cierre,direccion,departamento,operador);
+        Destino nuevoDestino = new Destino(nombre,contacto,aforo,horario_apertura,horario_cierre,direccion,departamento,operador, desc);
         nuevoDestino.addEtiquetas(etiquetas);
         destinoRespository.save(nuevoDestino);
         for(Etiqueta x: etiquetas){
@@ -52,6 +52,18 @@ public class DestinoMgr {
 
     public Boolean existeDestino(String nombre){
         return destinoRespository.existsByNombre(nombre);
+    }
+
+    public void bloquearDestino(Destino destino){
+        Destino busqueda = destinoRespository.findByNombre(destino.getNombre());
+        busqueda.setHabilitada(false);
+        destinoRespository.save(busqueda);
+    }
+
+    public void desbloquearDestino(Destino destino){
+        Destino busqueda = destinoRespository.findByNombre(destino.getNombre());
+        busqueda.setHabilitada(true);
+        destinoRespository.save(busqueda);
     }
 
     public void bloquearDestinosParaOperador(Operador operador){

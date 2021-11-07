@@ -9,6 +9,8 @@ import com.example.primer_demo.business.entities.Departamento;
 import com.example.primer_demo.business.entities.Etiqueta;
 import com.example.primer_demo.business.entities.Operador;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
+import com.example.primer_demo.persistance.OperadorRepository;
+import com.example.primer_demo.persistance.UsuarioRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -32,6 +34,9 @@ public class addDestinoControlador implements Initializable {
     private DepartamentoMgr departamentoMgr;
 
     @Autowired
+    private OperadorRepository operadorRepository;
+
+    @Autowired
     private DestinoMgr destinoMgr;
 
     @Autowired
@@ -42,9 +47,6 @@ public class addDestinoControlador implements Initializable {
 
     @FXML
     private Button btnVolver;
-
-    @FXML
-    private ComboBox<String> ciudad;
 
     @FXML
     private ComboBox<String> departamento;
@@ -66,6 +68,9 @@ public class addDestinoControlador implements Initializable {
 
     @FXML
     private TextField txtNombre;
+
+    @FXML
+    private TextField descripcion;
 
     @FXML
     private VBox vbox;
@@ -99,6 +104,7 @@ public class addDestinoControlador implements Initializable {
                 Departamento departamento_elejido = departamentoMgr.traerDepartamento(departamento.getValue());
                 Set<Etiqueta> etiquetas = new HashSet<>();
                 Operador operador = this.operador;
+                String desc = descripcion.getText();
 
                 for(Node node:vbox.getChildren()){
                     CheckBox checkBox = (CheckBox) node;
@@ -108,7 +114,7 @@ public class addDestinoControlador implements Initializable {
                 }
 
                 try {
-                    destinoMgr.agregarDestino(nombre,contacto,aforo,horario_aper,horario_cie,direccion,departamento_elejido,operador,etiquetas);
+                    destinoMgr.agregarDestino(nombre,contacto,aforo,horario_aper,horario_cie,direccion,departamento_elejido,operador,etiquetas, desc);
                     showAlert("Destino agregado", "Se agrego con exito el destino!");
 
                     close(event);
@@ -118,7 +124,7 @@ public class addDestinoControlador implements Initializable {
 
 
             } catch (NumberFormatException e) {
-                e.printStackTrace();
+                showAlert("Error", "Los datos ingresados son incorrectos");
             }
         }
     }

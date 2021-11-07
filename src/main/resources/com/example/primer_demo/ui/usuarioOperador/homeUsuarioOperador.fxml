@@ -10,8 +10,9 @@
       <AnchorPane layoutY="-1.0" prefHeight="406.0" prefWidth="169.0" style="-fx-background-color: #154360;">
          <children>
             <Button layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#addDestino" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: White;" text="Agregar destino" textFill="#154360" />
-            <Button layoutX="13.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: White;" text="Bloquear experiencia" textFill="#154360" />
+            <Button layoutX="13.0" layoutY="61.0" mnemonicParsing="false" onAction="#bloquearDestino" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: White;" text="Bloquear destino" textFill="#154360" />
             <Button layoutX="13.0" layoutY="367.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white;" text="Cerrar sesion" textFill="#154360" />
+            <Button layoutX="13.0" layoutY="104.0" mnemonicParsing="false" onAction="#desbloquearDestino" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white;" text="Habilitar destino" textFill="#154360" />
          </children>
       </AnchorPane>
       <TableView fx:id="tabla" layoutX="204.0" layoutY="31.0" prefHeight="343.0" prefWidth="371.0">

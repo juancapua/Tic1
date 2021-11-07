@@ -2,10 +2,10 @@ package com.example.primer_demo.ui.operador;
 
 
 import com.example.primer_demo.PrimerDemoApplication;
+import com.example.primer_demo.business.DestinoMgr;
 import com.example.primer_demo.business.OperadorMgr;
 import com.example.primer_demo.business.entities.Destino;
 import com.example.primer_demo.business.entities.Operador;
-import com.example.primer_demo.business.entities.Pais;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.business.exceptions.UsuarioAlreadyExist;
 import com.example.primer_demo.persistance.OperadorRepository;
@@ -29,9 +29,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.Set;
 
 @Component
@@ -39,6 +37,9 @@ public class operadorControlador {
 
     @Autowired
     private OperadorMgr operadorMgr;
+
+    @Autowired
+    private DestinoMgr destinoMgr;
 
     private Parent root;
 
@@ -99,6 +100,53 @@ public class operadorControlador {
                 estadoAsString = "Habilitado";
             }
             return new ReadOnlyStringWrapper(estadoAsString);});
+    }
+
+    @FXML
+    void bloquearDestino(ActionEvent event){
+        Destino seleccion = tabla.getSelectionModel().getSelectedItem();
+        if(seleccion != null){
+            destinoMgr.bloquearDestino(seleccion);
+            
+
+            Set<Destino> destinos = operador.getDestinos();
+            listaObservable = FXCollections.observableArrayList();
+            listaObservable.addAll(destinos);
+            tabla.setItems(listaObservable);
+            columnaDetinos.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+            columnaEstado.setCellValueFactory(cellData -> {
+                boolean estado = cellData.getValue().getHabilitada();
+                String estadoAsString;
+                if (!estado) {
+                    estadoAsString = "Bloqueado";
+                } else {
+                    estadoAsString = "Habilitado";
+                }
+                return new ReadOnlyStringWrapper(estadoAsString);});
+        }
+    }
+
+    @FXML
+    void desbloquearDestino(ActionEvent event){
+        Destino seleccion = tabla.getSelectionModel().getSelectedItem();
+        if(seleccion != null){
+            destinoMgr.desbloquearDestino(seleccion);
+
+            Set<Destino> destinos = operador.getDestinos();
+            listaObservable = FXCollections.observableArrayList();
+            listaObservable.addAll(destinos);
+            tabla.setItems(listaObservable);
+            columnaDetinos.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+            columnaEstado.setCellValueFactory(cellData -> {
+                boolean estado = cellData.getValue().getHabilitada();
+                String estadoAsString;
+                if (!estado) {
+                    estadoAsString = "Bloqueado";
+                } else {
+                    estadoAsString = "Habilitado";
+                }
+                return new ReadOnlyStringWrapper(estadoAsString);});
+        }
     }
 
     @FXML

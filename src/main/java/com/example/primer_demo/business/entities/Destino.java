@@ -34,7 +34,7 @@ public class Destino{
 
     //JoinColumn es la columna que referenciará a la entidad target
     @ManyToOne
-    @JoinColumn(name = "id_operador", insertable = false, updatable = false)
+    @JoinColumn(name = "id_operador")
     private Operador operador;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "destinos")
@@ -47,7 +47,7 @@ public class Destino{
 
     }
 
-    public Destino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador){
+    public Destino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, String descripcion){
         this.nombre = nombre;
         this.contacto = contacto;
         this.aforo = aforo;
@@ -58,6 +58,7 @@ public class Destino{
         this.operador = operador;
         this.etiquetas = new HashSet<>();
         this.habilitada = false;
+        this.descripcion = descripcion;
     }
 
 
