@@ -17,6 +17,7 @@ public class Experiencia {
     private String nombre;
     private Boolean esta_autorizada;
     private Integer id_operador;
+    @Column(length = 500)
     private String descripcion;
     private LocalTime horario_apertura;
     private LocalTime horario_cierre;
@@ -114,5 +115,16 @@ public class Experiencia {
 
     public void setDestino(Destino destino) {
         this.destino = destino;
+    }
+
+    @Basic
+    private String imagen;
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

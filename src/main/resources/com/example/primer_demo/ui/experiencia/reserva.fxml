@@ -10,15 +10,23 @@
         <Tab id="detailsTab" fx:id="tab1" text="1. Detalles experiencia">
             <AnchorPane fx:id="pane1">
                 <HBox fx:id="tituloExperiencia">
-
                 </HBox>
-            <Text layoutX="14.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ANASHE" />
             <AnchorPane fx:id="titulo" prefHeight="50.0" prefWidth="800.0" />
+            <Text fx:id="detallesTitulo" layoutX="28.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Detalles">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <Text fx:id="detalles" layoutX="28.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fermentum viverra commodo. Donec pellentesque tincidunt nibh non ultrices. Proin felis ante, molestie eu vulputate non, ornare a augue. Aenean auctor metus luctus lectus consectetur dapibus. Nullam vulputate massa ut blandit blandit. Nulla ac nibh venenatis sapien hendrerit venenatis eu ut ex. Nullam non finibus magna. Maecenas non mauris in metus tincidunt malesuada nec nec eros. Maecenas dictum arcu eu porttitor vehicula. Integer non bibendum nisl.Vivamus mattis nunc ac auctor efficitur. Nunc molestie rutrum lacus, nec aliquet risus mollis at. Morbi molestie sapien ac turpis euismod, sit amet sagittis quam volutpat. Praesent sollicitudin feugiat molestie. Duis vel malesuada ipsum, congue tincidunt diam. Integer tortor orci, bibendum at pharetra fermentum, consequat in lorem." wrappingWidth="450.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <AnchorPane fx:id="imagen" layoutX="532.0" layoutY="110.0" prefHeight="244.0" prefWidth="229.0" />
             </AnchorPane>
         </Tab>
         <Tab fx:id="tab2" text="2. Datos reservante">
-            <AnchorPane>
-            </AnchorPane>
+            <AnchorPane />
         </Tab>
         <Tab fx:id="tab3" text="3. Datos de asistentes">
             <AnchorPane>

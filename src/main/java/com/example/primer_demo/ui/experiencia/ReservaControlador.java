@@ -1,15 +1,18 @@
 package com.example.primer_demo.ui.experiencia;
 
 import com.example.primer_demo.business.entities.Experiencia;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import eu.iamgio.animated.AnimatedHBox;
 import eu.iamgio.animated.AnimationPair;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import org.springframework.stereotype.Component;
+
+import javax.swing.text.html.ImageView;
 
 @Component
 public class ReservaControlador {
@@ -19,6 +22,9 @@ public class ReservaControlador {
 
     @FXML
     private AnchorPane titulo;
+
+    @FXML
+    private AnchorPane imagen;
 
     private AnimatedHBox animatedHBox;
 
@@ -33,7 +39,7 @@ public class ReservaControlador {
         animatedHBox.setPadding(new Insets(12));
         textoDepartamento = newText(experiencia.getDestino().getDepartamento().getNombre_pk() + ", " + experiencia.getDestino().getNombre() + ", " + experiencia.getNombre(),24);
         animatedHBox.getChildren().add(textoDepartamento);
-        animatedHBox.getChildren().add(textoDestino);
+        imagen.setBackground(new Background(new BackgroundImage(new Image(getClass().getResourceAsStream(experiencia.getImagen())), null, null, BackgroundPosition.CENTER, null)));
 
     }
 
