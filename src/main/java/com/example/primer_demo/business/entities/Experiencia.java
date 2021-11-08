@@ -26,6 +26,7 @@ public class Experiencia {
     @ManyToOne(targetEntity = Destino.class)
     private Destino destino;
 
+
 /*
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Usuario> usuarios;
@@ -34,7 +35,7 @@ public class Experiencia {
     public Experiencia() {
     }
 
-    public Experiencia(String nombre, Boolean esta_autorizada, Integer id_operador, String descripcion, LocalTime horario_apertura, LocalTime horario_cierre, Integer aforo, Boolean se_reserva) {
+    public Experiencia(String nombre, Boolean esta_autorizada, Integer id_operador, String descripcion, LocalTime horario_apertura, LocalTime horario_cierre, Integer aforo, Boolean se_reserva, String tipo, String imagen) {
         this.nombre = nombre;
         this.esta_autorizada = esta_autorizada;
         this.id_operador = id_operador;
@@ -43,6 +44,8 @@ public class Experiencia {
         this.horario_cierre = horario_cierre;
         this.aforo = aforo;
         this.se_reserva = se_reserva;
+        this.imagen= imagen;
+        this.tipo = tipo;
     }
 
     public String getNombre() {
@@ -126,5 +129,16 @@ public class Experiencia {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    @Basic
+    private String tipo;
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

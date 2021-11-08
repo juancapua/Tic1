@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.*?>
+<?import io.github.palexdev.materialfx.controls.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -23,7 +24,27 @@
                </font>
             </Text>
             <AnchorPane fx:id="imagen" layoutX="532.0" layoutY="110.0" prefHeight="244.0" prefWidth="229.0" />
+            <AnchorPane layoutX="20.0" layoutY="384.0" prefHeight="150.0" prefWidth="588.0">
+               <children>
+                   <MFXDatePicker fx:id="fechaInicio" layoutX="14.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#dateCheck" prefHeight="30.0" prefWidth="144.0">
+
+                   </MFXDatePicker>
+                  <Text fx:id="detallesTitulo1" layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserva">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Text>
+                  <MFXDatePicker fx:id="fechaFin" onMouseClicked="#dateCheck" layoutX="200.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="144.0" />
+                  <Text fx:id="textoInicio" layoutX="19.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de Inicio" />
+                  <Text fx:id="textoFin" layoutX="200.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de Finalización" />
+               </children></AnchorPane>
+             <MFXButton fx:id="siguiente" onAction="#siguiente" buttonType="RAISED" depthLevel="LEVEL1" disable="true" layoutX="593.0" layoutY="448.0" prefHeight="37.0" prefWidth="119.0" text="Siguiente" textAlignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </MFXButton>
             </AnchorPane>
+            
         </Tab>
         <Tab fx:id="tab2" text="2. Datos reservante">
             <AnchorPane />
