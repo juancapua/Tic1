@@ -8,6 +8,7 @@ import com.example.primer_demo.persistance.OperadorRepository;
 import com.example.primer_demo.persistance.UsuarioOperadorRepository;
 import com.example.primer_demo.ui.Controlador;
 import com.example.primer_demo.ui.destino.addDestinoControlador;
+import com.example.primer_demo.ui.destino.vistaOperadorDestinoControlador;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -119,6 +120,24 @@ public class HomeUsuarioOperador{
                     estadoAsString = "Habilitado";
                 }
                 return new ReadOnlyStringWrapper(estadoAsString);});
+        }
+    }
+
+    @FXML
+    void verDestino(ActionEvent event) throws IOException {
+        Destino seleccion = tabla.getSelectionModel().getSelectedItem();
+        if(seleccion != null){
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+            root = fxmlLoader.load(vistaOperadorDestinoControlador.class.getResourceAsStream("vistaOperadorDestino.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(new Image("images/logo_final.png"));
+            stage.setResizable(false);
+            vistaOperadorDestinoControlador vistaOperadorDestinoControlador = fxmlLoader.getController();
+            vistaOperadorDestinoControlador.setDestino(seleccion);
+            stage.show();
         }
     }
 
