@@ -16,14 +16,27 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.awt.*;
+import java.awt.Dialog;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 
@@ -77,6 +90,11 @@ public class addDestinoControlador implements Initializable {
 
     private Operador operador;
 
+    @FXML
+    private Button elegirImagenes;
+
+    private List<File> imagenes;
+
     public void setOperador(Operador operador){
         this.operador = operador;
     }
@@ -114,7 +132,7 @@ public class addDestinoControlador implements Initializable {
                 }
 
                 try {
-                    destinoMgr.agregarDestino(nombre,contacto,aforo,horario_aper,horario_cie,direccion,departamento_elejido,operador,etiquetas, desc);
+                    destinoMgr.agregarDestino(nombre,contacto,aforo,horario_aper,horario_cie,direccion,departamento_elejido,operador,etiquetas, desc, imagenes);
                     showAlert("Destino agregado", "Se agrego con exito el destino!");
 
                     close(event);
@@ -123,7 +141,7 @@ public class addDestinoControlador implements Initializable {
                 }
 
 
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | IOException e) {
                 showAlert("Error", "Los datos ingresados son incorrectos");
             }
         }
@@ -157,4 +175,19 @@ public class addDestinoControlador implements Initializable {
         alert.setContentText(contextText);
         alert.showAndWait();
     }
+
+    @FXML
+    private void openFileDialog(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG","*.png"),
+                new FileChooser.ExtensionFilter("JPEG","*,jpeg"));
+        try {
+            imagenes = fileChooser.showOpenMultipleDialog(new Stage());
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

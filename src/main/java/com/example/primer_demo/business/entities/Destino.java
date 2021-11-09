@@ -2,6 +2,7 @@ package com.example.primer_demo.business.entities;
 
 import javax.persistence.*;
 
+import java.io.File;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.List;
@@ -47,7 +48,7 @@ public class Destino{
 
     }
 
-    public Destino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, String descripcion){
+    public Destino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, String descripcion, List<String> imagenes) {
         this.nombre = nombre;
         this.contacto = contacto;
         this.aforo = aforo;
@@ -59,6 +60,7 @@ public class Destino{
         this.etiquetas = new HashSet<>();
         this.habilitada = false;
         this.descripcion = descripcion;
+        this.images = imagenes;
     }
 
 
