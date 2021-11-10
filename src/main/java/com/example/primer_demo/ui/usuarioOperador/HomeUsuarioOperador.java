@@ -84,19 +84,8 @@ public class HomeUsuarioOperador{
             destinoMgr.bloquearDestino(seleccion);
 
             Set<Destino> destinos = operador.getDestinos();
-            listaObservable = FXCollections.observableArrayList();
+            listaObservable.removeAll(listaObservable);
             listaObservable.addAll(destinos);
-            tabla.setItems(listaObservable);
-            columnaDetinos.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-            columnaEstado.setCellValueFactory(cellData -> {
-                boolean estado = cellData.getValue().getHabilitada();
-                String estadoAsString;
-                if (!estado) {
-                    estadoAsString = "Bloqueado";
-                } else {
-                    estadoAsString = "Habilitado";
-                }
-                return new ReadOnlyStringWrapper(estadoAsString);});
         }
     }
 
@@ -107,19 +96,8 @@ public class HomeUsuarioOperador{
             destinoMgr.desbloquearDestino(seleccion);
 
             Set<Destino> destinos = operador.getDestinos();
-            listaObservable = FXCollections.observableArrayList();
+            listaObservable.removeAll(listaObservable);
             listaObservable.addAll(destinos);
-            tabla.setItems(listaObservable);
-            columnaDetinos.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-            columnaEstado.setCellValueFactory(cellData -> {
-                boolean estado = cellData.getValue().getHabilitada();
-                String estadoAsString;
-                if (!estado) {
-                    estadoAsString = "Bloqueado";
-                } else {
-                    estadoAsString = "Habilitado";
-                }
-                return new ReadOnlyStringWrapper(estadoAsString);});
         }
     }
 

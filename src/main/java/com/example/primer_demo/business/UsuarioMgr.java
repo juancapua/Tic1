@@ -56,6 +56,10 @@ public class UsuarioMgr {
 
     }
 
+    public Usuario traerUsuario(String nombre){
+        return usuarioRepository.findByNombreDeUsuario(nombre);
+    }
+
     public boolean ingresar(String nombre, String contrasena) throws InvalidInformation, UsuarioNotExist {
 
         if (nombre == null || "".equals(nombre) || contrasena == null || "".equals(contrasena)) {

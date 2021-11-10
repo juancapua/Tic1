@@ -12,15 +12,15 @@
 
 <!--color que uso #154360-->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="326.0" prefWidth="600.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.Controlador">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="326.0" prefWidth="600.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.Controlador">
     <children>
       <Label layoutX="251.0" layoutY="14.0" prefHeight="44.0" prefWidth="284.0" style="-fx-background-color: transparente;" text="Ingrese su usuario y contraseña" textFill="#154360">
          <font>
             <Font name="Britannic Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUsuario" layoutX="319.0" layoutY="95.0" promptText="Usuario:" />
-      <Button fx:id="btnLogin" layoutX="323.0" layoutY="193.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: #154360;" text="Ingresar" textFill="WHITE">
+      <TextField fx:id="txtUsuario" layoutX="319.0" layoutY="95.0" promptText="Usuario:" style="-fx-background-radius: 50;" />
+      <Button fx:id="btnLogin" layoutX="323.0" layoutY="193.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: #154360; -fx-background-radius: 50;" text="Ingresar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -57,6 +57,6 @@
             <Font name="Britannic Bold" size="14.0" />
          </font>
       </Label>
-      <PasswordField fx:id="txtContrasena" layoutX="319.0" layoutY="140.0" promptText="Contraseña:" />
+      <PasswordField fx:id="txtContrasena" layoutX="319.0" layoutY="140.0" promptText="Contraseña:" style="-fx-background-radius: 50;" />
     </children>
 </AnchorPane>

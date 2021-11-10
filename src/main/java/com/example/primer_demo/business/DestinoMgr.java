@@ -73,15 +73,13 @@ public class DestinoMgr {
     }
 
     public void bloquearDestino(Destino destino){
-        Destino busqueda = destinoRespository.findByNombre(destino.getNombre());
-        busqueda.setHabilitada(false);
-        destinoRespository.save(busqueda);
+        destino.setHabilitada(false);
+        destinoRespository.save(destino);
     }
 
     public void desbloquearDestino(Destino destino){
-        Destino busqueda = destinoRespository.findByNombre(destino.getNombre());
-        busqueda.setHabilitada(true);
-        destinoRespository.save(busqueda);
+        destino.setHabilitada(true);
+        destinoRespository.save(destino);
     }
 
     public void bloquearDestinosParaOperador(Operador operador){

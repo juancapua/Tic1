@@ -32,11 +32,11 @@
                   <Font name="Britannic Bold" size="14.0" />
                </font>
             </Label>
-            <Button layoutX="10.0" layoutY="286.0" mnemonicParsing="false" onAction="#bloquearUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white;" text="Bloquear empleado" textFill="#154360">
+            <Button layoutX="10.0" layoutY="286.0" mnemonicParsing="false" onAction="#bloquearUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Bloquear empleado" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor></Button>
-            <Button layoutX="9.0" layoutY="331.0" mnemonicParsing="false" onAction="#habilitarUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white;" text="Habilitar empleado" textFill="#154360">
+            <Button layoutX="9.0" layoutY="331.0" mnemonicParsing="false" onAction="#habilitarUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar empleado" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor></Button>

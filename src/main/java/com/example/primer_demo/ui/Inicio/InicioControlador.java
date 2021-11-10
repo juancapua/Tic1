@@ -7,6 +7,8 @@ import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.persistance.DestinoRespository;
 import com.example.primer_demo.ui.Controlador;
 import com.example.primer_demo.ui.destino.DestinoControlador;
+import com.example.primer_demo.ui.destino.vistaOperadorDestinoControlador;
+import com.example.primer_demo.ui.usuario.vistaPerfilControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -68,9 +70,9 @@ public class InicioControlador implements Initializable {
     @FXML
     private AnchorPane anchorPane;
 
-    public void setLabel(String x){
-
-        texto.setText(x);
+    public void setUsuario(Usuario usuario){
+        this.usuario = usuario;
+        texto.setText(this.usuario.getNombreDeUsuario());
     }
 
     @FXML
@@ -112,7 +114,24 @@ public class InicioControlador implements Initializable {
         cargarDestino(destinoRespository.findAll().iterator().next());
     }
 
-     void cargarDestino(Destino destino) throws Exception{
+    @FXML
+    void verPerfil(ActionEvent event) throws IOException {
+        close(event);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+        root = fxmlLoader.load(vistaPerfilControlador.class.getResourceAsStream("vistaPerfil.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("images/logo_final.png"));
+        stage.setResizable(false);
+        vistaPerfilControlador vistaPerfilControlador =fxmlLoader.getController();
+        vistaPerfilControlador.setUsuario(this.usuario);
+        stage.show();
+    }
+
+
+    void cargarDestino(Destino destino) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
         root = fxmlLoader.load(DestinoControlador.class.getResourceAsStream("destination.fxml"));

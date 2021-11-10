@@ -108,24 +108,10 @@ public class operadorControlador {
         Destino seleccion = tabla.getSelectionModel().getSelectedItem();
         if(seleccion != null){
             destinoMgr.bloquearDestino(seleccion);
-            
 
             Set<Destino> destinos = operador.getDestinos();
             listaObservable.removeAll(listaObservable);
-//            listaObservable = FXCollections.observableArrayList();
             listaObservable.addAll(destinos);
-//            tabla.setItems(listaObservable);
-//            tabla.refresh();
-//            columnaDetinos.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-//            columnaEstado.setCellValueFactory(cellData -> {
-//                boolean estado = cellData.getValue().getHabilitada();
-//                String estadoAsString;
-//                if (!estado) {
-//                    estadoAsString = "Bloqueado";
-//                } else {
-//                    estadoAsString = "Habilitado";
-//                }
-//                return new ReadOnlyStringWrapper(estadoAsString);});
         }
     }
 
@@ -154,20 +140,8 @@ public class operadorControlador {
             destinoMgr.desbloquearDestino(seleccion);
 
             Set<Destino> destinos = operador.getDestinos();
-            listaObservable = FXCollections.observableArrayList();
-            listaObservable.addAll(destinos);
-            tabla.setItems(listaObservable);
-            columnaDetinos.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-            columnaEstado.setCellValueFactory(cellData -> {
-                boolean estado = cellData.getValue().getHabilitada();
-                String estadoAsString;
-                if (!estado) {
-                    estadoAsString = "Bloqueado";
-                } else {
-                    estadoAsString = "Habilitado";
-                }
-                return new ReadOnlyStringWrapper(estadoAsString);});
-        }
+            listaObservable.removeAll(listaObservable);
+            listaObservable.addAll(destinos);}
     }
 
     @FXML

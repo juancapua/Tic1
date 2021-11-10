@@ -14,8 +14,8 @@
             <Font name="Britannic Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="nuevaEtiqueta" layoutX="137.0" layoutY="94.0" prefHeight="25.0" prefWidth="210.0" promptText="Ingrese aqui:" />
-      <Button fx:id="button" layoutX="204.0" layoutY="139.0" mnemonicParsing="false" onAction="#addEtiqueta" prefHeight="25.0" prefWidth="76.0" text="Agregar" textFill="#154360">
+      <TextField fx:id="nuevaEtiqueta" layoutX="137.0" layoutY="94.0" prefHeight="25.0" prefWidth="210.0" promptText="Ingrese aqui:" style="-fx-background-radius: 50;" />
+      <Button fx:id="button" layoutX="204.0" layoutY="139.0" mnemonicParsing="false" onAction="#addEtiqueta" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #154360; -fx-background-radius: 50;" text="Agregar" textFill="WHITE">
          <font>
             <Font name="Britannic Bold" size="12.0" />
          </font>

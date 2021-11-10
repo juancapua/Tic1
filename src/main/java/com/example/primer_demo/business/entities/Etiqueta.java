@@ -18,7 +18,7 @@ public class Etiqueta {
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
-    })
+    }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "intereses_usuarios",
             joinColumns = {@JoinColumn(name = "etiqueta")},

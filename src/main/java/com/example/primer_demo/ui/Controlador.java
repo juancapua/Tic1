@@ -162,7 +162,7 @@ public class Controlador {
                         stage.getIcons().add(new Image("images/logo_final.png"));
                         stage.setResizable(false);
                         InicioControlador controlador = fxmlLoader.getController();
-                        controlador.setLabel(usuarioRepository.findById(usuario).get().getNombreDeUsuario());
+                        controlador.setUsuario(usuarioMgr.traerUsuario(usuario));
                         stage.show();
 
                     }else{
