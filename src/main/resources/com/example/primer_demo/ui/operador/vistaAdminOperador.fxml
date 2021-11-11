@@ -12,31 +12,31 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #154360;">
          <children>
-            <Label fx:id="txtEmpresa" layoutX="17.0" layoutY="84.0" style="-fx-background-color: transpatent;" text="Empresa:" textFill="WHITE">
+            <Label fx:id="txtEmpresa" layoutX="18.0" layoutY="61.0" style="-fx-background-color: transpatent;" text="Empresa:" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="txtMail" layoutX="16.0" layoutY="124.0" style="-fx-background-color: transparent;" text="mail:" textFill="WHITE">
+            <Label fx:id="txtMail" layoutX="18.0" layoutY="93.0" style="-fx-background-color: transparent;" text="mail:" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="txtTelefono" layoutX="16.0" layoutY="157.0" style="-fx-background-color: transparent;" text="telefono:" textFill="WHITE">
+            <Label fx:id="txtTelefono" layoutX="20.0" layoutY="122.0" style="-fx-background-color: transparent;" text="telefono:" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="txtDireccion" layoutX="16.0" layoutY="191.0" style="-fx-background-color: transparent;" text="Direccion:" textFill="WHITE">
+            <Label fx:id="txtDireccion" layoutX="17.0" layoutY="148.0" style="-fx-background-color: transparent;" text="Direccion:" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="14.0" />
                </font>
             </Label>
-            <Button layoutX="10.0" layoutY="286.0" mnemonicParsing="false" onAction="#bloquearUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Bloquear empleado" textFill="#154360">
+            <Button layoutX="9.0" layoutY="210.0" mnemonicParsing="false" onAction="#bloquearUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Bloquear empleado" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor></Button>
-            <Button layoutX="9.0" layoutY="331.0" mnemonicParsing="false" onAction="#habilitarUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar empleado" textFill="#154360">
+            <Button layoutX="9.0" layoutY="242.0" mnemonicParsing="false" onAction="#habilitarUsuarioOperador" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar empleado" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor></Button>
@@ -44,6 +44,16 @@
                <font>
                   <Font size="36.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="12.0" layoutY="308.0" mnemonicParsing="false" onAction="#bloquearDestino" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Bloquear destino" textFill="#154360">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="12.0" layoutY="342.0" mnemonicParsing="false" onAction="#desbloquearDestino" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar destino" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>

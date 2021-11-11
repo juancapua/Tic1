@@ -41,6 +41,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 @Component
 public class adminControlador implements Initializable {
@@ -121,6 +122,8 @@ public class adminControlador implements Initializable {
         stage.setResizable(false);
         stage.show();
     }
+
+
 
     @FXML
     void bloquearOperador(ActionEvent event){

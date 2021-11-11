@@ -146,6 +146,30 @@ public class VistaAdminOperadorControlador{
     private Button btnHabilitar;
 
     @FXML
+    void bloquearDestino(ActionEvent event){
+        Destino seleccion = tabla2.getSelectionModel().getSelectedItem();
+        if(seleccion != null) {
+            destinoMgr.bloquearDestino(seleccion);
+
+            Set<Destino> destinos = operador.getDestinos();
+            listaObservable2.removeAll(listaObservable2);
+            listaObservable2.addAll(destinos);
+        }
+    }
+
+    @FXML
+    void desbloquearDestino(ActionEvent event){
+        Destino seleccion = tabla2.getSelectionModel().getSelectedItem();
+        if(seleccion != null) {
+            destinoMgr.desbloquearDestino(seleccion);
+
+            Set<Destino> destinos = operador.getDestinos();
+            listaObservable2.removeAll(listaObservable2);
+            listaObservable2.addAll(destinos);
+        }
+    }
+
+    @FXML
     void atras(ActionEvent event) throws IOException {
 
         close(event);
