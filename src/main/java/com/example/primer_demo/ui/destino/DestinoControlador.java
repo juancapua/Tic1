@@ -24,7 +24,9 @@ import org.hibernate.usertype.LoggableUserType;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -97,7 +99,8 @@ public class DestinoControlador {
 
         this.destino = destino;
         setNombre_destino(destino.getNombre());
-        scrollPane.setBackground(new Background(new BackgroundImage(new Image(destino.getImages().get(0)),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+        InputStream x = new ByteArrayInputStream(destino.getImages().get(0));
+        scrollPane.setBackground(new Background(new BackgroundImage(new Image(x),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -129,8 +132,9 @@ public class DestinoControlador {
 
 
         images = new ArrayList<>();
-        for (String imagen: destino.getImages()) {
-            images.add(new Image(imagen));
+        for (byte[] imagen: destino.getImages()) {
+            InputStream y = new ByteArrayInputStream(imagen);
+            images.add(new Image(y));
         }
 
         departamento.setText(destino.getDepartamento().getNombre_pk());

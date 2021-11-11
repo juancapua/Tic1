@@ -35,13 +35,10 @@ public class miniaturaDestinoControlador {
         desc.setText(destino.getDescripcion());
         desc.setWrapText(true);
 
-
-//        falta ver tema imagen
-//
-//        if(destino.getImages() != null){
-//            InputStream inputStream = new ByteArrayInputStream(destino.getImages().get(1));
-//            imageView.setImage(new Image(inputStream));
-//        }
+        if(destino.getImages().size() > 0){
+            InputStream inputStream = new ByteArrayInputStream(destino.getImages().get(0));
+            imageView.setImage(new Image(inputStream));
+        }
 
     }
 

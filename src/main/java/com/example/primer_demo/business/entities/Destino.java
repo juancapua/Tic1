@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import java.io.File;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -25,7 +26,7 @@ public class Destino{
     private String direccion;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> images;
+    private List<byte[]> images;
 
     //mappedBy es el atributo tipo Destino de la clase especificada en la lista
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "destino")
@@ -48,7 +49,7 @@ public class Destino{
 
     }
 
-    public Destino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, String descripcion, List<String> imagenes) {
+    public Destino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, String descripcion, byte[] imagen) {
         this.nombre = nombre;
         this.contacto = contacto;
         this.aforo = aforo;
@@ -60,7 +61,8 @@ public class Destino{
         this.etiquetas = new HashSet<>();
         this.habilitada = false;
         this.descripcion = descripcion;
-        this.images = imagenes;
+        this.images = new ArrayList<>();
+        this.images.add(imagen);
     }
 
 
@@ -80,12 +82,12 @@ public class Destino{
         this.contacto = contacto;
     }
 
-    public List<String> getImages() {
+    public List<byte[]> getImages() {
         return images;
     }
 
-    public void setImages(List<String> images) {
-        this.images = images;
+    public void addImages(byte[] imagen) {
+        this.images.add(imagen);
     }
 
     public Set<Experiencia> getExperiencias() {

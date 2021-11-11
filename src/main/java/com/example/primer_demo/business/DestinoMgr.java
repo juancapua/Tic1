@@ -39,7 +39,7 @@ public class DestinoMgr {
     private OperadorRepository operadorRepository;
 
 
-    public void agregarDestino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, Set<Etiqueta> etiquetas, String desc, List<File> imagenes) throws InvalidInformation, IOException {
+    public void agregarDestino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, Set<Etiqueta> etiquetas, String desc, byte[] imagenes) throws InvalidInformation, IOException {
 
         if(nombre == null || "".equals(nombre) || contacto == null || "".equals(contacto) || operador == null || "".equals(operador)){
             throw new InvalidInformation("Alguno de los datos ingresados no es correcto");
@@ -49,16 +49,8 @@ public class DestinoMgr {
             showAlert("Destino ya ingresado", "El destino ya ha sido registrado en el sistema");
         }
 
-        List<String> imagenesPaths = new ArrayList<>();
-        for(File file: imagenes){
-            File newFile = new File("src/main/resources/images/" + file.getName());
-            Path copeid = newFile.getAbsoluteFile().toPath();
-            Path originalPath = file.toPath();
-            Files.copy(originalPath,copeid, StandardCopyOption.REPLACE_EXISTING);
-            imagenesPaths.add("images/"+file.getName());
-        }
 
-        Destino nuevoDestino = new Destino(nombre,contacto,aforo,horario_apertura,horario_cierre,direccion,departamento,operador, desc, imagenesPaths);
+        Destino nuevoDestino = new Destino(nombre,contacto,aforo,horario_apertura,horario_cierre,direccion,departamento,operador, desc, imagenes);
         nuevoDestino.addEtiquetas(etiquetas);
         destinoRespository.save(nuevoDestino);
         for(Etiqueta x: etiquetas){

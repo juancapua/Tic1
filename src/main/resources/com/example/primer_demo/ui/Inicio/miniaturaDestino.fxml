@@ -13,7 +13,7 @@
       <Label fx:id="desc" layoutX="270.0" layoutY="67.0" text="Desc:" textFill="WHITE" />
       <AnchorPane layoutY="-5.0" prefHeight="178.0" prefWidth="259.0">
          <children>
-            <ImageView fx:id="imageView" fitHeight="129.0" fitWidth="203.0" layoutX="28.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageView" fitHeight="129.0" fitWidth="203.0" layoutX="28.0" layoutY="32.0" pickOnBounds="true">
                <image>
                   <Image url="@images/salto_del_penitente.jpg" />
                </image>

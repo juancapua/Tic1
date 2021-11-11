@@ -93,7 +93,7 @@ public class addDestinoControlador implements Initializable {
     @FXML
     private Button elegirImagenes;
 
-    private List<File> imagenes;
+    private byte[] imagenes;
 
     public void setOperador(Operador operador){
         this.operador = operador;
@@ -123,6 +123,7 @@ public class addDestinoControlador implements Initializable {
                 Set<Etiqueta> etiquetas = new HashSet<>();
                 Operador operador = this.operador;
                 String desc = descripcion.getText();
+                byte[] nuevaImagen = this.imagenes;
 
                 for(Node node:vbox.getChildren()){
                     CheckBox checkBox = (CheckBox) node;
@@ -132,7 +133,7 @@ public class addDestinoControlador implements Initializable {
                 }
 
                 try {
-                    destinoMgr.agregarDestino(nombre,contacto,aforo,horario_aper,horario_cie,direccion,departamento_elejido,operador,etiquetas, desc, imagenes);
+                    destinoMgr.agregarDestino(nombre,contacto,aforo,horario_aper,horario_cie,direccion,departamento_elejido,operador,etiquetas, desc, nuevaImagen);
                     showAlert("Destino agregado", "Se agrego con exito el destino!");
 
                     close(event);
@@ -184,7 +185,12 @@ public class addDestinoControlador implements Initializable {
                 new FileChooser.ExtensionFilter("PNG","*.png"),
                 new FileChooser.ExtensionFilter("JPEG","*,jpeg"));
         try {
-            imagenes = fileChooser.showOpenMultipleDialog(new Stage());
+            File archivo = fileChooser.showOpenDialog(new Stage());
+            if(archivo != null){
+                Path path = Paths.get(archivo.getAbsolutePath());
+                this.imagenes = Files.readAllBytes(path);
+            }
+
         } catch (Exception e){
             e.printStackTrace();
         }
