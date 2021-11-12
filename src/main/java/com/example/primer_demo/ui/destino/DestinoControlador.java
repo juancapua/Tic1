@@ -194,13 +194,15 @@ public class DestinoControlador {
     }
 
     private void imagesRotation(int direction, int current){
-        if(current==0 && direction<0){
-            current=images.size()-1;
-            scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-        } else if(current<images.size()-1 && direction>0) {
-            current=0;
-            scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+        if(images.size()>1){
+            if(current==0 && direction<0){
+                current=images.size()-1;
+                scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+            } else if(current<images.size()-1 && direction>0) {
+                current=0;
+                scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+            }
+            scrollPane.setBackground(new Background(new BackgroundImage(images.get(current + direction), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         }
-        scrollPane.setBackground(new Background(new BackgroundImage(images.get(current + direction), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
     }
 }

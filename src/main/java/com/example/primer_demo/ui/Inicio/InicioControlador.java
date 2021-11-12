@@ -131,7 +131,7 @@ public class InicioControlador implements Initializable {
     }
 
 
-    void cargarDestino(Destino destino) throws Exception{
+    public void cargarDestino(Destino destino) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
         root = fxmlLoader.load(DestinoControlador.class.getResourceAsStream("destination.fxml"));
@@ -210,4 +210,7 @@ public class InicioControlador implements Initializable {
         }
     }
 
+    public void abrirPerfil(ActionEvent actionEvent){
+
+    }
 }
