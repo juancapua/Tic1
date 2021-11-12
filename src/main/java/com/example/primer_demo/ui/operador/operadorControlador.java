@@ -12,7 +12,9 @@ import com.example.primer_demo.persistance.OperadorRepository;
 import com.example.primer_demo.ui.Controlador;
 import com.example.primer_demo.ui.admin.adminControlador;
 import com.example.primer_demo.ui.destino.addDestinoControlador;
+import com.example.primer_demo.ui.destino.addImagenDestinoControlador;
 import com.example.primer_demo.ui.destino.vistaOperadorDestinoControlador;
+import com.example.primer_demo.ui.usuarioOperador.vistaEmpleadoControlador;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -165,6 +167,42 @@ public class operadorControlador {
         addDestinoControlador.setOperador(this.operador);
         stage.show();
 
+    }
+
+    @FXML
+    void agregarImagen(ActionEvent event) throws IOException {
+        Destino seleccion = tabla.getSelectionModel().getSelectedItem();
+        if(seleccion != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+            root = fxmlLoader.load(addImagenDestinoControlador.class.getResourceAsStream("addImagenDestino.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(new Image("images/logo_final.png"));
+            stage.setResizable(false);
+            addImagenDestinoControlador addImagenDestinoControlador = fxmlLoader.getController();
+            addImagenDestinoControlador.setDestino(seleccion);
+            stage.show();
+        }
+    }
+
+
+
+    @FXML
+    void verEmpleados(ActionEvent event) throws IOException {
+        close(event);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+        root = fxmlLoader.load(vistaEmpleadoControlador.class.getResourceAsStream("vistaEmpleados.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("images/logo_final.png"));
+        stage.setResizable(false);
+        vistaEmpleadoControlador vistaEmpleadoControlador = fxmlLoader.getController();
+        vistaEmpleadoControlador.setOperador(this.operador);
+        stage.show();
     }
 
 
