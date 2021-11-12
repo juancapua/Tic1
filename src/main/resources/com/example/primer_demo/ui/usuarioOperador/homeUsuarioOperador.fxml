@@ -14,6 +14,7 @@
             <Button layoutX="13.0" layoutY="367.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Cerrar sesion" textFill="#154360" />
             <Button layoutX="13.0" layoutY="104.0" mnemonicParsing="false" onAction="#desbloquearDestino" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar destino" textFill="#154360" />
             <Button layoutX="13.0" layoutY="145.0" mnemonicParsing="false" onAction="#verDestino" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Ver destino" textFill="#154360" />
+            <Button layoutX="13.0" layoutY="178.0" mnemonicParsing="false" onAction="#agregarImagen" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Agregar imagen" textFill="#154360" />
          </children>
       </AnchorPane>
       <TableView fx:id="tabla" layoutX="204.0" layoutY="31.0" prefHeight="343.0" prefWidth="371.0">

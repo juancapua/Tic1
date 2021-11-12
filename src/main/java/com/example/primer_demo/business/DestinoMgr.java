@@ -38,6 +38,13 @@ public class DestinoMgr {
     @Autowired
     private OperadorRepository operadorRepository;
 
+    public void agregarImagenes(Destino destino,List<byte[]> lista){
+        for(byte[] x:lista){
+            destino.addImages(x);
+            destinoRespository.save(destino);
+        }
+    }
+
 
     public void agregarDestino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, Set<Etiqueta> etiquetas, String desc, byte[] imagenes) throws InvalidInformation, IOException {
 
