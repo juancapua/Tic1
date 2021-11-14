@@ -1,28 +1,46 @@
 package com.example.primer_demo.ui.destino;
 
+import com.example.primer_demo.PrimerDemoApplication;
+import com.example.primer_demo.business.ExperienciaMgr;
 import com.example.primer_demo.business.entities.Destino;
 import com.example.primer_demo.business.entities.Etiqueta;
 import com.example.primer_demo.business.entities.Experiencia;
 import com.example.primer_demo.business.entities.UsuarioOperador;
+import com.example.primer_demo.ui.Inicio.InicioControlador;
+import com.example.primer_demo.ui.experiencia.addExperienciaControlador;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.Set;
 
 @Component
 public class vistaOperadorDestinoControlador {
 
     private Destino destino;
+
+    private Parent root;
+
+    @Autowired
+    private ExperienciaMgr experienciaMgr;
 
     public void setDestino(Destino destino){
         this.destino = destino;
@@ -99,5 +117,52 @@ public class vistaOperadorDestinoControlador {
 
     @FXML
     private TableView<Experiencia> tabla;
+
+    @FXML
+    void bloquearExperiencia(ActionEvent event){
+        Experiencia seleccion = tabla.getSelectionModel().getSelectedItem();
+        if(seleccion != null){
+            experienciaMgr.bloquearExperiencia(seleccion);
+
+            Set<Experiencia> experiencias = this.destino.getExperiencias();
+            listaObservable.removeAll(listaObservable);
+            listaObservable.addAll(experiencias);
+        }
+    }
+
+    @FXML
+    void habilitarExperiencia(ActionEvent event){
+        Experiencia seleccion = tabla.getSelectionModel().getSelectedItem();
+        if(seleccion != null){
+            experienciaMgr.habilitarExperiencia(seleccion);
+
+            Set<Experiencia> experiencias = this.destino.getExperiencias();
+            listaObservable.removeAll(listaObservable);
+            listaObservable.addAll(experiencias);
+        }
+    }
+
+    @FXML
+    void addExperiencia(ActionEvent event) throws IOException {
+        close(event);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+        root = fxmlLoader.load(addExperienciaControlador.class.getResourceAsStream("addExperiencia.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("images/logo_final.png"));
+        stage.setResizable(false);
+        addExperienciaControlador addExperienciaControlador = fxmlLoader.getController();
+        addExperienciaControlador.setDestino(this.destino);
+        stage.show();
+    }
+
+    @FXML
+    void close(javafx.event.ActionEvent actionEvent) {
+        Node source = (Node)  actionEvent.getSource();
+        Stage stage  = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
 
 }

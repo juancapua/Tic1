@@ -57,9 +57,9 @@
                   <Font name="Britannic Bold" size="13.0" />
                </font>
             </Label>
-            <Button layoutX="19.0" layoutY="424.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Agregar experiencia" textFill="#154360" />
-            <Button layoutX="19.0" layoutY="390.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Bloquear experiencia:" textFill="#154360" />
-            <Button layoutX="19.0" layoutY="357.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar experiencia:" textFill="#154360" />
+            <Button layoutX="19.0" layoutY="424.0" mnemonicParsing="false" onAction="#addExperiencia" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Agregar experiencia" textFill="#154360" />
+            <Button layoutX="19.0" layoutY="390.0" mnemonicParsing="false" onAction="#bloquearExperiencia" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Bloquear experiencia:" textFill="#154360" />
+            <Button layoutX="19.0" layoutY="357.0" mnemonicParsing="false" onAction="#habilitarExperiencia" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar experiencia:" textFill="#154360" />
             <VBox fx:id="vbox" layoutX="98.0" layoutY="176.0" prefHeight="75.0" prefWidth="100.0" />
          </children>
       </AnchorPane>

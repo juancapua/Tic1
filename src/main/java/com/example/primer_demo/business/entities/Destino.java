@@ -94,8 +94,8 @@ public class Destino{
         return experiencias;
     }
 
-    public void setExperiencias(Set<Experiencia> experiencias) {
-        this.experiencias = experiencias;
+    public void addExperiencias(Experiencia experiencias) {
+        this.experiencias.add(experiencias);
     }
 
     public Set<Entrada> getEntradas() {

@@ -16,8 +16,6 @@ public class Experiencia {
     private Integer id;
     private String nombre;
     private Boolean esta_autorizada;
-    private Integer id_operador;
-    @Column(length = 500)
     private String descripcion;
     private LocalTime horario_apertura;
     private LocalTime horario_cierre;
@@ -35,17 +33,15 @@ public class Experiencia {
     public Experiencia() {
     }
 
-    public Experiencia(String nombre, Boolean esta_autorizada, Integer id_operador, String descripcion, LocalTime horario_apertura, LocalTime horario_cierre, Integer aforo, Boolean se_reserva, String tipo, String imagen) {
+    public Experiencia(String nombre, String descripcion, LocalTime horario_apertura, LocalTime horario_cierre, Integer aforo, Boolean se_reserva, Destino destino) {
         this.nombre = nombre;
-        this.esta_autorizada = esta_autorizada;
-        this.id_operador = id_operador;
+        this.esta_autorizada = false;
         this.descripcion = descripcion;
         this.horario_apertura = horario_apertura;
         this.horario_cierre = horario_cierre;
         this.aforo = aforo;
         this.se_reserva = se_reserva;
-        this.imagen= imagen;
-        this.tipo = tipo;
+        this.destino = destino;
     }
 
     public String getNombre() {
@@ -62,14 +58,6 @@ public class Experiencia {
 
     public void setEsta_autorizada(Boolean esta_autorizada) {
         this.esta_autorizada = esta_autorizada;
-    }
-
-    public Integer getId_operador() {
-        return id_operador;
-    }
-
-    public void setId_operador(Integer id_operador) {
-        this.id_operador = id_operador;
     }
 
     public String getDescripcion() {

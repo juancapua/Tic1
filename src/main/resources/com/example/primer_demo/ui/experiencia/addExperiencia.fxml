@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.experiencia.addExperienciaControlador">
+   <children>
+      <AnchorPane layoutX="487.0" prefHeight="408.0" prefWidth="113.0" style="-fx-background-color: #154360;" />
+      <AnchorPane prefHeight="408.0" prefWidth="113.0" style="-fx-background-color: #154360;" />
+      <TextField fx:id="txtNombre" layoutX="236.0" layoutY="45.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="txtHorario_aper" layoutX="236.0" layoutY="130.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="txtDescripcion" layoutX="236.0" layoutY="87.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="txtHorario_cie" layoutX="236.0" layoutY="173.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="txtAforo" layoutX="236.0" layoutY="218.0" style="-fx-background-radius: 50;" />
+      <CheckBox fx:id="se_reserva" layoutX="260.0" layoutY="277.0" mnemonicParsing="false" text="Se reserva?" />
+      <Button layoutX="226.0" layoutY="358.0" mnemonicParsing="false" onAction="#addExperiencia" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #154360; -fx-background-radius: 50;" text="Agregar" textFill="WHITE" />
+      <Label layoutX="177.0" layoutY="49.0" text="Nombre:" />
+      <Label layoutX="162.0" layoutY="91.0" text="Descripcion:" />
+      <Label layoutX="135.0" layoutY="134.0" text="Horario apertura:" />
+      <Label layoutX="146.0" layoutY="177.0" text="Horario cierre:" />
+      <Label layoutX="184.0" layoutY="222.0" text="Aforo:" />
+   </children>
+</AnchorPane>
