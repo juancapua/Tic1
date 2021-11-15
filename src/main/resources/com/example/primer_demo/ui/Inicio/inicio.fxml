@@ -20,10 +20,6 @@
          </image>
       </ImageView>
         <AnchorPane layoutY="-1.0" prefHeight="754.0" prefWidth="179.0" style="-fx-background-color: #154360;" />
-        <Button fx:id="boton" layoutX="513.0" layoutY="24.0" mnemonicParsing="false" onAction="#test" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #154360;" text="Probando" textFill="WHITE">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor></Button>
         <Button fx:id="exit" layoutX="21.0" layoutY="714.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Cerrar sesion" textFill="#154360">
             <cursor>
                 <Cursor fx:constant="HAND" />

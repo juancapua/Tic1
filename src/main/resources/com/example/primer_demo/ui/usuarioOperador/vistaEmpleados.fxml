@@ -21,6 +21,8 @@
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
             </Button>
+            <Button layoutX="13.0" layoutY="329.0" mnemonicParsing="false" onAction="#bloquearEmpleado" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Bloquear empleado" textFill="#154360" />
+            <Button layoutX="13.0" layoutY="366.0" mnemonicParsing="false" onAction="#habilitarEmpleado" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar empleado" textFill="#154360" />
          </children>
       </AnchorPane>
    </children>

@@ -1,6 +1,7 @@
 package com.example.primer_demo.ui.usuarioOperador;
 
 import com.example.primer_demo.PrimerDemoApplication;
+import com.example.primer_demo.business.UsuarioOperadorMgr;
 import com.example.primer_demo.business.entities.Destino;
 import com.example.primer_demo.business.entities.Operador;
 import com.example.primer_demo.business.entities.UsuarioOperador;
@@ -20,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.hibernate.hql.spi.id.cte.AbstractCteValuesListBulkIdHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -27,6 +29,9 @@ import java.util.Set;
 
 @Component
 public class vistaEmpleadoControlador {
+
+    @Autowired
+    private UsuarioOperadorMgr usuarioOperadorMgr;
 
     private Parent root;
 
@@ -59,6 +64,30 @@ public class vistaEmpleadoControlador {
                 estadoAsString = "Habilitado";
             }
             return new ReadOnlyStringWrapper(estadoAsString);});
+    }
+
+    @FXML
+    void bloquearEmpleado(ActionEvent event){
+        UsuarioOperador empleado = tabla.getSelectionModel().getSelectedItem();
+        if(empleado != null){
+            usuarioOperadorMgr.bloaquear(empleado);
+
+            Set<UsuarioOperador> empleados = operador.getUsuarioOperadorList();
+            listaObservable.removeAll(listaObservable);
+            listaObservable.addAll(empleados);
+        }
+    }
+
+    @FXML
+    void habilitarEmpleado(ActionEvent event){
+        UsuarioOperador empleado = tabla.getSelectionModel().getSelectedItem();
+        if(empleado != null){
+            usuarioOperadorMgr.habilitar(empleado);
+
+            Set<UsuarioOperador> empleados = operador.getUsuarioOperadorList();
+            listaObservable.removeAll(listaObservable);
+            listaObservable.addAll(empleados);
+        }
     }
 
     @FXML
