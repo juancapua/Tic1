@@ -4,6 +4,7 @@ package com.example.primer_demo.business.entities;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -128,5 +129,16 @@ public class Experiencia {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "favoritos")
+    private Set<Usuario> usuarios;
+
+    public Set<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Set<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 }

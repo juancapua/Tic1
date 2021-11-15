@@ -106,6 +106,25 @@ public class Usuario {
             this.etiquetas.add(x);
         }
     }
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Experiencia> favoritos;
+
+    public Set<Experiencia> getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(Set<Experiencia> favoritos) {
+        this.favoritos = favoritos;
+    }
+
+    public Set<Experiencia> getManyToMany() {
+        return favoritos;
+    }
+
+    public void setManyToMany(Set<Experiencia> favoritos) {
+        this.favoritos = favoritos;
+    }
 }
 
 

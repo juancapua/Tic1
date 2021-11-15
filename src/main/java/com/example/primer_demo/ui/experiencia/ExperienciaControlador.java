@@ -2,6 +2,11 @@ package com.example.primer_demo.ui.experiencia;
 
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.entities.Experiencia;
+import com.example.primer_demo.business.entities.Usuario;
+import com.example.primer_demo.persistance.DestinoRespository;
+import com.example.primer_demo.persistance.ExperienciaRepository;
+import com.example.primer_demo.persistance.UsuarioRepository;
+import com.example.primer_demo.ui.Inicio.InicioControlador;
 import com.jfoenix.controls.JFXDatePicker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +23,9 @@ import java.io.IOException;
 public class ExperienciaControlador {
 
     private Experiencia experiencia;
+    private ExperienciaRepository experienciaRepository;
+    private UsuarioRepository usuarios;
+
 
     @FXML
     private Text experiencia_nombre;
@@ -30,20 +38,29 @@ public class ExperienciaControlador {
 
     private boolean faved = false;
 
-    public void init(Experiencia experiencia) {
+    private Usuario usuario;
+
+    public void init(Experiencia experiencia, Usuario usuario) {
         this.experiencia = experiencia;
         experiencia_nombre.setText(experiencia.getNombre());
         destino_nombre.setText(experiencia.getDestino().getNombre());
+        if(usuario.getFavoritos().contains(experiencia)){
+            faved=true;
+        }
     }
 
     public void clicked(){
         if(!faved) {
             fav_icon.setText("\uE735");
             faved = true;
+            usuario.getFavoritos().add(experiencia);
+
         } else {
             fav_icon.setText("\uE734");
             faved = false;
+            usuario.getFavoritos().remove(experiencia);
         }
+        usuarios.save(usuario);
     }
 
     public void mouseEnter(){

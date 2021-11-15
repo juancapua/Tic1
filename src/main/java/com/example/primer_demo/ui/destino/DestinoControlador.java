@@ -3,10 +3,13 @@ package com.example.primer_demo.ui.destino;
 import com.example.primer_demo.business.entities.Destino;
 import com.example.primer_demo.business.entities.Entrada;
 import com.example.primer_demo.business.entities.Experiencia;
+import com.example.primer_demo.business.entities.Usuario;
 import eu.iamgio.froxty.FrostyBox;
 import eu.iamgio.froxty.FrostyEffect;
+import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.Property;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -15,11 +18,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import org.hibernate.usertype.LoggableUserType;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -30,6 +38,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
 
 @Component
 public class DestinoControlador {
@@ -62,7 +71,7 @@ public class DestinoControlador {
     private GridPane experiences;
 
     @FXML
-    private GridPane entries;
+    private VBox entries;
 
     @FXML
     private Pane head;
@@ -85,6 +94,8 @@ public class DestinoControlador {
     @FXML
     private Text departamento;
 
+    private Usuario usuario;
+
     public void scrolling(){
         System.out.println(scrollPane.getVvalue());
         if(scrollPane.getVvalue() == 0.3){
@@ -94,16 +105,37 @@ public class DestinoControlador {
         }
     }
 
-    public void init(Destino destino) throws IOException {
+    public void init(Destino destino, Usuario usuario) throws IOException {
         //...
+
+        this.usuario = usuario;
 
         this.destino = destino;
         setNombre_destino(destino.getNombre());
         InputStream x = new ByteArrayInputStream(destino.getImages().get(0));
-        scrollPane.setBackground(new Background(new BackgroundImage(new Image(x),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+        scrollPane.setBackground(new Background(new BackgroundImage(new Image(x),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false))));
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+        Platform.runLater(() -> setFasterScroller(scrollPane));
+
+//        scrollPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+//
+//            @Override
+//            public void handle(MouseEvent event) {
+//                System.out.println(">> Mouse Clicked");
+//                event.consume();
+//            }
+//        });
+
+        entries.setSpacing(24);
+        entries.setAlignment(Pos.CENTER);
+        entries.setPrefWidth(entriesPane.getPrefWidth());
+        for (Node node: entries.getChildren()) {
+            //entries.setValignment(node, VPos.CENTER);
+        }
+
 
         //makeFrosty(nombre_container,base_bg);
         int currentY = 0;
@@ -116,18 +148,18 @@ public class DestinoControlador {
             agregarExperiencia(experiencia,currentY);
             currentY++;
         }
-        entries.setVgap(48);
-        entries.setAlignment(Pos.CENTER);
-        for (Node node: entries.getChildren()) {
-            entries.setValignment(node, VPos.CENTER);
+
+        if (entriesPane.getPrefHeight() > experiencesPane.getPrefHeight()) {
+            experiencesPane.setPrefHeight(entriesPane.getPrefHeight());
         }
+
         //makeFrosty(entriesPane,body);
         //makeFrosty(experiencesPane,body);
 
-        experiences.setVgap(48);
-        experiences.setHgap(24);
+        //experiences.setVgap(48);
+        experiences.setHgap(2);
         for (Node node: experiences.getChildren()) {
-            experiences.setValignment(node, VPos.CENTER);
+            //experiences.setValignment(node, VPos.CENTER);
         }
 
 
@@ -159,30 +191,41 @@ public class DestinoControlador {
 
     private void agregarEntrada(Entrada entrada, int currentY) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        AnchorPane entrada_container = fxmlLoader.load(EntradaControlador.class.getResourceAsStream("entrada.fxml"));
-        EntradaControlador entradaControlador = fxmlLoader.getController();
-        entradaControlador.init(entrada);
-        entrada_container.setId("entry");
-        entries.add(entrada_container,0,currentY); // Adds the container to the scene
+        //AnchorPane entrada_container = fxmlLoader.load(EntradaControlador.class.getResourceAsStream("entrada.fxml"));
+        //EntradaControlador entradaControlador = fxmlLoader.getController();
+        //entradaControlador.init(entrada);
+        //entrada_container.setId("entry");
+        //entries.addAll(entrada_container,0,currentY); // Adds the container to the scene
+        Text t = new Text(entrada.getTitulo());
+        t.setFont(new Font(38));
+        t.setWrappingWidth(entries.getPrefWidth()-200);
+        t.setTextAlignment(TextAlignment.CENTER);
+        Double extraHeight = t.getBoundsInLocal().getHeight();
+        entries.getChildren().add(t);
+        t = new Text(entrada.getTexto());
+        t.setWrappingWidth(entries.getPrefWidth()-200);
+        t.setTextAlignment(TextAlignment.CENTER);
+        t.setFont(new Font(22));
+        extraHeight += t.getBoundsInLocal().getHeight();
+        entriesPane.setPrefHeight(entriesPane.getHeight() + extraHeight);
+        entries.getChildren().add(t);
+        Line line = new Line();
+        line.setStartX(0.0f);
+        line.setStartY(0.0f);
+        line.setEndX(entries.getPrefWidth()-200);
+        line.setEndY(0.0f);
+        entries.getChildren().add(line);
+
     }
 
     private void agregarExperiencia(Experiencia experiencia, int currentY) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         AnchorPane experienciaContainer = fxmlLoader.load(ExperienciaThumbnailControlador.class.getResourceAsStream("experienciaThumbnail.fxml"));
         ExperienciaThumbnailControlador experienciaThumbnailControlador = fxmlLoader.getController();
-        experienciaThumbnailControlador.init(experiencia);
+        experienciaThumbnailControlador.init(experiencia, usuario);
         experienciaContainer.setId("experience");
         experiences.add(experienciaContainer,0,currentY); // Adds the container to the scene
     }
-
-    /*
-    public void agregarExperiencia(Experiencia, int currentY){
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        AnchorPane experiencia_container = fxmlLoader.load(EntradaControlador.class.getResourceAsStream("experienciaThumbnail.fxml"));
-        ExperienciaControlador experienciaControlador = fxmlLoader.getController();
-        experienciaControlador.init(experiencia);
-    }
-    */
 
     private void makeFrosty(Node container, Pane targetPane){
         FrostyEffect effect = new FrostyEffect(); // Instantiates the effect. The parameters are optional and default to (0.5, 10)
@@ -194,15 +237,20 @@ public class DestinoControlador {
     }
 
     private void imagesRotation(int direction, int current){
-        if(images.size()>1){
-            if(current==0 && direction<0){
-                current=images.size()-1;
-                scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-            } else if(current<images.size()-1 && direction>0) {
-                current=0;
-                scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-            }
-            scrollPane.setBackground(new Background(new BackgroundImage(images.get(current + direction), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+        if(current==0 && direction<0){
+            current=images.size()-1;
+            scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+        } else if(current<images.size()-1 && direction>0) {
+            current=0;
+            scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         }
+        scrollPane.setBackground(new Background(new BackgroundImage(images.get(current + direction), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
     }
+
+    private static void setFasterScroller(ScrollPane scrollPane) {
+        ScrollBar verticalScrollbar = (ScrollBar) scrollPane.lookup(".scroll-bar:vertical");
+        double defaultUnitIncrement = verticalScrollbar.getUnitIncrement();
+        verticalScrollbar.setUnitIncrement(defaultUnitIncrement * 10);
+    }
+
 }

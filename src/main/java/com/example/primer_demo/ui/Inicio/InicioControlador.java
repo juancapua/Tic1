@@ -111,7 +111,7 @@ public class InicioControlador implements Initializable {
 
     public void test(ActionEvent event) throws Exception {
         System.out.println(destinoRespository.count());
-        cargarDestino(destinoRespository.findAll().iterator().next());
+        cargarDestino(destinoRespository.findAll().iterator().next(), usuario);
     }
 
     @FXML
@@ -131,7 +131,7 @@ public class InicioControlador implements Initializable {
     }
 
 
-    public void cargarDestino(Destino destino) throws Exception{
+    public void cargarDestino(Destino destino, Usuario usuario) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
         root = fxmlLoader.load(DestinoControlador.class.getResourceAsStream("destination.fxml"));
@@ -142,7 +142,7 @@ public class InicioControlador implements Initializable {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        destinoControlador.init(destino);
+        destinoControlador.init(destino,usuario);
      }
 
      @FXML
@@ -158,7 +158,7 @@ public class InicioControlador implements Initializable {
                 try {
                     AnchorPane pane = fxmlLoader.load();
                     miniaturaDestinoControlador = fxmlLoader.getController();
-                    miniaturaDestinoControlador.setData(x);
+                    miniaturaDestinoControlador.setData(x, usuario);
                     miniaturaDestinoControlador.setAnchorPane(anchorPane);
                     gridPane.addRow(fila, pane);
 
@@ -190,7 +190,7 @@ public class InicioControlador implements Initializable {
                 try {
                     AnchorPane pane = fxmlLoader.load();
                     miniaturaDestinoControlador = fxmlLoader.getController();
-                    miniaturaDestinoControlador.setData(x);
+                    miniaturaDestinoControlador.setData(x, usuario);
                     miniaturaDestinoControlador.setAnchorPane(anchorPane);
                     gridPane.addRow(fila, pane);
 

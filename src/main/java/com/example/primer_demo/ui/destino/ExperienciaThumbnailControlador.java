@@ -3,6 +3,7 @@ package com.example.primer_demo.ui.destino;
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.ManejadorDeCargaDePantalla;
 import com.example.primer_demo.business.entities.Experiencia;
+import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.ui.experiencia.ExperienciaControlador;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,10 +33,13 @@ public class ExperienciaThumbnailControlador {
     @FXML
     private Text desc;
 
-    public void init(Experiencia experiencia){
+    private Usuario usuario;
+
+    public void init(Experiencia experiencia, Usuario usuario){
         this.experiencia = experiencia;
         title.setText(experiencia.getNombre());
         desc.setText(experiencia.getDescripcion());
+        this.usuario = usuario;
     }
 
 
@@ -50,7 +54,7 @@ public class ExperienciaThumbnailControlador {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        experienciaControlador.init(experiencia);
+        experienciaControlador.init(experiencia, usuario);
     }
 
 

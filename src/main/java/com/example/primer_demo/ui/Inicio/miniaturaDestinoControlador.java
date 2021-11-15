@@ -2,6 +2,7 @@ package com.example.primer_demo.ui.Inicio;
 
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.entities.Destino;
+import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.ui.destino.DestinoControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,13 +37,15 @@ public class miniaturaDestinoControlador {
 
     private Parent root;
 
+    private Usuario usuario;
+
     AnchorPane anchorPane;
     void setAnchorPane(AnchorPane pane){
         this.anchorPane = pane;
     }
 
 
-    public void setData(Destino destino){
+    public void setData(Destino destino, Usuario usuario){
         this.destino = destino;
         titulo.setText(destino.getNombre());
         desc.setText(destino.getDescripcion());
@@ -51,6 +54,7 @@ public class miniaturaDestinoControlador {
             InputStream inputStream = new ByteArrayInputStream(destino.getImages().get(0));
             imageView.setImage(new Image(inputStream));
         }
+
 
     }
 
@@ -67,7 +71,7 @@ public class miniaturaDestinoControlador {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        destinoControlador.init(destino);
+        destinoControlador.init(destino, usuario);
     }
 
 
