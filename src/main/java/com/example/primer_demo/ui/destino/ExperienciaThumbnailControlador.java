@@ -1,10 +1,9 @@
 package com.example.primer_demo.ui.destino;
 
 import com.example.primer_demo.PrimerDemoApplication;
-import com.example.primer_demo.business.ManejadorDeCargaDePantalla;
 import com.example.primer_demo.business.entities.Experiencia;
 import com.example.primer_demo.business.entities.Usuario;
-import com.example.primer_demo.ui.experiencia.ExperienciaControlador;
+import com.example.primer_demo.ui.experiencia.VerExperienciaControlador;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,14 +46,14 @@ public class ExperienciaThumbnailControlador {
         Parent root;
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
-        root = fxmlLoader.load(ExperienciaControlador.class.getResourceAsStream("experiencia.fxml"));
-        ExperienciaControlador experienciaControlador = fxmlLoader.getController();
+        root = fxmlLoader.load(VerExperienciaControlador.class.getResourceAsStream("experiencia.fxml"));
+        VerExperienciaControlador verExperienciaControlador = fxmlLoader.getController();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        experienciaControlador.init(experiencia, usuario);
+        verExperienciaControlador.init(experiencia, usuario);
     }
 
 

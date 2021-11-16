@@ -1,12 +1,5 @@
 package com.example.primer_demo.business;
 
-import com.example.primer_demo.PrimerDemoApplication;
-import com.example.primer_demo.ui.destino.DestinoControlador;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public abstract class ManejadorDeCargaDePantalla {
