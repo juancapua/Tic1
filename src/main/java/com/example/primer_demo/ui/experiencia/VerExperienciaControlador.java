@@ -3,11 +3,8 @@ package com.example.primer_demo.ui.experiencia;
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.entities.Experiencia;
 import com.example.primer_demo.business.entities.Usuario;
-import com.example.primer_demo.persistance.DestinoRespository;
 import com.example.primer_demo.persistance.ExperienciaRepository;
 import com.example.primer_demo.persistance.UsuarioRepository;
-import com.example.primer_demo.ui.Inicio.InicioControlador;
-import com.jfoenix.controls.JFXDatePicker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +17,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-public class ExperienciaControlador {
+public class VerExperienciaControlador {
 
     private Experiencia experiencia;
     private ExperienciaRepository experienciaRepository;
@@ -79,8 +76,8 @@ public class ExperienciaControlador {
         Parent root;
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
-        root = fxmlLoader.load(ExperienciaControlador.class.getResourceAsStream("reserva.fxml"));
-        ReservaControlador reservaControlador = fxmlLoader.getController();
+        root = fxmlLoader.load(VerExperienciaControlador.class.getResourceAsStream("reserva.fxml"));
+        HacerReservaControlador reservaControlador = fxmlLoader.getController();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);

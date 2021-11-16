@@ -23,7 +23,7 @@ import java.awt.*;
 import java.time.LocalDate;
 
 @Component
-public class ReservaControlador {
+public class HacerReservaControlador {
 
     @FXML
     private HBox tituloExperiencia;
