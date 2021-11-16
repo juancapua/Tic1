@@ -41,7 +41,7 @@ import java.util.Set;
 
 
 @Component
-public class VerDestinoControlador {
+public class DestinoControlador {
 
     private ArrayList<Pane> experienciasContainer;
 
@@ -239,12 +239,12 @@ public class VerDestinoControlador {
     private void imagesRotation(int direction, int current){
         if(current==0 && direction<0){
             current=images.size()-1;
-            scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false))));
+            scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         } else if(current<images.size()-1 && direction>0) {
             current=0;
-            scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false))));
+            scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         }
-        scrollPane.setBackground(new Background(new BackgroundImage(images.get(current + direction), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false))));
+        scrollPane.setBackground(new Background(new BackgroundImage(images.get(current + direction), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
     }
 
     private static void setFasterScroller(ScrollPane scrollPane) {
