@@ -3,6 +3,7 @@ package com.example.primer_demo.ui.Inicio;
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.DestinoMgr;
 import com.example.primer_demo.business.entities.Destino;
+import com.example.primer_demo.business.entities.Etiqueta;
 import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.persistance.DestinoRespository;
 import com.example.primer_demo.ui.Controlador;
@@ -30,10 +31,13 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 @Component
-public class InicioControlador implements Initializable {
+public class InicioControlador {
 
     @Autowired
     private DestinoRespository destinoRespository;
@@ -69,6 +73,52 @@ public class InicioControlador implements Initializable {
     public void setUsuario(Usuario usuario){
         this.usuario = usuario;
         texto.setText(this.usuario.getNombreDeUsuario());
+
+        Set<Etiqueta> etiquetasUsuario = this.usuario.getEtiquetas();
+
+        Iterable<Destino> destinos = destinoMgr.allDestinos();
+
+        Set<Destino> destinosOrdenados = new HashSet<>();
+        for(Destino y: destinos){
+            for(Etiqueta destinoEtiquetas: y.getEtiquetas()){
+                if(etiquetasUsuario.contains(destinoEtiquetas)){
+                    destinosOrdenados.add(y);
+                }
+            }
+        }
+        for(Destino destino:destinos){
+            if(!destinosOrdenados.contains(destino)){
+                destinosOrdenados.add(destino);
+            }
+        }
+
+        int fila = destinosOrdenados.size();
+        for(Destino x: destinosOrdenados){
+            if(x.getHabilitada()){
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("miniaturaDestino.fxml"));
+                fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+                try {
+                    AnchorPane pane = fxmlLoader.load();
+                    miniaturaDestinoControlador = fxmlLoader.getController();
+                    miniaturaDestinoControlador.setData(x, usuario);
+                    miniaturaDestinoControlador.setAnchorPane(anchorPane);
+                    gridPane.addRow(fila, pane);
+
+                    gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+                    gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                    gridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                    gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+                    gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                    gridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+                    fila--;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @FXML
@@ -174,39 +224,4 @@ public class InicioControlador implements Initializable {
         }
      }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        Iterable<Destino> destinos = destinoMgr.allDestinos();
-        int fila = 1;
-        for(Destino x: destinos){
-            if(x.getHabilitada()){
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("miniaturaDestino.fxml"));
-                fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
-                try {
-                    AnchorPane pane = fxmlLoader.load();
-                    miniaturaDestinoControlador = fxmlLoader.getController();
-                    miniaturaDestinoControlador.setData(x, usuario);
-                    miniaturaDestinoControlador.setAnchorPane(anchorPane);
-                    gridPane.addRow(fila, pane);
-
-                    gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
-                    gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                    gridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
-
-                    gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
-                    gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                    gridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
-
-                    fila++;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public void abrirPerfil(ActionEvent actionEvent){
-
-    }
 }
