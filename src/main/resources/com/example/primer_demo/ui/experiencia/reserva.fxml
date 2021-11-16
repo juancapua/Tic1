@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@reservaStyle.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.experiencia.ReservaControlador">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@reservaStyle.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.experiencia.HacerReservaControlador">
     <JFXTabPane id="tabPane" fx:id="tabPane" prefHeight="600.0" prefWidth="800.0" tabDragPolicy="REORDER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Tab id="detailsTab" fx:id="tab1" text="1. Detalles experiencia">
             <AnchorPane fx:id="pane1">

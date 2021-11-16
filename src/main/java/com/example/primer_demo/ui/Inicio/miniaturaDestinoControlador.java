@@ -3,7 +3,7 @@ package com.example.primer_demo.ui.Inicio;
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.entities.Destino;
 import com.example.primer_demo.business.entities.Usuario;
-import com.example.primer_demo.ui.destino.DestinoControlador;
+import com.example.primer_demo.ui.destino.VerDestinoControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 
@@ -63,15 +62,15 @@ public class miniaturaDestinoControlador {
         Parent root;
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
-        root = fxmlLoader.load(DestinoControlador.class.getResourceAsStream("destination.fxml"));
-        DestinoControlador destinoControlador = fxmlLoader.getController();
+        root = fxmlLoader.load(VerDestinoControlador.class.getResourceAsStream("destination.fxml"));
+        VerDestinoControlador verDestinoControlador = fxmlLoader.getController();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(DestinoControlador.class.getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(VerDestinoControlador.class.getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        destinoControlador.init(destino, usuario);
+        verDestinoControlador.init(destino, usuario);
     }
 
 

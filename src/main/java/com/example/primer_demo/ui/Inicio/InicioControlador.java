@@ -6,8 +6,7 @@ import com.example.primer_demo.business.entities.Destino;
 import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.persistance.DestinoRespository;
 import com.example.primer_demo.ui.Controlador;
-import com.example.primer_demo.ui.destino.DestinoControlador;
-import com.example.primer_demo.ui.destino.vistaOperadorDestinoControlador;
+import com.example.primer_demo.ui.destino.VerDestinoControlador;
 import com.example.primer_demo.ui.usuario.vistaPerfilControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,13 +23,10 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -134,15 +130,15 @@ public class InicioControlador implements Initializable {
     public void cargarDestino(Destino destino, Usuario usuario) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
-        root = fxmlLoader.load(DestinoControlador.class.getResourceAsStream("destination.fxml"));
-        DestinoControlador destinoControlador = fxmlLoader.getController();
+        root = fxmlLoader.load(VerDestinoControlador.class.getResourceAsStream("destination.fxml"));
+        VerDestinoControlador verDestinoControlador = fxmlLoader.getController();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(DestinoControlador.class.getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(VerDestinoControlador.class.getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        destinoControlador.init(destino,usuario);
+        verDestinoControlador.init(destino,usuario);
      }
 
      @FXML
