@@ -56,7 +56,10 @@ public class vistaOperadorDestinoControlador {
             label.setTextFill(Color.web("#ffffff"));
             vbox.getChildren().add(label);
         }
-        descripciontxt.setText("Descripcion: " + this.destino.getDescripcion());
+        Label label = new Label(this.destino.getDescripcion());
+        label.setFont(new Font("Britannic bold", 13));
+        label.setTextFill(Color.web("#ffffff"));
+        vbox2.getChildren().add(label);
 
         Set<Experiencia> usuarios = this.destino.getExperiencias();
         listaObservable = FXCollections.observableArrayList();
@@ -117,6 +120,9 @@ public class vistaOperadorDestinoControlador {
 
     @FXML
     private TableView<Experiencia> tabla;
+
+    @FXML
+    private VBox vbox2;
 
     @FXML
     void bloquearExperiencia(ActionEvent event){

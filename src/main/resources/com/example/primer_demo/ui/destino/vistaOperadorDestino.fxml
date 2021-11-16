@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="463.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.destino.vistaOperadorDestinoControlador">
    <children>
-      <AnchorPane prefHeight="463.0" prefWidth="214.0" style="-fx-background-color: #154360;">
+      <AnchorPane prefHeight="463.0" prefWidth="214.0" scaleShape="false" style="-fx-background-color: #154360;">
          <children>
             <Label fx:id="nombretxt" layoutX="25.0" layoutY="14.0" text="Nombre:" textFill="WHITE">
                <font>
@@ -52,7 +52,7 @@
                   <Font name="Britannic Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="descripciontxt" layoutX="13.0" layoutY="261.0" text="Descripcion:" textFill="WHITE">
+            <Label fx:id="descripciontxt" layoutX="14.0" layoutY="245.0" text="Descripcion:" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="13.0" />
                </font>
@@ -61,6 +61,7 @@
             <Button layoutX="19.0" layoutY="390.0" mnemonicParsing="false" onAction="#bloquearExperiencia" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Bloquear experiencia:" textFill="#154360" />
             <Button layoutX="19.0" layoutY="357.0" mnemonicParsing="false" onAction="#habilitarExperiencia" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar experiencia:" textFill="#154360" />
             <VBox fx:id="vbox" layoutX="98.0" layoutY="176.0" prefHeight="75.0" prefWidth="100.0" />
+            <VBox fx:id="vbox2" layoutX="5.0" layoutY="282.0" prefHeight="69.0" prefWidth="204.0" />
          </children>
       </AnchorPane>
       <Label layoutX="407.0" layoutY="14.0" style="-fx-background-color: transparent;" text="Experiencias:" textFill="#154360">
