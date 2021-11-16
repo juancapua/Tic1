@@ -31,8 +31,14 @@
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
             </Button>
-            <Button layoutX="13.0" layoutY="134.0" mnemonicParsing="false" onAction="#verDestino" prefHeight="25.0" prefWidth="143.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Ver destino" textFill="#154360" />
-            <Button layoutX="13.0" layoutY="170.0" mnemonicParsing="false" onAction="#agregarImagen" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Agregar imagen" textFill="#154360" />
+            <Button layoutX="13.0" layoutY="134.0" mnemonicParsing="false" onAction="#verDestino" prefHeight="25.0" prefWidth="143.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Ver destino" textFill="#154360">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor></Button>
+            <Button layoutX="13.0" layoutY="170.0" mnemonicParsing="false" onAction="#agregarImagen" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Agregar imagen" textFill="#154360">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor></Button>
          </children>
       </AnchorPane>
       <TableView fx:id="tabla" layoutX="204.0" layoutY="31.0" prefHeight="343.0" prefWidth="371.0">

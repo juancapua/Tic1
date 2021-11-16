@@ -15,7 +15,7 @@
         <TextField fx:id="txtCorreo" layoutX="267.0" layoutY="81.0" style="-fx-background-radius: 50;" />
         <Button fx:id="btnAgregar" layoutX="267.0" layoutY="326.0" mnemonicParsing="false" onAction="#addUsuarioOperador" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #154360; -fx-background-radius: 50;" text="Registrar" textFill="WHITE">
             <cursor>
-                <Cursor fx:constant="HAND" />
+                <Cursor fx:constant="CLOSED_HAND" />
             </cursor>
         </Button>
         <Label layoutX="188.0" layoutY="43.0" text="Usuario:" />
@@ -36,6 +36,9 @@
             </cursor>
         </Button>
         <Label layoutX="172.0" layoutY="245.0" text="Operador:" />
-      <ComboBox fx:id="operador" layoutX="267.0" layoutY="241.0" prefWidth="150.0" style="-fx-background-radius: 50;" />
+      <ComboBox fx:id="operador" layoutX="267.0" layoutY="241.0" prefWidth="150.0" style="-fx-background-radius: 50;">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></ComboBox>
     </children>
 </AnchorPane>

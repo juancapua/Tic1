@@ -14,27 +14,45 @@
             <Button layoutX="9.0" layoutY="43.0" mnemonicParsing="false" onAction="#agregarOperador" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: White; -fx-background-radius: 50;" text="Agregar operador" textFill="#154360">
                <font>
                   <Font name="Britannic Bold" size="12.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor></Button>
             <Button fx:id="bloquearOperador" layoutX="9.0" layoutY="83.0" mnemonicParsing="false" onAction="#bloquearOperador" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: White; -fx-background-radius: 50;" text="Bloquear operador" textFill="#154360">
                <font>
                   <Font name="Britannic Bold" size="12.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor></Button>
             <Button fx:id="exit" layoutX="5.0" layoutY="367.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Cerrar sesion" textFill="#154360">
                <font>
                   <Font name="Britannic Bold" size="12.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor></Button>
             <Button fx:id="habilitarOperador" layoutX="9.0" layoutY="124.0" mnemonicParsing="false" onAction="#habilitarOperador" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: White; -fx-background-radius: 50;" text="Habilitar operador" textFill="#154360">
                <font>
                   <Font name="Britannic Bold" size="12.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor></Button>
             <Button layoutX="7.0" layoutY="160.0" mnemonicParsing="false" onAction="#agregarUsuarioOperador" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Agregar usuario Operador" textFill="#154360">
                <font>
                   <Font name="Britannic Bold" size="12.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor></Button>
             <Button layoutX="5.0" layoutY="197.0" mnemonicParsing="false" onAction="#verOperador" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Ver operador" textFill="#154360">
                <font>
                   <Font name="Britannic Bold" size="12.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
             </Button>
             <Button layoutX="7.0" layoutY="232.0" mnemonicParsing="false" onAction="#agregarInteres" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Agregar interes" textFill="#154360">
                <font>

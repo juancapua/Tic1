@@ -14,7 +14,7 @@
       <TextField fx:id="txtCorreo" layoutX="267.0" layoutY="81.0" style="-fx-background-radius: 50;" />
       <Button fx:id="btnAgregar" layoutX="267.0" layoutY="326.0" mnemonicParsing="false" onAction="#addOperador" prefHeight="25.0" prefWidth="149.0" style="-fx-background-radius: 50; -fx-background-color: #154360;" text="Registrar" textFill="WHITE">
          <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
       <Label layoutX="188.0" layoutY="43.0" text="Empresa:" />

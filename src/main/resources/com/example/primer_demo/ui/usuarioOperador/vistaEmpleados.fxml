@@ -16,13 +16,19 @@
       </TableView>
       <AnchorPane prefHeight="411.0" prefWidth="169.0" style="-fx-background-color: #154360;">
          <children>
-            <Button layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#volver" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Volver" textFill="#154360">
+            <Button layoutX="14.0" layoutY="372.0" mnemonicParsing="false" onAction="#volver" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Volver" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
             </Button>
-            <Button layoutX="13.0" layoutY="329.0" mnemonicParsing="false" onAction="#bloquearEmpleado" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Bloquear empleado" textFill="#154360" />
-            <Button layoutX="13.0" layoutY="366.0" mnemonicParsing="false" onAction="#habilitarEmpleado" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar empleado" textFill="#154360" />
+            <Button layoutX="13.0" layoutY="22.0" mnemonicParsing="false" onAction="#bloquearEmpleado" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Bloquear empleado" textFill="#154360">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor></Button>
+            <Button layoutX="14.0" layoutY="65.0" mnemonicParsing="false" onAction="#habilitarEmpleado" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar empleado" textFill="#154360">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor></Button>
          </children>
       </AnchorPane>
    </children>

@@ -22,11 +22,11 @@
       <TextField fx:id="txtUsuario" layoutX="319.0" layoutY="95.0" promptText="Usuario:" style="-fx-background-radius: 50;" />
       <Button fx:id="btnLogin" layoutX="323.0" layoutY="193.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: #154360; -fx-background-radius: 50;" text="Ingresar" textFill="WHITE">
          <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="CLOSED_HAND" />
          </cursor></Button>
       <Button fx:id="btnAgregar" layoutX="353.0" layoutY="271.0" mnemonicParsing="false" onAction="#agregarUsuario" style="-fx-background-color: WHITE;" text="Registrarme!!" textFill="#154360">
          <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
          <font>
             <Font name="Britannic Bold" size="14.0" />
