@@ -20,7 +20,7 @@ public class ExperienciaMgr {
     private DestinoRespository destinoRespository;
 
 
-    public void agregarExperiencia(String nombre, String descripcion, LocalTime horario_apertura, LocalTime horario_cierre, Integer aforo, Boolean se_reserva, Destino destino){
+    public void agregarExperiencia(String nombre, String descripcion, LocalTime horario_apertura, LocalTime horario_cierre, Integer aforo, Boolean se_reserva, Destino destino, String tipo, int duracion){
 
         for(Experiencia x:destino.getExperiencias()) {
             if (x.getNombre().equals(nombre)) {
@@ -28,7 +28,7 @@ public class ExperienciaMgr {
             }
         }
 
-        Experiencia nuevaExperiencia = new Experiencia(nombre, descripcion, horario_apertura,horario_cierre, aforo, se_reserva, destino);
+        Experiencia nuevaExperiencia = new Experiencia(nombre, descripcion, horario_apertura,horario_cierre, aforo, se_reserva, destino, tipo, duracion);
         experienciaRepository.save(nuevaExperiencia);
         destino.addExperiencias(nuevaExperiencia);
     }

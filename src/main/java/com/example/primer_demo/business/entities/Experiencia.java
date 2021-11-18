@@ -25,16 +25,10 @@ public class Experiencia {
     @ManyToOne(targetEntity = Destino.class)
     private Destino destino;
 
-
-/*
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Usuario> usuarios;
-*/
-
     public Experiencia() {
     }
 
-    public Experiencia(String nombre, String descripcion, LocalTime horario_apertura, LocalTime horario_cierre, Integer aforo, Boolean se_reserva, Destino destino) {
+    public Experiencia(String nombre, String descripcion, LocalTime horario_apertura, LocalTime horario_cierre, Integer aforo, Boolean se_reserva, Destino destino, String tipo, int duracion) {
         this.nombre = nombre;
         this.esta_autorizada = false;
         this.descripcion = descripcion;
@@ -43,7 +37,10 @@ public class Experiencia {
         this.aforo = aforo;
         this.se_reserva = se_reserva;
         this.destino = destino;
+        this.tipo = tipo;
+        this.duracion = duracion;
     }
+
 
     public String getNombre() {
         return nombre;
@@ -140,5 +137,35 @@ public class Experiencia {
 
     public void setUsuarios(Set<Usuario> usuarios) {
         this.usuarios = usuarios;
+    }
+
+    @Basic
+    private Integer duracion;
+
+    public Integer getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(Integer duracion) {
+        this.duracion = duracion;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "experiencia")
+    private Set<Reserva> reservas;
+
+    public Set<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Set<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

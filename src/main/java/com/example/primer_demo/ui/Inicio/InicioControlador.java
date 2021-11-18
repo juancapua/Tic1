@@ -7,6 +7,7 @@ import com.example.primer_demo.business.entities.Etiqueta;
 import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.persistance.DestinoRespository;
 import com.example.primer_demo.ui.Controlador;
+import com.example.primer_demo.ui.destino.ExperienciaThumbnailControlador;
 import com.example.primer_demo.ui.destino.VerDestinoControlador;
 import com.example.primer_demo.ui.usuario.vistaPerfilControlador;
 import javafx.event.ActionEvent;
@@ -45,12 +46,10 @@ public class InicioControlador {
     @Autowired
     private DestinoMgr destinoMgr;
 
-    @Autowired
-    private miniaturaDestinoControlador miniaturaDestinoControlador;
 
     private Parent root;
 
-    private Usuario usuario;
+    public static Usuario usuario;
 
     @FXML
     private Button boton;
@@ -96,13 +95,12 @@ public class InicioControlador {
         for(Destino x: destinosOrdenados){
             if(x.getHabilitada()){
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("miniaturaDestino.fxml"));
-                fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
                 try {
-                    AnchorPane pane = fxmlLoader.load();
-                    miniaturaDestinoControlador = fxmlLoader.getController();
-                    miniaturaDestinoControlador.setData(x, usuario);
-                    miniaturaDestinoControlador.setAnchorPane(anchorPane);
+                    AnchorPane pane = fxmlLoader.load(miniaturaDestinoControlador.class.getResourceAsStream("miniaturaDestino.fxml"));
+                    miniaturaDestinoControlador miniatura;
+                    miniatura = fxmlLoader.getController();
+                    miniatura.setData(x);
+                    miniatura.setAnchorPane(anchorPane);
                     gridPane.addRow(fila, pane);
 
                     gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
@@ -188,24 +186,24 @@ public class InicioControlador {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        verDestinoControlador.init(destino,usuario);
+        verDestinoControlador.init(destino);
      }
 
      @FXML
      void busquedaDinamica(KeyEvent event){
         gridPane.getChildren().clear();
         Iterable<Destino> destinosFiltrados = destinoMgr.filtroDeBusqueda(busqueda.getText());
+        Usuario usuario = Controlador.usuario;
         int fila = 1;
         for(Destino x: destinosFiltrados){
             if(x.getHabilitada()){
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("miniaturaDestino.fxml"));
-                fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
                 try {
-                    AnchorPane pane = fxmlLoader.load();
-                    miniaturaDestinoControlador = fxmlLoader.getController();
-                    miniaturaDestinoControlador.setData(x, usuario);
-                    miniaturaDestinoControlador.setAnchorPane(anchorPane);
+                    AnchorPane pane = fxmlLoader.load(miniaturaDestinoControlador.class.getResourceAsStream("miniaturaDestino.fxml"));
+                    miniaturaDestinoControlador miniatura;
+                    miniatura = fxmlLoader.getController();
+                    miniatura.setData(x);
+                    miniatura.setAnchorPane(anchorPane);
                     gridPane.addRow(fila, pane);
 
                     gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);

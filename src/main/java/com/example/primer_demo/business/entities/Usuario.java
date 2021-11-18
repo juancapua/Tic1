@@ -20,7 +20,6 @@ public class Usuario {
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "usuarios")
     private Set<Etiqueta> etiquetas;
 
-
     public Usuario() {
 
     }
@@ -124,6 +123,17 @@ public class Usuario {
 
     public void setManyToMany(Set<Experiencia> favoritos) {
         this.favoritos = favoritos;
+    }
+
+    @OneToMany(mappedBy = "usuario")
+    private Set<Reserva> reservas;
+
+    public Set<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Set<Reserva> reservas) {
+        this.reservas = reservas;
     }
 }
 

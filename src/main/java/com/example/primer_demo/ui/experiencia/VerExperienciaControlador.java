@@ -1,10 +1,13 @@
 package com.example.primer_demo.ui.experiencia;
 
 import com.example.primer_demo.PrimerDemoApplication;
+import com.example.primer_demo.business.UsuarioMgr;
 import com.example.primer_demo.business.entities.Experiencia;
 import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.persistance.ExperienciaRepository;
 import com.example.primer_demo.persistance.UsuarioRepository;
+import com.example.primer_demo.ui.Controlador;
+import com.example.primer_demo.ui.Inicio.InicioControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,15 +15,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.criteria.Predicate;
 import java.io.IOException;
 
 @Component
 public class VerExperienciaControlador {
 
     private Experiencia experiencia;
+    @Autowired
     private ExperienciaRepository experienciaRepository;
+    @Autowired
     private UsuarioRepository usuarios;
 
 
@@ -37,12 +44,14 @@ public class VerExperienciaControlador {
 
     private Usuario usuario;
 
-    public void init(Experiencia experiencia, Usuario usuario) {
+    public void init(Experiencia experiencia) {
         this.experiencia = experiencia;
+        this.usuario = Controlador.usuario;
         experiencia_nombre.setText(experiencia.getNombre());
         destino_nombre.setText(experiencia.getDestino().getNombre());
-        if(usuario.getFavoritos().contains(experiencia)){
+        if(this.usuario.getFavoritos().contains(experiencia)){
             faved=true;
+            fav_icon.setText("\uE735");
         }
     }
 
@@ -55,7 +64,7 @@ public class VerExperienciaControlador {
         } else {
             fav_icon.setText("\uE734");
             faved = false;
-            usuario.getFavoritos().remove(experiencia);
+            usuario.getFavoritos().removeIf(experiencia1 -> (experiencia1.getId()==experiencia.getId()));
         }
         usuarios.save(usuario);
     }

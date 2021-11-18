@@ -71,7 +71,7 @@ public class addExperienciaControlador {
                 Boolean reserva = se_reserva.isSelected();
 
                 try {
-                    experienciaMgr.agregarExperiencia(nombre, desc, apertura, cierre, aforo, reserva, this.destino);
+                    experienciaMgr.agregarExperiencia(nombre, desc, apertura, cierre, aforo, reserva, this.destino, null, 1);
                     showAlert("Experiencia agregado", "Se agrego con exito la experiencia!");
 
                     close(event);

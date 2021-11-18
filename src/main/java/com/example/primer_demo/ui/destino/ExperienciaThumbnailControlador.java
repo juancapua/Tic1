@@ -32,13 +32,10 @@ public class ExperienciaThumbnailControlador {
     @FXML
     private Text desc;
 
-    private Usuario usuario;
-
-    public void init(Experiencia experiencia, Usuario usuario){
+    public void init(Experiencia experiencia){
         this.experiencia = experiencia;
         title.setText(experiencia.getNombre());
         desc.setText(experiencia.getDescripcion());
-        this.usuario = usuario;
     }
 
 
@@ -53,7 +50,7 @@ public class ExperienciaThumbnailControlador {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        verExperienciaControlador.init(experiencia, usuario);
+        verExperienciaControlador.init(experiencia);
     }
 
 

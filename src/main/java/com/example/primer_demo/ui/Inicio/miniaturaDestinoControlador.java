@@ -44,7 +44,7 @@ public class miniaturaDestinoControlador {
     }
 
 
-    public void setData(Destino destino, Usuario usuario){
+    public void setData(Destino destino){
         this.destino = destino;
         titulo.setText(destino.getNombre());
         desc.setText(destino.getDescripcion());
@@ -70,7 +70,7 @@ public class miniaturaDestinoControlador {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        verDestinoControlador.init(destino, usuario);
+        verDestinoControlador.init(destino);
     }
 
 

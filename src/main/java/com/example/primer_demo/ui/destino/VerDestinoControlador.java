@@ -105,10 +105,8 @@ public class VerDestinoControlador {
         }
     }
 
-    public void init(Destino destino, Usuario usuario) throws IOException {
+    public void init(Destino destino) throws IOException {
         //...
-
-        this.usuario = usuario;
 
         this.destino = destino;
         setNombre_destino(destino.getNombre());
@@ -222,7 +220,7 @@ public class VerDestinoControlador {
         FXMLLoader fxmlLoader = new FXMLLoader();
         AnchorPane experienciaContainer = fxmlLoader.load(ExperienciaThumbnailControlador.class.getResourceAsStream("experienciaThumbnail.fxml"));
         ExperienciaThumbnailControlador experienciaThumbnailControlador = fxmlLoader.getController();
-        experienciaThumbnailControlador.init(experiencia, usuario);
+        experienciaThumbnailControlador.init(experiencia);
         experienciaContainer.setId("experience");
         experiences.add(experienciaContainer,0,currentY); // Adds the container to the scene
     }

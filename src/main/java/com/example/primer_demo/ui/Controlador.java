@@ -5,6 +5,7 @@ import com.example.primer_demo.business.AdminMgr;
 import com.example.primer_demo.business.OperadorMgr;
 import com.example.primer_demo.business.UsuarioMgr;
 import com.example.primer_demo.business.UsuarioOperadorMgr;
+import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.business.exceptions.UsuarioNotExist;
 import com.example.primer_demo.persistance.AdminRepository;
@@ -70,6 +71,8 @@ public class Controlador {
 
     @FXML
     private TextField txtContrasena;
+
+    public static Usuario usuario;
 
     @FXML
     void agregarUsuario(ActionEvent event) throws Exception {
@@ -161,8 +164,9 @@ public class Controlador {
                         stage.setScene(new Scene(root));
                         stage.getIcons().add(new Image("images/logo_final.png"));
                         stage.setResizable(false);
+                        this.usuario = usuarioMgr.traerUsuario(usuario);
                         InicioControlador controlador = fxmlLoader.getController();
-                        controlador.setUsuario(usuarioMgr.traerUsuario(usuario));
+                        controlador.setUsuario(this.usuario);
                         stage.show();
 
                     }else{

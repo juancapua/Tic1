@@ -18,27 +18,21 @@
                   <Font size="26.0" />
                </font>
             </Text>
-            <Text fx:id="detalles" layoutX="28.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fermentum viverra commodo. Donec pellentesque tincidunt nibh non ultrices. Proin felis ante, molestie eu vulputate non, ornare a augue. Aenean auctor metus luctus lectus consectetur dapibus. Nullam vulputate massa ut blandit blandit. Nulla ac nibh venenatis sapien hendrerit venenatis eu ut ex. Nullam non finibus magna. Maecenas non mauris in metus tincidunt malesuada nec nec eros. Maecenas dictum arcu eu porttitor vehicula. Integer non bibendum nisl.Vivamus mattis nunc ac auctor efficitur. Nunc molestie rutrum lacus, nec aliquet risus mollis at. Morbi molestie sapien ac turpis euismod, sit amet sagittis quam volutpat. Praesent sollicitudin feugiat molestie. Duis vel malesuada ipsum, congue tincidunt diam. Integer tortor orci, bibendum at pharetra fermentum, consequat in lorem." wrappingWidth="450.0">
+            <Text fx:id="detalles" layoutX="28.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fermentum viverra commodo. Donec pellentesque tincidunt nibh non ultrices. Proin felis ante, molestie eu vulputate non, ornare a augue. Aenean auctor metus luctus lectus consectetur dapibus. Nullam vulputate massa ut blandit blandit. Nulla ac nibh venenatis sapien hendrerit venenatis eu ut ex. Nullam non finibus magna. Maecenas non mauris in metus tincidunt malesuada nec nec eros. Maecenas dictum arcu eu porttitor vehicula. Integer non bibendum nisl.Vivamus mattis nunc ac auctor efficitur. Nunc molestie rutrum lacus, nec aliquet risus mollis at. Morbi molestie sapien ac turpis euismod, sit amet sagittis quam volutpat. Praesent sollicitudin feugiat molestie. Duis vel malesuada ipsum, congue tincidunt diam." wrappingWidth="450.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
             <AnchorPane fx:id="imagen" layoutX="532.0" layoutY="110.0" prefHeight="244.0" prefWidth="229.0" />
-            <AnchorPane layoutX="20.0" layoutY="384.0" prefHeight="150.0" prefWidth="588.0">
+            <AnchorPane fx:id="reservaContainer" layoutX="21.0" layoutY="335.0" prefHeight="196.0" prefWidth="588.0">
                <children>
-                   <MFXDatePicker fx:id="fechaInicio" layoutX="14.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#dateCheck" prefHeight="30.0" prefWidth="144.0">
-
-                   </MFXDatePicker>
                   <Text fx:id="detallesTitulo1" layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserva">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Text>
-                  <MFXDatePicker fx:id="fechaFin" onMouseClicked="#dateCheck" layoutX="200.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="144.0" />
-                  <Text fx:id="textoInicio" layoutX="19.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de Inicio" />
-                  <Text fx:id="textoFin" layoutX="200.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de Finalización" />
                </children></AnchorPane>
-             <MFXButton fx:id="siguiente" onAction="#siguiente" buttonType="RAISED" depthLevel="LEVEL1" disable="true" layoutX="593.0" layoutY="448.0" prefHeight="37.0" prefWidth="119.0" text="Siguiente" textAlignment="CENTER">
+             <MFXButton fx:id="siguiente" buttonType="RAISED" depthLevel="LEVEL1" disable="true" layoutX="593.0" layoutY="448.0" onAction="#siguiente" prefHeight="37.0" prefWidth="119.0" text="Siguiente" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
