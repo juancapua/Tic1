@@ -32,6 +32,9 @@ public class miniaturaDestinoControlador {
     @FXML
     private Label desc;
 
+    @FXML
+    private Label horario;
+
     private Destino destino;
 
     private Parent root;
@@ -49,6 +52,7 @@ public class miniaturaDestinoControlador {
         titulo.setText(destino.getNombre());
         desc.setText(destino.getDescripcion());
         desc.setWrapText(true);
+        horario.setText(destino.getHorario_apertura() + "-" + destino.getHorario_cierre());
         if(destino.getImages().size() > 0){
             InputStream inputStream = new ByteArrayInputStream(destino.getImages().get(0));
             imageView.setImage(new Image(inputStream));

@@ -73,14 +73,17 @@ public class InicioControlador {
         this.usuario = usuario;
         texto.setText(this.usuario.getNombreDeUsuario());
 
-        Set<Etiqueta> etiquetasUsuario = this.usuario.getEtiquetas();
+        Set<String> etiquetasUsuario = new HashSet<>();
+        for(Etiqueta x: this.usuario.getEtiquetas()){
+            etiquetasUsuario.add(x.getNombre());
+        }
 
         Iterable<Destino> destinos = destinoMgr.allDestinos();
 
         Set<Destino> destinosOrdenados = new HashSet<>();
         for(Destino y: destinos){
             for(Etiqueta destinoEtiquetas: y.getEtiquetas()){
-                if(etiquetasUsuario.contains(destinoEtiquetas)){
+                if(etiquetasUsuario.contains(destinoEtiquetas.getNombre())){
                     destinosOrdenados.add(y);
                 }
             }
@@ -91,7 +94,7 @@ public class InicioControlador {
             }
         }
 
-        int fila = destinosOrdenados.size();
+        int fila = 1;
         for(Destino x: destinosOrdenados){
             if(x.getHabilitada()){
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -111,7 +114,7 @@ public class InicioControlador {
                     gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
                     gridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
 
-                    fila--;
+                    fila++;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

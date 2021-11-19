@@ -29,5 +29,6 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
+      <Label fx:id="horario" layoutX="270.0" layoutY="102.0" text="Horario:" textFill="WHITE" />
    </children>
 </AnchorPane>
