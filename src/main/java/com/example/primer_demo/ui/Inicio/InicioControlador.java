@@ -122,6 +122,7 @@ public class InicioControlador {
     @FXML
     void cerrarSesion(ActionEvent event) throws IOException {
 
+        gridPane.getChildren().removeAll();
         close(event);
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);

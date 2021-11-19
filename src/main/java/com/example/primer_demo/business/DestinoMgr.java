@@ -46,7 +46,7 @@ public class DestinoMgr {
     }
 
 
-    public void agregarDestino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, Set<Etiqueta> etiquetas, String desc, byte[] imagenes) throws InvalidInformation, IOException {
+    public void agregarDestino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, Set<Etiqueta> etiquetas, String desc, byte[] imagenes, List<String> dias) throws InvalidInformation, IOException {
 
         if(nombre == null || "".equals(nombre) || contacto == null || "".equals(contacto) || operador == null || "".equals(operador)){
             throw new InvalidInformation("Alguno de los datos ingresados no es correcto");
@@ -57,7 +57,7 @@ public class DestinoMgr {
         }
 
 
-        Destino nuevoDestino = new Destino(nombre,contacto,aforo,horario_apertura,horario_cierre,direccion,departamento,operador, desc, imagenes);
+        Destino nuevoDestino = new Destino(nombre,contacto,aforo,horario_apertura,horario_cierre,direccion,departamento,operador, desc, imagenes, dias);
         nuevoDestino.addEtiquetas(etiquetas);
         destinoRespository.save(nuevoDestino);
         for(Etiqueta x: etiquetas){

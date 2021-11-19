@@ -93,7 +93,12 @@ public class addDestinoControlador implements Initializable {
     @FXML
     private Button elegirImagenes;
 
+    @FXML
+    private VBox boxDias;
+
     private byte[] imagenes;
+
+    private String[] dias = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
 
     public void setOperador(Operador operador){
         this.operador = operador;
@@ -124,6 +129,13 @@ public class addDestinoControlador implements Initializable {
                 Operador operador = this.operador;
                 String desc = descripcion.getText();
                 byte[] nuevaImagen = this.imagenes;
+                List<String> diasElejidos = new ArrayList();
+                for(Node dia: boxDias.getChildren()){
+                    CheckBox checkBox = (CheckBox) dia;
+                    if(checkBox.isSelected()){
+                        diasElejidos.add((String) checkBox.getUserData());
+                    }
+                }
 
                 for(Node node:vbox.getChildren()){
                     CheckBox checkBox = (CheckBox) node;
@@ -133,7 +145,7 @@ public class addDestinoControlador implements Initializable {
                 }
 
                 try {
-                    destinoMgr.agregarDestino(nombre,contacto,aforo,horario_aper,horario_cie,direccion,departamento_elejido,operador,etiquetas, desc, nuevaImagen);
+                    destinoMgr.agregarDestino(nombre,contacto,aforo,horario_aper,horario_cie,direccion,departamento_elejido,operador,etiquetas, desc, nuevaImagen, diasElejidos);
                     showAlert("Destino agregado", "Se agrego con exito el destino!");
 
                     close(event);
@@ -160,6 +172,12 @@ public class addDestinoControlador implements Initializable {
             interestCheckBox.setUserData(x);
             vbox.getChildren().add(interestCheckBox);
         }
+        for(String x: dias){
+            CheckBox diaCheckBox = new CheckBox(x);
+            diaCheckBox.setUserData(x);
+            boxDias.getChildren().add(diaCheckBox);
+        }
+
     }
 
     @FXML

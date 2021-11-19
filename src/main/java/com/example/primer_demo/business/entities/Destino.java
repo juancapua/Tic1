@@ -1,5 +1,9 @@
 package com.example.primer_demo.business.entities;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.ManyToAny;
+
 import javax.persistence.*;
 
 import java.io.File;
@@ -25,13 +29,16 @@ public class Destino{
     private String descripcion;
     private String direccion;
 
+    @ElementCollection
+    private List<String> dias;
+
     @ElementCollection(fetch = FetchType.EAGER)
     private List<byte[]> images;
 
     //mappedBy es el atributo tipo Destino de la clase especificada en la lista
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "destino")
     private Set<Experiencia> experiencias;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "destino")
+    @OneToMany( fetch = FetchType.EAGER, mappedBy = "destino")
     private Set<Entrada> entradas;
 
     //JoinColumn es la columna que referenciará a la entidad target
@@ -45,11 +52,12 @@ public class Destino{
     @ManyToOne(targetEntity = Departamento.class)
     private Departamento departamento;
 
+
     public Destino(){
 
     }
 
-    public Destino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, String descripcion, byte[] imagen) {
+    public Destino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, String descripcion, byte[] imagen, List<String> dias) {
         this.nombre = nombre;
         this.contacto = contacto;
         this.aforo = aforo;
@@ -63,6 +71,7 @@ public class Destino{
         this.descripcion = descripcion;
         this.images = new ArrayList<>();
         this.images.add(imagen);
+        this.dias = dias;
     }
 
 
@@ -168,6 +177,10 @@ public class Destino{
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public List<String> getDias() {
+        return dias;
     }
 
     public void addEtiquetas(Set<Etiqueta> etiquetas){
