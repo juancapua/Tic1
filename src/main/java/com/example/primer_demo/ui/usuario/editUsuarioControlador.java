@@ -66,7 +66,7 @@ public class editUsuarioControlador {
     @FXML
     void cambiarDatos(ActionEvent event) throws IOException {
         Boolean entro = false;
-        if(nuevaContratxt.getText() != null && !nuevaContratxt.getText().equals("") && confNuevaConttxt.getText() != null && !confNuevaConttxt.getText().equals("")){
+        if(nuevaContratxt.getText() != null && !nuevaContratxt.getText().equals("") && confNuevaConttxt.getText() != null && !confNuevaConttxt.getText().equals("") && nuevaContratxt.getText().equals(confNuevaConttxt.getText())){
             usuarioMgr.cambiarContrasena(this.usuario, nuevaContratxt.getText());
             entro = true;
         }
@@ -107,19 +107,8 @@ public class editUsuarioControlador {
             stage.show();
         }
         else {
-            showAlert("Sin cambios", "No se registraron nuevos cambios");
-            close(event);
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+            showAlert("Sin cambios", "No se registraron nuevos cambios o los mismos son incorrectos");
 
-            root = fxmlLoader.load(vistaPerfilControlador.class.getResourceAsStream("vistaPerfil.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getIcons().add(new Image("images/logo_final.png"));
-            stage.setResizable(false);
-            vistaPerfilControlador vistaPerfilControlador =fxmlLoader.getController();
-            vistaPerfilControlador.setUsuario(this.usuario);
-            stage.show();
         }
 
     }
