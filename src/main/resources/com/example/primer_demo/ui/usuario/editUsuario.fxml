@@ -18,8 +18,8 @@
             </Button>
          </children>
       </AnchorPane>
-      <PasswordField fx:id="nuevaContratxt" layoutX="340.0" layoutY="66.0" />
-      <PasswordField fx:id="confNuevaConttxt" layoutX="340.0" layoutY="106.0" />
+      <PasswordField fx:id="nuevaContratxt" layoutX="340.0" layoutY="66.0" style="-fx-background-radius: 50;" />
+      <PasswordField fx:id="confNuevaConttxt" layoutX="340.0" layoutY="106.0" style="-fx-background-radius: 50;" />
       <Label layoutX="218.0" layoutY="70.0" text="Nueva contraseña:" />
       <Label layoutX="194.0" layoutY="110.0" text="Conf. nueva contraseña" />
       <VBox fx:id="interesesBox" layoutX="341.0" layoutY="148.0" prefHeight="163.0" prefWidth="149.0" />

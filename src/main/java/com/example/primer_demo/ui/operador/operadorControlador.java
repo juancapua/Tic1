@@ -13,6 +13,7 @@ import com.example.primer_demo.ui.Controlador;
 import com.example.primer_demo.ui.admin.adminControlador;
 import com.example.primer_demo.ui.destino.addDestinoControlador;
 import com.example.primer_demo.ui.destino.addImagenDestinoControlador;
+import com.example.primer_demo.ui.destino.editDestinoControlador;
 import com.example.primer_demo.ui.destino.vistaOperadorDestinoControlador;
 import com.example.primer_demo.ui.usuarioOperador.vistaEmpleadoControlador;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -131,6 +132,24 @@ public class operadorControlador {
             stage.setResizable(false);
             vistaOperadorDestinoControlador vistaOperadorDestinoControlador = fxmlLoader.getController();
             vistaOperadorDestinoControlador.setDestino(seleccion);
+            stage.show();
+        }
+    }
+
+    @FXML
+    void cambiarDestino(ActionEvent event) throws IOException {
+        Destino seleccion = tabla.getSelectionModel().getSelectedItem();
+        if(seleccion != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+            root = fxmlLoader.load(editDestinoControlador.class.getResourceAsStream("editDestino.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(new Image("images/logo_final.png"));
+            stage.setResizable(false);
+            editDestinoControlador editDestinoControlador = fxmlLoader.getController();
+            editDestinoControlador.setDestino(seleccion);
             stage.show();
         }
     }

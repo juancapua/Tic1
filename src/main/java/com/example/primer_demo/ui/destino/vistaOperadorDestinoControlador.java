@@ -59,6 +59,7 @@ public class vistaOperadorDestinoControlador {
         Label label = new Label(this.destino.getDescripcion());
         label.setFont(new Font("Britannic bold", 13));
         label.setTextFill(Color.web("#ffffff"));
+        label.setWrapText(true);
         vbox2.getChildren().add(label);
 
         Set<Experiencia> usuarios = this.destino.getExperiencias();

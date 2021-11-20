@@ -91,9 +91,11 @@ public class UsuarioMgr {
         usuarioRepository.save(usuario);
         for(Etiqueta x: etiquetasViejas){
             x.deleteUsuario(usuario);
+            etiquetasRepository.save(x);
         }
         for(Etiqueta x: etiquetas){
             x.addUsuario(usuario);
+            etiquetasRepository.save(x);
         }
     }
     

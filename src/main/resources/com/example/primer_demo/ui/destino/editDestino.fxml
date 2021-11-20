@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="444.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.destino.editDestinoControlador">
+   <children>
+      <AnchorPane layoutY="-3.0" prefHeight="450.0" prefWidth="174.0" style="-fx-background-color: #154360;">
+         <children>
+            <Button layoutX="10.0" layoutY="411.0" mnemonicParsing="false" onAction="#volver" prefHeight="25.0" prefWidth="153.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Volver" textFill="#154360">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="contactotxt" layoutX="324.0" layoutY="31.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="aforotxt" layoutX="324.0" layoutY="72.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="hor_aper_txt" layoutX="324.0" layoutY="115.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="hor_cie_txt" layoutX="324.0" layoutY="158.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="descripciontxt" layoutX="324.0" layoutY="199.0" style="-fx-background-radius: 50;" />
+      <VBox fx:id="BoxIntereses" layoutX="324.0" layoutY="262.0" prefHeight="136.0" prefWidth="149.0" />
+      <Button layoutX="322.0" layoutY="408.0" mnemonicParsing="false" onAction="#cambiarDatos" prefHeight="25.0" prefWidth="153.0" style="-fx-background-radius: 50; -fx-background-color: #154360;" text="Guardar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="243.0" layoutY="262.0" text="Etiquetas:" />
+      <Label layoutX="235.0" layoutY="203.0" text="Descripcion:" />
+      <Label layoutX="224.0" layoutY="162.0" text="Horario cierre:" />
+      <Label layoutX="210.0" layoutY="119.0" text="Horario apertura:" />
+      <Label layoutX="262.0" layoutY="76.0" text="Aforo:" />
+      <Label layoutX="241.0" layoutY="35.0" text="Contacto:" />
+   </children>
+</AnchorPane>

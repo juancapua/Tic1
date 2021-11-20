@@ -53,7 +53,7 @@
                   <Font name="Britannic Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="descripciontxt" layoutX="14.0" layoutY="245.0" text="Descripcion:" textFill="WHITE">
+            <Label fx:id="descripciontxt" layoutX="15.0" layoutY="236.0" text="Descripcion:" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="13.0" />
                </font>
@@ -70,8 +70,13 @@
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor></Button>
-            <VBox fx:id="vbox" layoutX="98.0" layoutY="176.0" prefHeight="75.0" prefWidth="100.0" />
-            <VBox fx:id="vbox2" layoutX="5.0" layoutY="282.0" prefHeight="69.0" prefWidth="204.0" />
+            <VBox fx:id="vbox" layoutX="97.0" layoutY="165.0" prefHeight="71.0" prefWidth="100.0" />
+            <VBox fx:id="vbox2" layoutX="15.0" layoutY="255.0" prefHeight="63.0" prefWidth="194.0" />
+            <Button layoutX="19.0" layoutY="325.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Modificar experiencia" textFill="#154360">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
       <Label layoutX="407.0" layoutY="14.0" style="-fx-background-color: transparent;" text="Experiencias:" textFill="#154360">

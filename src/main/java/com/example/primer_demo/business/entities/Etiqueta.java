@@ -76,6 +76,8 @@ public class Etiqueta {
 
     public void addDestino(Destino destino){
         this.destinos.add(destino);
-
+    }
+    public void deleteDestino(Destino destino){
+        this.destinos.remove(destino);
     }
 }

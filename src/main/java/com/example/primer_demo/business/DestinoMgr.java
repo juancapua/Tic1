@@ -114,4 +114,43 @@ public class DestinoMgr {
     public Iterable<Destino> allDestinos(){
         return destinoRespository.findAll();
     }
+
+    public void cambiarContacto(Destino destino, String contacto){
+        destino.setContacto(contacto);
+        destinoRespository.save(destino);
+    }
+
+    public void cambiarAforo(Destino destino, Integer aforo){
+        destino.setAforo(aforo);
+        destinoRespository.save(destino);
+    }
+
+    public void cambiarApertura(Destino destino, LocalTime hora){
+        destino.setHorario_apertura(hora);
+        destinoRespository.save(destino);
+    }
+
+    public void cambiarCierre(Destino destino, LocalTime hora){
+        destino.setHorario_cierre(hora);
+        destinoRespository.save(destino);
+    }
+
+    public void cambiarDescripcion(Destino destino, String desc){
+        destino.setDescripcion(desc);
+        destinoRespository.save(destino);
+    }
+
+    public void cambiarEtiquetas(Destino destino, Set<Etiqueta> etiquetas){
+        Set<Etiqueta> etiquetasViejas = destino.getEtiquetas();
+        destino.setEtiquetas(etiquetas);
+        destinoRespository.save(destino);
+        for(Etiqueta x: etiquetasViejas){
+            x.deleteDestino(destino);
+            etiquetasRepository.save(x);
+        }
+        for(Etiqueta x:etiquetas){
+            x.addDestino(destino);
+            etiquetasRepository.save(x);
+        }
+    }
 }
