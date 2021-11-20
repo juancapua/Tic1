@@ -29,9 +29,6 @@ public class Destino{
     private String descripcion;
     private String direccion;
 
-    @ElementCollection
-    private List<String> dias;
-
     @ElementCollection(fetch = FetchType.EAGER)
     private List<byte[]> images;
 
@@ -52,12 +49,15 @@ public class Destino{
     @ManyToOne(targetEntity = Departamento.class)
     private Departamento departamento;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Dia> dias;
+
 
     public Destino(){
 
     }
 
-    public Destino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, String descripcion, byte[] imagen, List<String> dias) {
+    public Destino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, String descripcion, byte[] imagen, Set<Dia> dias) {
         this.nombre = nombre;
         this.contacto = contacto;
         this.aforo = aforo;
@@ -179,7 +179,15 @@ public class Destino{
         this.descripcion = descripcion;
     }
 
-    public List<String> getDias() {
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public Set<Dia> getDias() {
         return dias;
     }
 

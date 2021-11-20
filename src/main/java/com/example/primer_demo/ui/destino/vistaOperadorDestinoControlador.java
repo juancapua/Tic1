@@ -2,10 +2,7 @@ package com.example.primer_demo.ui.destino;
 
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.ExperienciaMgr;
-import com.example.primer_demo.business.entities.Destino;
-import com.example.primer_demo.business.entities.Etiqueta;
-import com.example.primer_demo.business.entities.Experiencia;
-import com.example.primer_demo.business.entities.UsuarioOperador;
+import com.example.primer_demo.business.entities.*;
 import com.example.primer_demo.ui.Inicio.InicioControlador;
 import com.example.primer_demo.ui.experiencia.addExperienciaControlador;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -22,6 +19,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -49,6 +47,13 @@ public class vistaOperadorDestinoControlador {
         aforotxt.setText("Aforo: " + this.destino.getAforo());
         horario_aper_txt.setText("Horario apertura: " + this.destino.getHorario_apertura());
         horario_cie_txt.setText("Horario cierre: " + this.destino.getHorario_cierre());
+        for(Dia x: destino.getDias()){
+            Label label = new Label("-" + x.getNombre());
+            label.setFont(new Font("Britannic bold", 11));
+            label.setTextFill(Color.web("#ffffff"));
+            vBox2.getChildren().add(label);
+        }
+        direcciontxt.setText("Direccion: " + this.destino.getDireccion());
         departamentotxt.setText("Departamento: " + this.destino.getDepartamento().getNombre_pk());
         for(Etiqueta x: this.destino.getEtiquetas()){
             Label label = new Label("-" + x.getNombre());
@@ -87,6 +92,9 @@ public class vistaOperadorDestinoControlador {
     private Label aforotxt;
 
     @FXML
+    private VBox vBox2;
+
+    @FXML
     private VBox vbox;
 
     @FXML
@@ -115,6 +123,9 @@ public class vistaOperadorDestinoControlador {
 
     @FXML
     private Label horario_cie_txt;
+
+    @FXML
+    private Label diasHabiles;
 
     @FXML
     private Label nombretxt;

@@ -1,13 +1,7 @@
 package com.example.primer_demo.ui.destino;
 
-import com.example.primer_demo.business.CiudadMgr;
-import com.example.primer_demo.business.DepartamentoMgr;
-import com.example.primer_demo.business.DestinoMgr;
-import com.example.primer_demo.business.EtiquetaMgr;
-import com.example.primer_demo.business.entities.Ciudad;
-import com.example.primer_demo.business.entities.Departamento;
-import com.example.primer_demo.business.entities.Etiqueta;
-import com.example.primer_demo.business.entities.Operador;
+import com.example.primer_demo.business.*;
+import com.example.primer_demo.business.entities.*;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.persistance.OperadorRepository;
 import com.example.primer_demo.persistance.UsuarioRepository;
@@ -45,6 +39,9 @@ public class addDestinoControlador implements Initializable {
 
     @Autowired
     private DepartamentoMgr departamentoMgr;
+
+    @Autowired
+    private DiaMgr diaMgr;
 
     @Autowired
     private OperadorRepository operadorRepository;
@@ -98,7 +95,6 @@ public class addDestinoControlador implements Initializable {
 
     private byte[] imagenes;
 
-    private String[] dias = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
 
     public void setOperador(Operador operador){
         this.operador = operador;
@@ -129,11 +125,11 @@ public class addDestinoControlador implements Initializable {
                 Operador operador = this.operador;
                 String desc = descripcion.getText();
                 byte[] nuevaImagen = this.imagenes;
-                List<String> diasElejidos = new ArrayList();
+                Set<Dia> diasElejidos = new HashSet<>();
                 for(Node dia: boxDias.getChildren()){
                     CheckBox checkBox = (CheckBox) dia;
                     if(checkBox.isSelected()){
-                        diasElejidos.add((String) checkBox.getUserData());
+                        diasElejidos.add((Dia) checkBox.getUserData());
                     }
                 }
 
@@ -172,8 +168,8 @@ public class addDestinoControlador implements Initializable {
             interestCheckBox.setUserData(x);
             vbox.getChildren().add(interestCheckBox);
         }
-        for(String x: dias){
-            CheckBox diaCheckBox = new CheckBox(x);
+        for(Dia x: diaMgr.allDias()){
+            CheckBox diaCheckBox = new CheckBox(x.getNombre());
             diaCheckBox.setUserData(x);
             boxDias.getChildren().add(diaCheckBox);
         }

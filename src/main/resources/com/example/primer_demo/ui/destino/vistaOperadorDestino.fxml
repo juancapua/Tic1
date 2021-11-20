@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="463.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.destino.vistaOperadorDestinoControlador">
+<AnchorPane prefHeight="553.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.destino.vistaOperadorDestinoControlador">
    <children>
-      <AnchorPane prefHeight="463.0" prefWidth="214.0" scaleShape="false" style="-fx-background-color: #154360;">
+      <AnchorPane fx:id="boxDias" prefHeight="553.0" prefWidth="233.0" scaleShape="false" style="-fx-background-color: #154360;">
          <children>
             <Label fx:id="nombretxt" layoutX="25.0" layoutY="14.0" text="Nombre:" textFill="WHITE">
                <font>
@@ -38,45 +38,51 @@
                   <Font name="Britannic Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="etiquetastxt" layoutX="21.0" layoutY="173.0" text="Etiquetas:" textFill="WHITE">
+            <Label fx:id="etiquetastxt" layoutX="27.0" layoutY="270.0" text="Etiquetas:" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="departamentotxt" layoutX="11.0" layoutY="148.0" text="Departamento:" textFill="WHITE">
+            <Label fx:id="departamentotxt" layoutX="17.0" layoutY="251.0" text="Departamento:" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="direcciontxt" layoutX="26.0" layoutY="125.0" text="Direccion:" textFill="WHITE">
+            <Label fx:id="direcciontxt" layoutX="30.0" layoutY="225.0" text="Direccion:" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="descripciontxt" layoutX="15.0" layoutY="236.0" text="Descripcion:" textFill="WHITE">
+            <Label fx:id="descripciontxt" layoutX="15.0" layoutY="342.0" text="Descripcion:" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="13.0" />
                </font>
             </Label>
-            <Button layoutX="19.0" layoutY="424.0" mnemonicParsing="false" onAction="#addExperiencia" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Agregar experiencia" textFill="#154360">
+            <Button layoutX="33.0" layoutY="514.0" mnemonicParsing="false" onAction="#addExperiencia" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Agregar experiencia" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor></Button>
-            <Button layoutX="19.0" layoutY="390.0" mnemonicParsing="false" onAction="#bloquearExperiencia" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Bloquear experiencia:" textFill="#154360">
+            <Button layoutX="33.0" layoutY="480.0" mnemonicParsing="false" onAction="#bloquearExperiencia" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Bloquear experiencia:" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor></Button>
-            <Button layoutX="19.0" layoutY="357.0" mnemonicParsing="false" onAction="#habilitarExperiencia" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar experiencia:" textFill="#154360">
+            <Button layoutX="33.0" layoutY="449.0" mnemonicParsing="false" onAction="#habilitarExperiencia" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Habilitar experiencia:" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor></Button>
-            <VBox fx:id="vbox" layoutX="97.0" layoutY="165.0" prefHeight="71.0" prefWidth="100.0" />
-            <VBox fx:id="vbox2" layoutX="15.0" layoutY="255.0" prefHeight="63.0" prefWidth="194.0" />
-            <Button layoutX="19.0" layoutY="325.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Modificar experiencia" textFill="#154360">
+            <VBox fx:id="vbox" layoutX="98.0" layoutY="269.0" prefHeight="72.0" prefWidth="100.0" />
+            <VBox fx:id="vbox2" layoutX="24.0" layoutY="355.0" prefHeight="63.0" prefWidth="194.0" />
+            <Button layoutX="33.0" layoutY="418.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Modificar experiencia" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
             </Button>
+            <Label fx:id="diasHabiles" layoutX="9.0" layoutY="123.0" text="Dias Habiles:" textFill="WHITE">
+               <font>
+                  <Font name="Britannic Bold" size="13.0" />
+               </font>
+            </Label>
+            <VBox fx:id="vBox2" layoutX="90.0" layoutY="123.0" prefHeight="96.0" prefWidth="109.0" />
          </children>
       </AnchorPane>
       <Label layoutX="407.0" layoutY="14.0" style="-fx-background-color: transparent;" text="Experiencias:" textFill="#154360">

@@ -1,12 +1,10 @@
 package com.example.primer_demo.business;
 
 import com.example.primer_demo.PrimerDemoApplication;
-import com.example.primer_demo.business.entities.Departamento;
-import com.example.primer_demo.business.entities.Destino;
-import com.example.primer_demo.business.entities.Etiqueta;
-import com.example.primer_demo.business.entities.Operador;
+import com.example.primer_demo.business.entities.*;
 import com.example.primer_demo.business.exceptions.InvalidInformation;
 import com.example.primer_demo.persistance.DestinoRespository;
+import com.example.primer_demo.persistance.DiaRepository;
 import com.example.primer_demo.persistance.EtiquetasRepository;
 import com.example.primer_demo.persistance.OperadorRepository;
 import javafx.scene.control.Alert;
@@ -36,6 +34,9 @@ public class DestinoMgr {
     private EtiquetasRepository etiquetasRepository;
 
     @Autowired
+    private DiaRepository diaRepository;
+
+    @Autowired
     private OperadorRepository operadorRepository;
 
     public void agregarImagenes(Destino destino,List<byte[]> lista){
@@ -46,7 +47,7 @@ public class DestinoMgr {
     }
 
 
-    public void agregarDestino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, Set<Etiqueta> etiquetas, String desc, byte[] imagenes, List<String> dias) throws InvalidInformation, IOException {
+    public void agregarDestino(String nombre, String contacto, Integer aforo, LocalTime horario_apertura, LocalTime horario_cierre, String direccion, Departamento departamento, Operador operador, Set<Etiqueta> etiquetas, String desc, byte[] imagenes, Set<Dia> dias) throws InvalidInformation, IOException {
 
         if(nombre == null || "".equals(nombre) || contacto == null || "".equals(contacto) || operador == null || "".equals(operador)){
             throw new InvalidInformation("Alguno de los datos ingresados no es correcto");
@@ -63,6 +64,10 @@ public class DestinoMgr {
         for(Etiqueta x: etiquetas){
             x.addDestino(nuevoDestino);
             etiquetasRepository.save(x);
+        }
+        for(Dia x: dias){
+            x.addDestino(nuevoDestino);
+            diaRepository.save(x);
         }
 
     }
