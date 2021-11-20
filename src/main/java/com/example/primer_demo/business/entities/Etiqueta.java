@@ -62,6 +62,10 @@ public class Etiqueta {
         this.usuarios.add(usuario);
     }
 
+    public void deleteUsuario(Usuario usuario){
+        this.usuarios.remove(usuario);
+    }
+
     public Set<Destino> getDestinos() {
         return destinos;
     }

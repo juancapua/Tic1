@@ -74,5 +74,27 @@ public class UsuarioMgr {
         }
         return false;
     }
+
+    public void cambiarContrasena(Usuario usuario, String contra){
+        usuario.setContrasena(contra);
+        usuarioRepository.save(usuario);
+    }
+
+    public void habilitarVacuna(Usuario usuario){
+        usuario.setVacunado(true);
+        usuarioRepository.save(usuario);
+    }
+
+    public void cambiarIntereses(Usuario usuario, Set<Etiqueta> etiquetas){
+        Set<Etiqueta> etiquetasViejas = usuario.getEtiquetas();
+        usuario.setEtiquetas(etiquetas);
+        usuarioRepository.save(usuario);
+        for(Etiqueta x: etiquetasViejas){
+            x.deleteUsuario(usuario);
+        }
+        for(Etiqueta x: etiquetas){
+            x.addUsuario(usuario);
+        }
+    }
     
 }

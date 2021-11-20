@@ -106,6 +106,22 @@ public class vistaPerfilControlador {
 
     }
 
+    @FXML
+    void modificarPerfil(ActionEvent event) throws IOException {
+        close(event);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+        root = fxmlLoader.load(editUsuarioControlador.class.getResourceAsStream("editUsuario.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("images/logo_final.png"));
+        stage.setResizable(false);
+        editUsuarioControlador editUsuarioControlador = fxmlLoader.getController();
+        editUsuarioControlador.setUsuario(this.usuario);
+        stage.show();
+    }
+
 
 
 
