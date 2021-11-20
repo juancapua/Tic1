@@ -19,6 +19,7 @@ import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Tab;
@@ -36,6 +37,8 @@ import org.springframework.stereotype.Component;
 import javax.swing.text.TableView;
 import javax.swing.text.html.ImageView;
 import java.awt.*;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -48,6 +51,8 @@ public class HacerReservaControlador {
 
     @Autowired
     private ReservaRepository reservaRepository;
+
+    private Experiencia experiencia;
 
     @FXML
     private HBox tituloExperiencia;
@@ -78,6 +83,13 @@ public class HacerReservaControlador {
     @FXML
     private AnchorPane reservaContainer;
 
+    @FXML
+    private Button check;
+
+    @FXML
+    private MFXDatePicker datePicker;
+
+
     private AnimatedHBox animatedHBox;
 
     private Text textoDepartamento;
@@ -88,6 +100,7 @@ public class HacerReservaControlador {
     private LocalTime horaReserva;
 
     public void init(Experiencia experiencia) throws InterruptedException {
+        this.experiencia = experiencia;
         animatedHBox = new AnimatedHBox(AnimationPair.fade());
         titulo.getChildren().add(animatedHBox);
         animatedHBox.setVisible(true);
@@ -95,13 +108,41 @@ public class HacerReservaControlador {
         textoDepartamento = newText(experiencia.getDestino().getDepartamento().getNombre_pk() + ", " + experiencia.getDestino().getNombre() + ", " + experiencia.getNombre(), 24);
         animatedHBox.getChildren().add(textoDepartamento);
         try {
-            imagen.setBackground(new Background(new BackgroundImage(new Image(getClass().getResourceAsStream(experiencia.getImagen())), null, null, BackgroundPosition.CENTER, null)));
+            InputStream x = new ByteArrayInputStream(experiencia.getImagen());
+            imagen.setBackground(new Background(new BackgroundImage(new Image(x), null, null, BackgroundPosition.CENTER, null)));
         } catch (Exception e) {
         }
         tab2.setDisable(true);
         tab3.setDisable(true);
         tab4.setDisable(true);
 
+        if(experiencia.getTipo()==null || !experiencia.getTipo().equals("PED")){
+            loadReservaHoras();
+            datePicker.setVisible(false);
+            check.setVisible(false);
+        }
+
+    }
+
+    private Text newText(String texto, int size){
+        Text text = new Text();
+        text.setText(texto);
+        text.setVisible(true);
+        text.fontProperty().set(Font.font("Segoe UI" ,size));
+        return text;
+    }
+
+
+    public void siguiente(){
+        tabPane.getSelectionModel().select(1);
+    }
+
+    public void reservar(Usuario usuario, Set<Turista> turistas, Experiencia experiencia, LocalTime hora, LocalDate fecha){
+        Reserva reserva = new Reserva(fecha, experiencia,usuario,hora,turistas);
+        reservaRepository.save(reserva);
+    }
+
+    private void loadReservaHoras(){
         Grid grilla = new GridBase((experiencia.getHorario_cierre().getHour() - experiencia.getHorario_apertura().getHour()) / experiencia.getDuracion(),
                 7);
         ObservableList<ObservableList<SpreadsheetCell>> rows = FXCollections.observableArrayList();
@@ -169,26 +210,6 @@ public class HacerReservaControlador {
                 tab3.setDisable(true);
             }
         });
-
-
-
     }
 
-    private Text newText(String texto, int size){
-        Text text = new Text();
-        text.setText(texto);
-        text.setVisible(true);
-        text.fontProperty().set(Font.font("Segoe UI" ,size));
-        return text;
-    }
-
-
-    public void siguiente(){
-        tabPane.getSelectionModel().select(1);
-    }
-
-    public void reservar(Usuario usuario, Set<Turista> turistas, Experiencia experiencia, LocalTime hora, LocalDate fecha){
-        Reserva reserva = new Reserva(fecha, experiencia,usuario,hora,turistas);
-        reservaRepository.save(reserva);
-    }
 }

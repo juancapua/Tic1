@@ -23,16 +23,22 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <AnchorPane fx:id="imagen" layoutX="532.0" layoutY="110.0" prefHeight="244.0" prefWidth="229.0" />
+            <AnchorPane fx:id="imagen" layoutX="528.0" layoutY="74.0" prefHeight="244.0" prefWidth="229.0" />
             <AnchorPane fx:id="reservaContainer" layoutX="21.0" layoutY="335.0" prefHeight="196.0" prefWidth="588.0">
                <children>
-                  <Text fx:id="detallesTitulo1" layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserva">
+                  <Text fx:id="reserva" layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserva">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Text>
+                   <MFXDatePicker fx:id="datePicker" layoutX="27.0" layoutY="98.0" />
+                  <Text layoutX="27.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elija una hora para verificar la disponibilidad">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Button fx:id="check" layoutX="163.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Comprobar" />
                </children></AnchorPane>
-             <MFXButton fx:id="siguiente" buttonType="RAISED" depthLevel="LEVEL1" disable="true" layoutX="593.0" layoutY="448.0" onAction="#siguiente" prefHeight="37.0" prefWidth="119.0" text="Siguiente" textAlignment="CENTER">
+             <MFXButton fx:id="siguiente" buttonType="RAISED" depthLevel="LEVEL1" disable="true" layoutX="642.0" layoutY="433.0" onAction="#siguiente" prefHeight="37.0" prefWidth="119.0" text="Siguiente" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>

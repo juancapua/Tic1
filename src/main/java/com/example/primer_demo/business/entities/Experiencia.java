@@ -107,13 +107,13 @@ public class Experiencia {
     }
 
     @Basic
-    private String imagen;
+    private byte[] imagen;
 
-    public String getImagen() {
+    public byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
 

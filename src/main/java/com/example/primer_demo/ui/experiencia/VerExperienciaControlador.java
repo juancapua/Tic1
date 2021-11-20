@@ -13,13 +13,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.criteria.Predicate;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 @Component
 public class VerExperienciaControlador {
@@ -30,6 +35,10 @@ public class VerExperienciaControlador {
     @Autowired
     private UsuarioRepository usuarios;
 
+
+
+    @FXML
+    private AnchorPane base;
 
     @FXML
     private Text experiencia_nombre;
@@ -46,6 +55,9 @@ public class VerExperienciaControlador {
 
     public void init(Experiencia experiencia) {
         this.experiencia = experiencia;
+        InputStream x = new ByteArrayInputStream(experiencia.getImagen());
+        base.setBackground(new Background(new BackgroundImage(new Image(x), BackgroundRepeat.NO_REPEAT, null, BackgroundPosition.CENTER,null)));
+
         this.usuario = Controlador.usuario;
         experiencia_nombre.setText(experiencia.getNombre());
         destino_nombre.setText(experiencia.getDestino().getNombre());
