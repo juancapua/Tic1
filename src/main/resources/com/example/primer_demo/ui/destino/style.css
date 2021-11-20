@@ -19,7 +19,7 @@
 }
 
 #experiences{
-   -fx-padding: 48px 0px 0px 32px;
+   -fx-padding: 0px 0px 0px 0px;
    -fx-alignment: left;
    -fx-pref-width: 375px;
    -fx-pref-height: 800px;
@@ -27,7 +27,7 @@
 }
 
 #entries{
-   -fx-padding: 48px 0px 0px 48px;
+   -fx-padding: 48px 0px 0px 0px;
    -fx-background-color: transparent;
 }
 

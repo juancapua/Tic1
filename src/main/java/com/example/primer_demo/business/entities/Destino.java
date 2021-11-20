@@ -196,4 +196,6 @@ public class Destino{
             this.etiquetas.add(x);
         }
     }
+
+
 }

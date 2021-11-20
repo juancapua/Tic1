@@ -9,6 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
@@ -17,6 +19,9 @@ import java.io.IOException;
 
 @Component
 public class ExperienciaThumbnailControlador {
+
+    @FXML
+    private AnchorPane base;
 
     private Experiencia experiencia;
 
@@ -54,4 +59,11 @@ public class ExperienciaThumbnailControlador {
     }
 
 
+    public void mouseEnter(MouseEvent mouseEvent) {
+        base.setStyle("-fx-background-color: rgba(100,100,100,0.5)");
+    }
+
+    public void mouseExit(MouseEvent mouseEvent) {
+        base.setStyle("-fx-background-color: transparent");
+    }
 }
