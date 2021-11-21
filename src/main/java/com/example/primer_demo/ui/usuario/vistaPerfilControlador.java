@@ -2,10 +2,12 @@ package com.example.primer_demo.ui.usuario;
 
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.entities.Etiqueta;
+import com.example.primer_demo.business.entities.Experiencia;
 import com.example.primer_demo.business.entities.Reserva;
 import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.ui.Controlador;
 import com.example.primer_demo.ui.Inicio.InicioControlador;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -25,6 +28,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class vistaPerfilControlador {
@@ -40,7 +45,7 @@ public class vistaPerfilControlador {
     private TableColumn<Reserva, Date> columnaFecha;
 
     @FXML
-    private TableColumn<Reserva, String> columnaReservas;
+    private TableColumn<Experiencia, String> columnaReservas;
 
     @FXML
     private Label documentotxt;
@@ -58,7 +63,7 @@ public class vistaPerfilControlador {
     private Label paistxt;
 
     @FXML
-    private TableView<Reserva> tabla;
+    private TableView<Experiencia> tabla;
 
     @FXML
     private Label vacunadotxt;
@@ -66,7 +71,7 @@ public class vistaPerfilControlador {
     @FXML
     private VBox vbox;
 
-    private ObservableList<Reserva> listaObservable;
+    private ObservableList<Experiencia> listaObservable;
 
     public void setUsuario(Usuario usuario){
         this.usuario =usuario;
@@ -86,6 +91,15 @@ public class vistaPerfilControlador {
             label.setTextFill(Color.web("#ffffff"));
             vbox.getChildren().add(label);
         }
+        Set<Experiencia> experiencias = new HashSet<>();
+        for(Reserva x: this.usuario.getReservas()){
+            experiencias.add(x.getExperiencia());
+        }
+
+        listaObservable = FXCollections.observableArrayList();
+        listaObservable.addAll(experiencias);
+        tabla.setItems(listaObservable);
+        columnaReservas.setCellValueFactory(new PropertyValueFactory<>("nombre"));
     }
 
     @FXML

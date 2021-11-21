@@ -307,6 +307,15 @@ public class HacerReservaControlador {
     @Value("${spring.datasource.password}")
     private String password;
 
+    private final String url = "jdbc:mysql://localhost:3306/demo_tic";
+    private final String user = "root";
+    private final String password = "root";
+
+    /**
+     * Connect to the PostgreSQL database
+     *
+     * @return a Connection object
+     */
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(url, user, password);
     }
