@@ -30,6 +30,7 @@ import javafx.stage.Stage;
 import org.apache.tomcat.jni.Local;
 import org.controlsfx.control.spreadsheet.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayInputStream;
@@ -102,6 +103,9 @@ public class HacerReservaControlador {
 
     private Stage primaryStage;
 
+    public HacerReservaControlador() {
+    }
+
     public void init(Experiencia experiencia, Stage primaryStage) throws InterruptedException {
         this.primaryStage = primaryStage;
         this.experiencia = experiencia;
@@ -123,7 +127,7 @@ public class HacerReservaControlador {
         spinner.valueProperty().addListener(new ChangeListener<Integer>() {
             @Override
             public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
-                if (experiencia.getTipo() == null && !experiencia.getTipo().equals("PED")) {
+                if (experiencia.getTipo() == null) {
                     try {
                         int selectedValue = (Integer) horarios.getGrid().getRows().get(horarios.getSelectionModel().getSelectedCells().get(0).getRow()).get(horarios.getSelectionModel().getSelectedCells().get(0).getColumn()).getItem();
                         siguiente.setDisable(horarios.getSelectionModel().getSelectedCells().size() == 0 || selectedValue < newValue);
@@ -138,7 +142,7 @@ public class HacerReservaControlador {
         });
         spinner.setVisible(true);
 
-        if (experiencia.getTipo() == null || !experiencia.getTipo().equals("PED")) {
+        if (experiencia.getTipo() == null) {
             loadReservaHoras();
             datePicker.setVisible(false);
             check.setVisible(false);
@@ -295,16 +299,13 @@ public class HacerReservaControlador {
         reservar(InicioControlador.usuario, experiencia, horaReserva, fechaReserva, spinner.getValue());
         primaryStage.close();
     }
+    @Value("${spring.datasource.url}")
+    private String url;
+    @Value("${spring.datasource.username}")
+    private String user;
+    @Value("${spring.datasource.password}")
+    private String password;
 
-    private final String url = "jdbc:mysql://localhost:3306/demo_tic";
-    private final String user = "root";
-    private final String password = "root";
-
-    /**
-     * Connect to the PostgreSQL database
-     *
-     * @return a Connection object
-     */
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(url, user, password);
     }
