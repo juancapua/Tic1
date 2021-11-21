@@ -14,12 +14,11 @@ public class Reserva implements Serializable {
 
     }
 
-    public Reserva(LocalDate fecha, Experiencia experiencia, Usuario usuario, LocalTime hora, Set<Turista> turistas){
+    public Reserva(LocalDate fecha, Experiencia experiencia, Usuario usuario, LocalTime hora){
         this.setFecha(fecha);
         this.experiencia = experiencia;
         this.usuario = usuario;
-        this.turistas = turistas;
-        if (experiencia.getTipo().equals("TED")){
+        if (experiencia.getTipo().equals("PED")){
             this.hora = LocalTime.MIDNIGHT;
         } else {
             this.hora = hora;
@@ -70,12 +69,6 @@ public class Reserva implements Serializable {
         this.hora = hora;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Turista> turistas;
-
-    public void setTuristas(Set<Turista> turistas) {
-        this.turistas = turistas;
-    }
 
     public Long getId() {
         return id;

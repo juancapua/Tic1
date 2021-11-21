@@ -143,8 +143,10 @@ public class VerDestinoControlador {
         }
         currentY = 0;
         for (Experiencia experiencia: destino.getExperiencias()) {
-            agregarExperiencia(experiencia,currentY);
-            currentY++;
+            if(experiencia.getEsta_autorizada()==true) {
+                agregarExperiencia(experiencia, currentY);
+                currentY++;
+            }
         }
 
         if (entriesPane.getPrefHeight() > experiencesPane.getPrefHeight()) {

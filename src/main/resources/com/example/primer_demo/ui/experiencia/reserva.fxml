@@ -46,15 +46,10 @@
             </AnchorPane>
             
         </Tab>
-        <Tab fx:id="tab2" text="2. Datos reservante">
+        <Tab fx:id="tab2" text="2. Datos">
             <AnchorPane />
         </Tab>
-        <Tab fx:id="tab3" text="3. Datos de asistentes">
-            <AnchorPane>
-
-            </AnchorPane>
-        </Tab>
-        <Tab fx:id="tab4" text="4. Pago">
+        <Tab fx:id="tab3" text="3. Pago">
             <AnchorPane>
 
             </AnchorPane>

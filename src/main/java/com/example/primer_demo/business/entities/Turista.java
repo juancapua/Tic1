@@ -20,14 +20,6 @@ public class Turista {
 
     private Set<Reserva> reservas;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "turistas")
-    public Set<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(Set<Reserva> reservas) {
-        this.reservas = reservas;
-    }
 
     private String Nombre;
 

@@ -73,10 +73,9 @@ public class HacerReservaControlador {
     private Tab tab1;
     @FXML
     private Tab tab2;
+
     @FXML
     private Tab tab3;
-    @FXML
-    private Tab tab4;
 
     private SpreadsheetView horarios;
 
@@ -114,7 +113,6 @@ public class HacerReservaControlador {
         }
         tab2.setDisable(true);
         tab3.setDisable(true);
-        tab4.setDisable(true);
 
         if(experiencia.getTipo()==null || !experiencia.getTipo().equals("PED")){
             loadReservaHoras();
@@ -137,8 +135,8 @@ public class HacerReservaControlador {
         tabPane.getSelectionModel().select(1);
     }
 
-    public void reservar(Usuario usuario, Set<Turista> turistas, Experiencia experiencia, LocalTime hora, LocalDate fecha){
-        Reserva reserva = new Reserva(fecha, experiencia,usuario,hora,turistas);
+    public void reservar(Usuario usuario, Experiencia experiencia, LocalTime hora, LocalDate fecha){
+        Reserva reserva = new Reserva(fecha, experiencia,usuario,hora);
         reservaRepository.save(reserva);
     }
 
@@ -207,7 +205,7 @@ public class HacerReservaControlador {
             } else {
                 siguiente.setDisable(true);
                 tab2.setDisable(true);
-                tab3.setDisable(true);
+
             }
         });
     }
