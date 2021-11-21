@@ -18,7 +18,7 @@ public class Reserva implements Serializable {
         this.setFecha(fecha);
         this.experiencia = experiencia;
         this.usuario = usuario;
-        if (experiencia.getTipo().equals("PED")){
+        if (experiencia.getTipo()!=null){
             this.hora = LocalTime.MIDNIGHT;
         } else {
             this.hora = hora;
