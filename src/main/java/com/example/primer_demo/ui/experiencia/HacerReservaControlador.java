@@ -1,5 +1,6 @@
 package com.example.primer_demo.ui.experiencia;
 
+import com.example.primer_demo.business.ReservaMgr;
 import com.example.primer_demo.business.entities.Experiencia;
 import com.example.primer_demo.business.entities.Reserva;
 import com.example.primer_demo.business.entities.Usuario;
@@ -46,6 +47,9 @@ public class HacerReservaControlador {
 
     @FXML
     public Text reservaConfirmacion;
+
+    @Autowired
+    private ReservaMgr reservaMgr;
 
     @Autowired
     private ReservaRepository reservaRepository;
@@ -300,39 +304,10 @@ public class HacerReservaControlador {
         reservar(InicioControlador.usuario, experiencia, horaReserva, fechaReserva, spinner.getValue());
         primaryStage.close();
     }
-    @Value("${spring.datasource.url}")
-    private String url;
-    @Value("${spring.datasource.username}")
-    private String user;
-    @Value("${spring.datasource.pass")
-    private String password;
-
-//    private final String url = "jdbc:mysql://localhost:3306/demo_tic";
-//    private final String user = "root";
-//    private final String password = "root";
-
-    /**
-     * Connect to the PostgreSQL database
-     *
-     * @return a Connection object
-     */
-    public Connection connect() throws SQLException {
-        return DriverManager.getConnection(url, user, password);
-    }
 
 
     public void insertarReserva(String usuario, Integer experiencia, LocalTime hora, LocalDate fecha, int personas) throws SQLException {
-        if(hora==null){
-            hora=LocalTime.MIDNIGHT;
-        }
-        try (Connection conn = connect()){
-            Statement st = conn.createStatement();
-            Random rand = new Random();
-            st.execute("INSERT INTO RESERVA VALUES(" + rand.nextInt(1000000) + ",'" + hora + "','" + fecha + "','" + usuario + "'," + experiencia + "," + personas + ")");
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
+        reservaMgr.insertarReserva(usuario, experiencia, hora, fecha, personas);
     }
 
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.nio.channels.AcceptPendingException;
+import java.sql.SQLException;
 
 @Component
 public class editReservaControlador {
@@ -30,9 +31,10 @@ public class editReservaControlador {
     }
 
     @FXML
-    void eliminarReserva(ActionEvent event){
+    void eliminarReserva(ActionEvent event) throws SQLException {
         reservaMgr.deleteReserva(this.reserva);
         showAlert("Eliminacion exitosa", "La reserva indicada se eliminino correctamente");
+        close(event);
     }
 
 

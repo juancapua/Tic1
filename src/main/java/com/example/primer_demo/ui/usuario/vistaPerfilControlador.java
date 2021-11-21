@@ -135,6 +135,9 @@ public class vistaPerfilControlador {
             editReservaControlador.setReserva(eleccion);
             stage.show();
         }
+        Set<Reserva> reservas = this.usuario.getReservas();
+        listaObservable.removeAll();
+        listaObservable.addAll(reservas);
 
 
     }
