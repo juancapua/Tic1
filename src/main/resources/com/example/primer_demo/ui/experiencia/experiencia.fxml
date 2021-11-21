@@ -12,7 +12,7 @@
       <AnchorPane fx:id="base">
          <children>
             <ImageView fx:id="image" fitHeight="256.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
-            <GridPane layoutX="140.0" layoutY="48.0">
+            <GridPane layoutX="120.0" layoutY="48.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="118.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="26.0" />

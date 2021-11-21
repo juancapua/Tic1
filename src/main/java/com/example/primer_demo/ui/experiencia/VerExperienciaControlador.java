@@ -55,9 +55,12 @@ public class VerExperienciaControlador {
 
     public void init(Experiencia experiencia) {
         this.experiencia = experiencia;
-        InputStream x = new ByteArrayInputStream(experiencia.getImagen());
-        base.setBackground(new Background(new BackgroundImage(new Image(x), BackgroundRepeat.NO_REPEAT, null, BackgroundPosition.CENTER,null)));
+        try {
+            InputStream x = new ByteArrayInputStream(experiencia.getImagen());
+            base.setBackground(new Background(new BackgroundImage(new Image(x), BackgroundRepeat.NO_REPEAT, null, BackgroundPosition.CENTER, null)));
+        } catch (Exception e){
 
+        }
         this.usuario = Controlador.usuario;
         experiencia_nombre.setText(experiencia.getNombre());
         destino_nombre.setText(experiencia.getDestino().getNombre());
@@ -104,7 +107,7 @@ public class VerExperienciaControlador {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        reservaControlador.init(experiencia);
+        reservaControlador.init(experiencia,stage);
     }
 }
 

@@ -27,18 +27,18 @@ public class ReservaPK implements Serializable {
     private LocalDate fecha;
 
     @Id
-    @OneToOne
+    @ManyToOne
     private Experiencia experiencia;
 
     @Id
     @ManyToOne(optional = false)
     private Usuario usuario;
 
-    public Usuario getManyToOne() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setManyToOne(Usuario usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 

@@ -14,7 +14,7 @@ public class Reserva implements Serializable {
 
     }
 
-    public Reserva(LocalDate fecha, Experiencia experiencia, Usuario usuario, LocalTime hora){
+    public Reserva(LocalDate fecha, Experiencia experiencia, Usuario usuario, LocalTime hora, int personas){
         this.setFecha(fecha);
         this.experiencia = experiencia;
         this.usuario = usuario;
@@ -23,6 +23,7 @@ public class Reserva implements Serializable {
         } else {
             this.hora = hora;
         }
+        this.setPersonas(personas);
     }
 
     @Id
@@ -35,6 +36,7 @@ public class Reserva implements Serializable {
 
     @ManyToOne(optional = false)
     @Id
+    @JoinColumn(name = "id_experiencia")
     private Experiencia experiencia;
 
     public Experiencia getExperiencia() {
@@ -48,6 +50,7 @@ public class Reserva implements Serializable {
 
     @ManyToOne(optional = false)
     @Id
+    @JoinColumn(name = "usuario_nombre_de_usuario")
     private Usuario usuario;
 
     public Usuario getUsuario() {
@@ -85,4 +88,17 @@ public class Reserva implements Serializable {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
+
+    @Basic
+    private Integer Personas;
+
+    public Integer getPersonas() {
+        return Personas;
+    }
+
+    public void setPersonas(Integer personas) {
+        Personas = personas;
+    }
+
+
 }
