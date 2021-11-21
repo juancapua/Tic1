@@ -16,4 +16,6 @@ public interface DestinoRespository extends CrudRepository<Destino, Integer> {
 
     Iterable<Destino> findAllByDepartamento(Departamento departamento);
 
+    Iterable<Destino> findAllByDepartamentoAndNombreContaining(Departamento departamento, String texto);
+
 }

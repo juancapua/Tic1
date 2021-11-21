@@ -64,6 +64,9 @@
          <image>
             <Image url="@images/logo_busqueda.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
       </ImageView>
     </children>
 </AnchorPane>

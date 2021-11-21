@@ -173,7 +173,11 @@ public class DestinoMgr {
         }
     }
 
-    public Iterable<Destino> buscarPorDepartamento(Departamento departamento){
+    public Iterable<Destino> filtroPorDepartamento(Departamento departamento){
          return destinoRespository.findAllByDepartamento(departamento);
+    }
+
+    public Iterable<Destino> filroDepartamentoYTexto(Departamento departamento, String texto){
+        return destinoRespository.findAllByDepartamentoAndNombreContaining(departamento, texto);
     }
 }

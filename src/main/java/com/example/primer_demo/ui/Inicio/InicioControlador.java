@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -72,6 +73,9 @@ public class InicioControlador {
 
     @FXML
     private ComboBox<String> filtroDepartamento;
+
+    private Boolean departamentofiltro = false;
+    
 
     public void setUsuario(Usuario usuario){
         this.usuario = usuario;
@@ -151,7 +155,8 @@ public class InicioControlador {
     @FXML
     void filtrarDepartamento(ActionEvent event){
         if(!filtroDepartamento.getValue().equals("No filter")) {
-            Iterable<Destino> destinos = destinoMgr.buscarPorDepartamento(departamentoMgr.traerDepartamento(filtroDepartamento.getValue()));
+            departamentofiltro = true;
+            Iterable<Destino> destinos = destinoMgr.filtroPorDepartamento(departamentoMgr.traerDepartamento(filtroDepartamento.getValue()));
             gridPane.getChildren().clear();
 
             Usuario usuario = Controlador.usuario;
@@ -182,7 +187,41 @@ public class InicioControlador {
                 }
             }
         }else{
+            departamentofiltro = false;
             this.setUsuario(usuario);
+            if(busqueda.getText() != null && !busqueda.getText().equals("")){
+                gridPane.getChildren().clear();
+
+                Iterable<Destino> destinosFiltrados = destinoMgr.filtroDeBusqueda(busqueda.getText());
+                Usuario usuario = Controlador.usuario;
+                int fila = 1;
+                for (Destino x : destinosFiltrados) {
+                    if (x.getHabilitada()) {
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        try {
+                            AnchorPane pane = fxmlLoader.load(miniaturaDestinoControlador.class.getResourceAsStream("miniaturaDestino.fxml"));
+                            miniaturaDestinoControlador miniatura;
+                            miniatura = fxmlLoader.getController();
+                            miniatura.setData(x);
+                            miniatura.setAnchorPane(anchorPane);
+                            gridPane.addRow(fila, pane);
+
+                            gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+                            gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                            gridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                            gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+                            gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                            gridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+                            fila++;
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
         }
     }
 
@@ -241,33 +280,66 @@ public class InicioControlador {
 
      @FXML
      void busquedaDinamica(KeyEvent event){
-        gridPane.getChildren().clear();
 
-        Iterable<Destino> destinosFiltrados = destinoMgr.filtroDeBusqueda(busqueda.getText());
-        Usuario usuario = Controlador.usuario;
-        int fila = 1;
-        for(Destino x: destinosFiltrados){
-            if(x.getHabilitada()){
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                try {
-                    AnchorPane pane = fxmlLoader.load(miniaturaDestinoControlador.class.getResourceAsStream("miniaturaDestino.fxml"));
-                    miniaturaDestinoControlador miniatura;
-                    miniatura = fxmlLoader.getController();
-                    miniatura.setData(x);
-                    miniatura.setAnchorPane(anchorPane);
-                    gridPane.addRow(fila, pane);
+        if(!departamentofiltro) {
+            gridPane.getChildren().clear();
 
-                    gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
-                    gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                    gridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
+            Iterable<Destino> destinosFiltrados = destinoMgr.filtroDeBusqueda(busqueda.getText());
+            Usuario usuario = Controlador.usuario;
+            int fila = 1;
+            for (Destino x : destinosFiltrados) {
+                if (x.getHabilitada()) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    try {
+                        AnchorPane pane = fxmlLoader.load(miniaturaDestinoControlador.class.getResourceAsStream("miniaturaDestino.fxml"));
+                        miniaturaDestinoControlador miniatura;
+                        miniatura = fxmlLoader.getController();
+                        miniatura.setData(x);
+                        miniatura.setAnchorPane(anchorPane);
+                        gridPane.addRow(fila, pane);
 
-                    gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
-                    gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                    gridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
+                        gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+                        gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                        gridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
 
-                    fila++;
-                } catch (IOException e) {
-                    e.printStackTrace();
+                        gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+                        gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                        gridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+                        fila++;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }else{
+            gridPane.getChildren().clear();
+            Iterable<Destino> destinosFiltrados = destinoMgr.filroDepartamentoYTexto(departamentoMgr.traerDepartamento(filtroDepartamento.getValue()), busqueda.getText());
+            Usuario usuario = Controlador.usuario;
+            int fila = 1;
+            for (Destino x : destinosFiltrados) {
+                if (x.getHabilitada()) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    try {
+                        AnchorPane pane = fxmlLoader.load(miniaturaDestinoControlador.class.getResourceAsStream("miniaturaDestino.fxml"));
+                        miniaturaDestinoControlador miniatura;
+                        miniatura = fxmlLoader.getController();
+                        miniatura.setData(x);
+                        miniatura.setAnchorPane(anchorPane);
+                        gridPane.addRow(fila, pane);
+
+                        gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+                        gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                        gridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                        gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+                        gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                        gridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+                        fila++;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

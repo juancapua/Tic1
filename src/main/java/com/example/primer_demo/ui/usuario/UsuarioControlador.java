@@ -1,5 +1,6 @@
 package com.example.primer_demo.ui.usuario;
 
+import com.example.primer_demo.business.PaisMgr;
 import com.example.primer_demo.business.UsuarioMgr;
 import com.example.primer_demo.business.entities.Etiqueta;
 import com.example.primer_demo.business.EtiquetaMgr;
@@ -27,6 +28,8 @@ public class UsuarioControlador {
     @Autowired
     private PaisRepository paisRepository;
 
+    @Autowired
+    private PaisMgr paisMgr;
 
     @Autowired
     private EtiquetaMgr etiquetaMgr;
@@ -74,7 +77,7 @@ public class UsuarioControlador {
 
     @FXML
     public void initialize(){
-        Iterable<Pais> paises = paisRepository.findAll();
+        Iterable<Pais> paises = paisMgr.allPaises();
         for(Pais x: paises){
             pais.getItems().add(x.getNombre());
         }
