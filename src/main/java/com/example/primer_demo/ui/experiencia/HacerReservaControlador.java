@@ -154,7 +154,7 @@ public class HacerReservaControlador {
             @Override
             public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
                 if (newValue.getId().equals("tab2")) {
-                    if (experiencia.getTipo() != null && !experiencia.getTipo().equals("PED")) {
+                    if (experiencia.getTipo() == null) {
                         reservaConfirmacion.setText("Se reserva el día " + fechaReserva + " a las " + horaReserva + " en la actividad \"" + experiencia.getNombre() + "\" y esta tiene un duración de " + experiencia.getDuracion() + " horas.");
                     } else {
                         reservaConfirmacion.setText("Se reserva el día " + fechaReserva + " para " + spinner.getValue() + " personas.");
@@ -176,7 +176,7 @@ public class HacerReservaControlador {
 
     public void siguiente() {
         tabPane.getSelectionModel().select(1);
-        if (experiencia.getTipo() != null && !experiencia.getTipo().equals("PED")) {
+        if (experiencia.getTipo() == null ) {
             reservaConfirmacion.setText("Se reserva el día " + fechaReserva + " a las " + horaReserva + " en la actividad \"" + experiencia.getNombre() + "\" y esta tiene un duración de " + experiencia.getDuracion() + " horas.");
         } else {
             reservaConfirmacion.setText("Se reserva el día " + fechaReserva + " en la actividad \"" + experiencia.getNombre() + "\" para " + spinner.getValue() + " personas.");
@@ -252,14 +252,15 @@ public class HacerReservaControlador {
         horarios.setLayoutY(54);
         reservaContainer.getChildren().add(horarios);
         horarios.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            int selectedValue = (Integer) horarios.getGrid().getRows().get(horarios.getSelectionModel().getSelectedCells().get(0).getRow()).get(horarios.getSelectionModel().getSelectedCells().get(0).getColumn()).getItem();
-            if (spinner.getValue() <= selectedValue && horarios.getSelectionModel().getSelectedCells().size() != 0 && !horarios.getSelectionModel().getSelectedCells().get(0).toString().equals("0")) {
+            if (horarios.getSelectionModel().getSelectedCells().size() == 0) {
+                siguiente.setDisable(true);
+                tab2.setDisable(true);
+            } else if (spinner.getValue() <= (Integer) horarios.getGrid().getRows().get(horarios.getSelectionModel().getSelectedCells().get(0).getRow()).get(horarios.getSelectionModel().getSelectedCells().get(0).getColumn()).getItem() && horarios.getSelectionModel().getSelectedCells().size() != 0 && !horarios.getSelectionModel().getSelectedCells().get(0).toString().equals("0")) {
                 siguiente.setDisable(false);
                 tab2.setDisable(false);
                 fechaReserva = now.plusDays(7 + horarios.getSelectionModel().getSelectedCells().get(0).getColumn() - dayOfWeek);
                 horaReserva = LocalTime.of(horarios.getSelectionModel().getSelectedCells().get(0).getRow() * experiencia.getDuracion() + experiencia.getHorario_apertura().getHour(), 0);
-
-            } else if (horarios.getSelectionModel().getSelectedCells().size() == 0) {
+            }else{
                 siguiente.setDisable(true);
                 tab2.setDisable(true);
             }

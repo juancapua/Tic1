@@ -12,7 +12,7 @@
       <AnchorPane fx:id="base">
          <children>
             <ImageView fx:id="image" fitHeight="256.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
-            <GridPane layoutX="120.0" layoutY="48.0">
+            <GridPane layoutX="100.0" layoutY="48.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="118.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="26.0" />
@@ -22,12 +22,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text fx:id="destino_nombre" strokeType="OUTSIDE" strokeWidth="0.0" text="adadasdasdasda" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS">
+                  <Text fx:id="destino_nombre" strokeType="OUTSIDE" strokeWidth="0.0" text="destino" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS">
                      <font>
                         <Font name="Leelawadee UI" size="27.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="," GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP">
                      <font>
                         <Font size="38.0" />
                      </font>
