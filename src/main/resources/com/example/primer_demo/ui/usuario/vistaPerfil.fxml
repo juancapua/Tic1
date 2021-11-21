@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.usuario.vistaPerfilControlador">
+<AnchorPane prefHeight="483.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.usuario.vistaPerfilControlador">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #154360;">
+      <AnchorPane prefHeight="483.0" prefWidth="200.0" style="-fx-background-color: #154360;">
          <children>
-            <Button layoutX="15.0" layoutY="361.0" mnemonicParsing="false" onAction="#volverInicio" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Volver" textFill="#154360">
+            <Button layoutX="18.0" layoutY="437.0" mnemonicParsing="false" onAction="#volverInicio" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Volver" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor></Button>
@@ -53,18 +53,25 @@
                </font>
             </Label>
             <VBox fx:id="vbox" layoutX="87.0" layoutY="167.0" prefHeight="100.0" prefWidth="100.0" />
-            <Button layoutX="17.0" layoutY="325.0" mnemonicParsing="false" onAction="#modificarPerfil" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Modificar perfil" textFill="#154360">
+            <Button layoutX="18.0" layoutY="400.0" mnemonicParsing="false" onAction="#modificarPerfil" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Modificar perfil" textFill="#154360">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="18.0" layoutY="367.0" mnemonicParsing="false" onAction="#cancelarReserva" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: white; -fx-background-radius: 50;" text="Cancelar reserva" textFill="#154360">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
             </Button>
          </children>
       </AnchorPane>
-      <TableView fx:id="tabla" layoutX="220.0" layoutY="14.0" prefHeight="206.0" prefWidth="366.0">
+      <TableView fx:id="tabla" layoutX="209.0" layoutY="14.0" prefHeight="255.0" prefWidth="472.0">
         <columns>
-          <TableColumn fx:id="columnaReservas" prefWidth="124.0" text="Reservas" />
-          <TableColumn fx:id="columnaDireccion" prefWidth="136.0" text="Direccion" />
-            <TableColumn fx:id="columnaFecha" prefWidth="105.0" text="Fecha" />
+          <TableColumn fx:id="columnaReservas" prefWidth="88.0" text="Reservas" />
+          <TableColumn fx:id="columnaDireccion" prefWidth="138.0" text="Direccion" />
+            <TableColumn fx:id="columnaFecha" prefWidth="86.0" text="Fecha" />
+            <TableColumn fx:id="columnaHora" prefWidth="77.0" text="Hora" />
+            <TableColumn fx:id="columnaPersonas" prefWidth="82.0" text="Personas" />
         </columns>
       </TableView>
    </children>

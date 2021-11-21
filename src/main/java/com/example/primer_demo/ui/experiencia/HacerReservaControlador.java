@@ -304,12 +304,12 @@ public class HacerReservaControlador {
     private String url;
     @Value("${spring.datasource.username}")
     private String user;
-    @Value("${spring.datasource.password}")
+    @Value("${spring.datasource.pass")
     private String password;
 
-    private final String url = "jdbc:mysql://localhost:3306/demo_tic";
-    private final String user = "root";
-    private final String password = "root";
+//    private final String url = "jdbc:mysql://localhost:3306/demo_tic";
+//    private final String user = "root";
+//    private final String password = "root";
 
     /**
      * Connect to the PostgreSQL database

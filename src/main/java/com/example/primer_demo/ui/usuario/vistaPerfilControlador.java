@@ -7,6 +7,8 @@ import com.example.primer_demo.business.entities.Reserva;
 import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.ui.Controlador;
 import com.example.primer_demo.ui.Inicio.InicioControlador;
+import com.example.primer_demo.ui.reserva.editReservaControlador;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +29,8 @@ import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -45,7 +49,13 @@ public class vistaPerfilControlador {
     private TableColumn<Reserva, Date> columnaFecha;
 
     @FXML
-    private TableColumn<Experiencia, String> columnaReservas;
+    private TableColumn<Reserva, String> columnaReservas;
+
+    @FXML
+    private TableColumn<Reserva, LocalTime> columnaHora;
+
+    @FXML
+    private TableColumn<Reserva, Integer> columnaPersonas;
 
     @FXML
     private Label documentotxt;
@@ -63,7 +73,7 @@ public class vistaPerfilControlador {
     private Label paistxt;
 
     @FXML
-    private TableView<Experiencia> tabla;
+    private TableView<Reserva> tabla;
 
     @FXML
     private Label vacunadotxt;
@@ -71,7 +81,7 @@ public class vistaPerfilControlador {
     @FXML
     private VBox vbox;
 
-    private ObservableList<Experiencia> listaObservable;
+    private ObservableList<Reserva> listaObservable;
 
     public void setUsuario(Usuario usuario){
         this.usuario =usuario;
@@ -91,15 +101,42 @@ public class vistaPerfilControlador {
             label.setTextFill(Color.web("#ffffff"));
             vbox.getChildren().add(label);
         }
-        Set<Experiencia> experiencias = new HashSet<>();
-        for(Reserva x: this.usuario.getReservas()){
-            experiencias.add(x.getExperiencia());
-        }
+
+        Set<Reserva> reservas = this.usuario.getReservas();
 
         listaObservable = FXCollections.observableArrayList();
-        listaObservable.addAll(experiencias);
+        listaObservable.addAll(reservas);
         tabla.setItems(listaObservable);
-        columnaReservas.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnaReservas.setCellValueFactory(cellData -> {
+            String nombre = cellData.getValue().getExperiencia().getNombre();
+            return new ReadOnlyStringWrapper(nombre);});
+        columnaFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        columnaHora.setCellValueFactory(new PropertyValueFactory<>("hora"));
+        columnaPersonas.setCellValueFactory(new PropertyValueFactory<>("Personas"));
+        columnaDireccion.setCellValueFactory(cellData -> {
+            String direccion = cellData.getValue().getExperiencia().getDestino().getDireccion();
+            return new ReadOnlyStringWrapper(direccion);});
+
+    }
+
+    @FXML
+    void cancelarReserva(ActionEvent event) throws IOException {
+        Reserva eleccion = tabla.getSelectionModel().getSelectedItem();
+        if(eleccion != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+            root = fxmlLoader.load(editReservaControlador.class.getResourceAsStream("editReserva.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(new Image("images/logo_final.png"));
+            stage.setResizable(false);
+            editReservaControlador editReservaControlador = fxmlLoader.getController();
+            editReservaControlador.setReserva(eleccion);
+            stage.show();
+        }
+
+
     }
 
     @FXML
