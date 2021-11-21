@@ -172,4 +172,8 @@ public class DestinoMgr {
             diaRepository.save(x);
         }
     }
+
+    public Iterable<Destino> buscarPorDepartamento(Departamento departamento){
+         return destinoRespository.findAllByDepartamento(departamento);
+    }
 }

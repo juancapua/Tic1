@@ -27,6 +27,7 @@ public class UsuarioControlador {
     @Autowired
     private PaisRepository paisRepository;
 
+
     @Autowired
     private EtiquetaMgr etiquetaMgr;
 

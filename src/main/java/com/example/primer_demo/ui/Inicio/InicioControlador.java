@@ -1,11 +1,12 @@
 package com.example.primer_demo.ui.Inicio;
 
 import com.example.primer_demo.PrimerDemoApplication;
+import com.example.primer_demo.business.DepartamentoMgr;
 import com.example.primer_demo.business.DestinoMgr;
-import com.example.primer_demo.business.entities.Destino;
-import com.example.primer_demo.business.entities.Etiqueta;
-import com.example.primer_demo.business.entities.Usuario;
+import com.example.primer_demo.business.PaisMgr;
+import com.example.primer_demo.business.entities.*;
 import com.example.primer_demo.persistance.DestinoRespository;
+import com.example.primer_demo.persistance.PaisRepository;
 import com.example.primer_demo.ui.Controlador;
 import com.example.primer_demo.ui.destino.ExperienciaThumbnailControlador;
 import com.example.primer_demo.ui.destino.VerDestinoControlador;
@@ -17,10 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -46,6 +44,9 @@ public class InicioControlador {
     @Autowired
     private DestinoMgr destinoMgr;
 
+    @Autowired
+    private DepartamentoMgr departamentoMgr;
+
 
     private Parent root;
 
@@ -68,6 +69,9 @@ public class InicioControlador {
 
     @FXML
     private AnchorPane anchorPane;
+
+    @FXML
+    private ComboBox<String> filtroDepartamento;
 
     public void setUsuario(Usuario usuario){
         this.usuario = usuario;
@@ -93,6 +97,10 @@ public class InicioControlador {
                 destinosOrdenados.add(destino);
             }
         }
+        for(Departamento x: departamentoMgr.allDepartamentos()){
+            filtroDepartamento.getItems().add(x.getNombre_pk());
+        }
+        filtroDepartamento.getItems().add("No filter");
 
         int fila = 1;
         for(Destino x: destinosOrdenados){
@@ -138,6 +146,44 @@ public class InicioControlador {
         stage.show();
 
         showAlert("Nos vemos pronto", "Se ha cerrado sesion correctamente");
+    }
+
+    @FXML
+    void filtrarDepartamento(ActionEvent event){
+        if(!filtroDepartamento.getValue().equals("No filter")) {
+            Iterable<Destino> destinos = destinoMgr.buscarPorDepartamento(departamentoMgr.traerDepartamento(filtroDepartamento.getValue()));
+            gridPane.getChildren().clear();
+
+            Usuario usuario = Controlador.usuario;
+            int fila = 1;
+            for (Destino x : destinos) {
+                if (x.getHabilitada()) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    try {
+                        AnchorPane pane = fxmlLoader.load(miniaturaDestinoControlador.class.getResourceAsStream("miniaturaDestino.fxml"));
+                        miniaturaDestinoControlador miniatura;
+                        miniatura = fxmlLoader.getController();
+                        miniatura.setData(x);
+                        miniatura.setAnchorPane(anchorPane);
+                        gridPane.addRow(fila, pane);
+
+                        gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+                        gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                        gridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                        gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+                        gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                        gridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+                        fila++;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }else{
+            this.setUsuario(usuario);
+        }
     }
 
 
@@ -196,6 +242,7 @@ public class InicioControlador {
      @FXML
      void busquedaDinamica(KeyEvent event){
         gridPane.getChildren().clear();
+
         Iterable<Destino> destinosFiltrados = destinoMgr.filtroDeBusqueda(busqueda.getText());
         Usuario usuario = Controlador.usuario;
         int fila = 1;

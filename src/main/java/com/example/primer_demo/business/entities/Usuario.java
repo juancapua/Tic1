@@ -125,7 +125,7 @@ public class Usuario {
         this.favoritos = favoritos;
     }
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private Set<Reserva> reservas;
 
     public Set<Reserva> getReservas() {
