@@ -5,6 +5,7 @@ import com.example.primer_demo.business.ExperienciaMgr;
 import com.example.primer_demo.business.entities.*;
 import com.example.primer_demo.ui.Inicio.InicioControlador;
 import com.example.primer_demo.ui.experiencia.addExperienciaControlador;
+import com.example.primer_demo.ui.experiencia.editExperienciaControlador;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -174,6 +175,24 @@ public class vistaOperadorDestinoControlador {
         addExperienciaControlador addExperienciaControlador = fxmlLoader.getController();
         addExperienciaControlador.setDestino(this.destino);
         stage.show();
+    }
+
+    @FXML
+    void editExperiencia(ActionEvent event) throws IOException {
+        Experiencia seleccion = tabla.getSelectionModel().getSelectedItem();
+        if(seleccion != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+            root = fxmlLoader.load(editExperienciaControlador.class.getResourceAsStream("editExperiencia.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(new Image("images/logo_final.png"));
+            stage.setResizable(false);
+            editExperienciaControlador editExperienciaControlador = fxmlLoader.getController();
+            editExperienciaControlador.setExperiencia(seleccion);
+            stage.show();
+        }
     }
 
     @FXML

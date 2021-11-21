@@ -43,6 +43,27 @@ public class ExperienciaMgr {
         experienciaRepository.save(experiencia);
     }
 
+    public void cambiarDescripcion(Experiencia experiencia, String descripcion){
+        experiencia.setDescripcion(descripcion);
+        experienciaRepository.save(experiencia);
+    }
+    public void cambiarApertura(Experiencia experiencia, LocalTime hora){
+        experiencia.setHorario_apertura(hora);
+        experienciaRepository.save(experiencia);
+    }
+    public void cambiarCierre(Experiencia experiencia, LocalTime hora){
+        experiencia.setHorario_cierre(hora);
+        experienciaRepository.save(experiencia);
+    }
+    public void cambiarAforo(Experiencia experiencia, Integer aforo){
+        experiencia.setAforo(aforo);
+        experienciaRepository.save(experiencia);
+    }
+    public void cambiarReserva(Experiencia experiencia, Boolean reserva){
+        experiencia.setSe_reserva(reserva);
+        experienciaRepository.save(experiencia);
+    }
+
 
     private void showAlert(String title, String contextText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -158,4 +158,18 @@ public class DestinoMgr {
             etiquetasRepository.save(x);
         }
     }
+
+    public void cambiarDias(Destino destino, Set<Dia> dias){
+        Set<Dia> diasViejos = destino.getDias();
+        destino.setDias(dias);
+        destinoRespository.save(destino);
+        for(Dia x: diasViejos){
+            x.deleteDestino(destino);
+            diaRepository.save(x);
+        }
+        for(Dia x: dias){
+            x.addDestino(destino);
+            diaRepository.save(x);
+        }
+    }
 }

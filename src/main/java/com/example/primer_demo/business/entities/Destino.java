@@ -191,6 +191,10 @@ public class Destino{
         return dias;
     }
 
+    public void setDias(Set<Dia> dias) {
+        this.dias = dias;
+    }
+
     public void addEtiquetas(Set<Etiqueta> etiquetas){
         for(Etiqueta x: etiquetas){
             this.etiquetas.add(x);

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="444.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.destino.editDestinoControlador">
    <children>
@@ -23,17 +24,24 @@
       <TextField fx:id="hor_aper_txt" layoutX="324.0" layoutY="115.0" style="-fx-background-radius: 50;" />
       <TextField fx:id="hor_cie_txt" layoutX="324.0" layoutY="158.0" style="-fx-background-radius: 50;" />
       <TextField fx:id="descripciontxt" layoutX="324.0" layoutY="199.0" style="-fx-background-radius: 50;" />
-      <VBox fx:id="BoxIntereses" layoutX="324.0" layoutY="262.0" prefHeight="136.0" prefWidth="149.0" />
+      <VBox fx:id="BoxIntereses" layoutX="241.0" layoutY="262.0" prefHeight="136.0" prefWidth="149.0" />
       <Button layoutX="322.0" layoutY="408.0" mnemonicParsing="false" onAction="#cambiarDatos" prefHeight="25.0" prefWidth="153.0" style="-fx-background-radius: 50; -fx-background-color: #154360;" text="Guardar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Label layoutX="243.0" layoutY="262.0" text="Etiquetas:" />
+      <Label layoutX="184.0" layoutY="262.0" text="Etiquetas:" />
       <Label layoutX="235.0" layoutY="203.0" text="Descripcion:" />
       <Label layoutX="224.0" layoutY="162.0" text="Horario cierre:" />
       <Label layoutX="210.0" layoutY="119.0" text="Horario apertura:" />
       <Label layoutX="262.0" layoutY="76.0" text="Aforo:" />
       <Label layoutX="241.0" layoutY="35.0" text="Contacto:" />
+      <Label layoutX="399.0" layoutY="262.0" text="Dias:" />
+      <VBox fx:id="boxDias" layoutX="434.0" layoutY="262.0" prefHeight="136.0" prefWidth="149.0" />
+      <Label layoutX="287.0" layoutY="6.0" text="Modifique los campos necesarios" textFill="#154360">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

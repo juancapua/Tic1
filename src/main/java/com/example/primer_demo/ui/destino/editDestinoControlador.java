@@ -2,8 +2,10 @@ package com.example.primer_demo.ui.destino;
 
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.DestinoMgr;
+import com.example.primer_demo.business.DiaMgr;
 import com.example.primer_demo.business.EtiquetaMgr;
 import com.example.primer_demo.business.entities.Destino;
+import com.example.primer_demo.business.entities.Dia;
 import com.example.primer_demo.business.entities.Etiqueta;
 import com.example.primer_demo.ui.usuario.vistaPerfilControlador;
 import javafx.event.ActionEvent;
@@ -37,6 +39,9 @@ public class editDestinoControlador {
     @Autowired
     private EtiquetaMgr etiquetaMgr;
 
+    @Autowired
+    private DiaMgr diaMgr;
+
     @FXML
     private VBox BoxIntereses;
 
@@ -55,12 +60,20 @@ public class editDestinoControlador {
     @FXML
     private TextField hor_cie_txt;
 
+    @FXML
+    private VBox boxDias;
+
     public void setDestino(Destino destino){
         this.destino = destino;
         for(Etiqueta x: etiquetaMgr.listaEtiquetas()){
             CheckBox interestCheckBox = new CheckBox(x.getNombre());
             interestCheckBox.setUserData(x);
             BoxIntereses.getChildren().add(interestCheckBox);
+        }
+        for(Dia x: diaMgr.allDias()){
+            CheckBox interestCheckBox = new CheckBox(x.getNombre());
+            interestCheckBox.setUserData(x);
+            boxDias.getChildren().add(interestCheckBox);
         }
     }
 
@@ -99,6 +112,19 @@ public class editDestinoControlador {
             destinoMgr.cambiarEtiquetas(this.destino, etiquetas);
             entro = true;
         }
+
+        Set<Dia> dias = new HashSet<>();
+        for(Node node: boxDias.getChildren()){
+            CheckBox checkBox = (CheckBox) node;
+            if(checkBox.isSelected()){
+                dias.add((Dia) checkBox.getUserData());
+            }
+        }
+        if(dias.size()>0){
+            destinoMgr.cambiarDias(this.destino, dias);
+            entro = true;
+        }
+
         if(entro){
             showAlert("Cambio de datos", "Los datos se guardaron exitosamente");
             close(event);

@@ -36,4 +36,8 @@ public class Dia {
     public void addDestino(Destino destino){
         this.destinos.add(destino);
     }
+
+    public void deleteDestino(Destino destino){
+        this.destinos.remove(destino);
+    }
 }
