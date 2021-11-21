@@ -100,6 +100,9 @@ public class VerDestinoControlador {
 
     private Usuario usuario;
 
+    @FXML
+    private Text duracionLabel;
+
     public void scrolling(){
         System.out.println(scrollPane.getVvalue());
         if(scrollPane.getVvalue() == 0.3){
@@ -283,4 +286,19 @@ public class VerDestinoControlador {
         verticalScrollbar.setUnitIncrement(defaultUnitIncrement * 100);
     }
 
+    public void nextImgHighlight(MouseEvent mouseEvent) {
+        nextBtn.setStyle("-fx-background-color: rgba(37,37,37,0.37)");
+    }
+
+    public void prevImgHighlight(MouseEvent mouseEvent) {
+        prevBtn.setStyle("-fx-background-color: rgba(37,37,37,0.37)");
+    }
+
+    public void prevImgHighlightOff(MouseEvent mouseEvent) {
+        prevBtn.setStyle("-fx-background-color: rgba(0,0,0,0)");
+    }
+
+    public void nextImgHighlightOff(MouseEvent mouseEvent) {
+        nextBtn.setStyle("-fx-background-color: rgba(0,0,0,0)");
+    }
 }

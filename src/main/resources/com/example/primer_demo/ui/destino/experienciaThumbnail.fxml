@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#abrirExperiencia" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="150.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.destino.ExperienciaThumbnailControlador">
+<AnchorPane fx:id="base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#abrirExperiencia" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="145.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.destino.ExperienciaThumbnailControlador">
    <background>
    </background>
    <children>
       <Text fx:id="title" fill="WHITE" layoutX="22.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="title">
          <font>
-            <Font name="Segoe UI" size="32.0" />
+            <Font name="Segoe UI" size="34.0" />
          </font>
       </Text>
-      <Text fx:id="desc" fill="WHITE" layoutX="25.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="desc" />
-      <Text fx:id="priceIndicator" fill="#00a419" layoutX="292.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$$$">
+      <Text fx:id="desc" fill="WHITE" layoutX="22.0" layoutY="85.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="desc">
          <font>
-            <Font name="Segoe UI" size="20.0" />
-         </font>
-      </Text>
+            <Font size="23.0" />
+         </font></Text>
+      <Line endX="322.0" endY="13.999984741210938" layoutX="123.0" layoutY="131.0" startX="-123.0" startY="14.0" stroke="WHITE" strokeWidth="3.0" />
    </children>
    <padding>
       <Insets top="48.0" />
    </padding>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
 </AnchorPane>

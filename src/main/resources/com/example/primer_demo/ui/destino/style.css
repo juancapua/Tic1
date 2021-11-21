@@ -3,18 +3,14 @@
 }
 
 #nextBtn {
-   -fx-background-color: rgba(255, 255, 255, 0);
+   -fx-background-color: rgba(0, 0, 0, 0.05);
    -fx-font-size: 48px;
-   -fx-pref-height: 200px;
-   -fx-pref-width: 100px;
    -fx-alignment: right;
 }
 
 #prevBtn {
-   -fx-background-color: transparent;
+   -fx-background-color: rgba(0,0,0,0.05);
    -fx-font-size: 48px;
-   -fx-pref-height: 200px;
-   -fx-pref-width: 100px;
    -fx-alignment: left;
 }
 
@@ -32,7 +28,7 @@
 }
 
 #entriesPane{
-   -fx-background-color: rgba(140,140,140,0.8);
+   -fx-background-color: rgba(255,255,255,1);
 }
 
 #experiencesPane{

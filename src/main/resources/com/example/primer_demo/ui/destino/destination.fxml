@@ -13,12 +13,12 @@
                <children>
                   <Pane fx:id="head" prefHeight="305.0" prefWidth="1280.0">
                      <children>
-                        <Button fx:id="nextBtn" layoutX="1178.0" layoutY="125.0" minWidth="53.0" mnemonicParsing="false" onAction="#nextImg" prefHeight="94.0" prefWidth="53.0" text="&gt;">
+                        <Button fx:id="nextBtn" layoutX="1180.0" layoutY="2.0" minWidth="53.0" mnemonicParsing="false" onAction="#nextImg" onMouseEntered="#nextImgHighlight" onMouseExited="#nextImgHighlightOff" prefHeight="304.0" text="&gt;">
                            <font>
                               <Font name="Segoe UI" size="22.0" />
                            </font>
                         </Button>
-                        <Button fx:id="prevBtn" layoutX="30.0" layoutY="125.0" minWidth="53.0" mnemonicParsing="false" onAction="#prevImg" prefHeight="94.0" prefWidth="53.0" text="&lt;">
+                        <Button fx:id="prevBtn" layoutY="2.0" minWidth="53.0" mnemonicParsing="false" onAction="#prevImg" onMouseEntered="#prevImgHighlight" onMouseExited="#prevImgHighlightOff" prefHeight="305.0" prefWidth="106.0" text="&lt;">
                            <font>
                               <Font name="Segoe UI" size="22.0" />
                            </font>

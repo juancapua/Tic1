@@ -55,6 +55,19 @@ public class VerExperienciaControlador {
 
     private Stage primaryStage;
 
+    @FXML
+    private Text aforoInfo;
+
+    @FXML
+    private Text horarioInfo;
+
+    @FXML
+    private Text tipoInfo;
+
+    @FXML
+    private Text duracionInfo;
+
+
     public void init(Experiencia experiencia, Stage stage) {
         primaryStage = stage;
         this.experiencia = experiencia;
@@ -70,6 +83,16 @@ public class VerExperienciaControlador {
         if(this.usuario.getFavoritos().contains(experiencia)){
             faved=true;
             fav_icon.setText("\uE735");
+        }
+        aforoInfo.setText(Integer.toString(experiencia.getAforo()));
+        horarioInfo.setText(experiencia.getHorario_apertura()+ " - " + experiencia.getHorario_cierre());
+        if(experiencia.getTipo()==null){
+            tipoInfo.setText("Por hora");
+            duracionInfo.setText(experiencia.getDuracion().toString());
+        } else {
+            tipoInfo.setText("Todo el día");
+            duracionInfo.setVisible(true);
+
         }
     }
 
