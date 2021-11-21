@@ -61,6 +61,9 @@ public class editExperienciaControlador {
     private VBox reservabox;
 
     @FXML
+    private TextField duraciontxt;
+
+    @FXML
     void editExperiencia(ActionEvent event){
         Boolean entro = false;
         if(desctxt.getText() != null && !desctxt.getText().equals("")){
@@ -77,6 +80,10 @@ public class editExperienciaControlador {
         }
         if(aforotxt.getText() != null && !aforotxt.getText().equals("")){
             experienciaMgr.cambiarAforo(this.experiencia, Integer.parseInt(aforotxt.getText()));
+            entro = true;
+        }
+        if(duraciontxt.getText() != null && !duraciontxt.getText().equals("")){
+            experienciaMgr.cambiarDuracion(this.experiencia, Integer.parseInt(duraciontxt.getText()));
             entro = true;
         }
         for(Node node: reservabox.getChildren()){

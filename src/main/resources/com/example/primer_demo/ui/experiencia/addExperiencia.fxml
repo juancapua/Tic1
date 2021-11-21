@@ -11,20 +11,22 @@
    <children>
       <AnchorPane layoutX="487.0" prefHeight="408.0" prefWidth="113.0" style="-fx-background-color: #154360;" />
       <AnchorPane prefHeight="408.0" prefWidth="113.0" style="-fx-background-color: #154360;" />
-      <TextField fx:id="txtNombre" layoutX="236.0" layoutY="45.0" style="-fx-background-radius: 50;" />
-      <TextField fx:id="txtHorario_aper" layoutX="236.0" layoutY="130.0" style="-fx-background-radius: 50;" />
-      <TextField fx:id="txtDescripcion" layoutX="236.0" layoutY="87.0" style="-fx-background-radius: 50;" />
-      <TextField fx:id="txtHorario_cie" layoutX="236.0" layoutY="173.0" style="-fx-background-radius: 50;" />
-      <TextField fx:id="txtAforo" layoutX="236.0" layoutY="218.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="txtNombre" layoutX="236.0" layoutY="26.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="txtHorario_aper" layoutX="236.0" layoutY="111.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="txtDescripcion" layoutX="236.0" layoutY="68.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="txtHorario_cie" layoutX="236.0" layoutY="154.0" style="-fx-background-radius: 50;" />
+      <TextField fx:id="txtAforo" layoutX="236.0" layoutY="199.0" style="-fx-background-radius: 50;" />
       <CheckBox fx:id="se_reserva" layoutX="260.0" layoutY="277.0" mnemonicParsing="false" text="Se reserva?" />
       <Button layoutX="226.0" layoutY="358.0" mnemonicParsing="false" onAction="#addExperiencia" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #154360; -fx-background-radius: 50;" text="Agregar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></Button>
-      <Label layoutX="177.0" layoutY="49.0" text="Nombre:" />
-      <Label layoutX="162.0" layoutY="91.0" text="Descripcion:" />
-      <Label layoutX="135.0" layoutY="134.0" text="Horario apertura:" />
-      <Label layoutX="146.0" layoutY="177.0" text="Horario cierre:" />
-      <Label layoutX="184.0" layoutY="222.0" text="Aforo:" />
+      <Label layoutX="177.0" layoutY="30.0" text="Nombre:" />
+      <Label layoutX="162.0" layoutY="72.0" text="Descripcion:" />
+      <Label layoutX="135.0" layoutY="115.0" text="Horario apertura:" />
+      <Label layoutX="146.0" layoutY="158.0" text="Horario cierre:" />
+      <Label layoutX="184.0" layoutY="203.0" text="Aforo:" />
+      <TextField fx:id="duraciontxt" layoutX="236.0" layoutY="240.0" style="-fx-background-radius: 50;" />
+      <Label layoutX="169.0" layoutY="244.0" text="Duracion:" />
    </children>
 </AnchorPane>

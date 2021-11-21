@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalTime;
 
 @Service
@@ -63,7 +64,10 @@ public class ExperienciaMgr {
         experiencia.setSe_reserva(reserva);
         experienciaRepository.save(experiencia);
     }
-
+    public void cambiarDuracion(Experiencia experiencia, Integer tiempo){
+        experiencia.setDuracion(tiempo);
+        experienciaRepository.save(experiencia);
+    }
 
     private void showAlert(String title, String contextText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

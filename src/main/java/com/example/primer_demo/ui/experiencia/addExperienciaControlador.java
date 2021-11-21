@@ -52,11 +52,15 @@ public class addExperienciaControlador {
     @FXML
     private TextField txtNombre;
 
+    @FXML
+    private TextField duraciontxt;
+
 
     @FXML
     void addExperiencia(ActionEvent event){
         if(txtNombre.getText() == null || txtNombre.getText().equals("") || txtDescripcion.getText() == null || txtDescripcion.getText().equals("") ||
-        txtHorario_aper.getText() == null || txtHorario_aper.getText().equals("") || txtHorario_cie.getText() == null || txtHorario_cie.getText().equals("")){
+        txtHorario_aper.getText() == null || txtHorario_aper.getText().equals("") || txtHorario_cie.getText() == null || txtHorario_cie.getText().equals("") || duraciontxt.getText() == null ||
+        duraciontxt.getText().equals("") || txtAforo.getText() == null || txtAforo.getText().equals("")){
             showAlert(
                     "Datos faltantes!",
                     "No se ingresaron los datos necesarios para completar el ingreso.");
@@ -69,9 +73,10 @@ public class addExperienciaControlador {
                 LocalTime cierre = LocalTime.parse(txtHorario_cie.getText());
                 Integer aforo = Integer.parseInt(txtAforo.getText());
                 Boolean reserva = se_reserva.isSelected();
+                Integer duracion = Integer.parseInt(duraciontxt.getText());
 
                 try {
-                    experienciaMgr.agregarExperiencia(nombre, desc, apertura, cierre, aforo, reserva, this.destino, null, 1);
+                    experienciaMgr.agregarExperiencia(nombre, desc, apertura, cierre, aforo, reserva, this.destino, null, duracion);
                     showAlert("Experiencia agregado", "Se agrego con exito la experiencia!");
 
                     close(event);
