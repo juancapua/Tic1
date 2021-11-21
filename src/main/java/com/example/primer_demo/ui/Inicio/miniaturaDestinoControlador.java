@@ -74,7 +74,7 @@ public class miniaturaDestinoControlador {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        verDestinoControlador.init(destino);
+        verDestinoControlador.init(destino, stage);
     }
 
 

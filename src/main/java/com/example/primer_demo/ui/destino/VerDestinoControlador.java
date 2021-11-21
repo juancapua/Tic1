@@ -10,6 +10,7 @@ import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.Property;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -23,11 +24,14 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 import org.hibernate.usertype.LoggableUserType;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -105,18 +109,41 @@ public class VerDestinoControlador {
         }
     }
 
-    public void init(Destino destino) throws IOException {
-        //...
+    private Stage primaryStage;
 
+    public void init(Destino destino, Stage stage) throws IOException {
+        //...
+        primaryStage = stage;
         this.destino = destino;
         setNombre_destino(destino.getNombre());
-        InputStream x = new ByteArrayInputStream(destino.getImages().get(0));
-        scrollPane.setBackground(new Background(new BackgroundImage(new Image(x),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false))));
+        try {
+            InputStream x = new ByteArrayInputStream(destino.getImages().get(0));
+            head.setBackground(new Background(new BackgroundImage(new Image(x), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false))));
+        } catch (Exception e){
 
+        }
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-
         Platform.runLater(() -> setFasterScroller(scrollPane));
+
+
+        body.setFocusTraversable(false);
+        body.onMouseClickedProperty().set(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println(body.getViewOrder());
+                body.setStyle("-fx-background-color: transparent");
+            }
+        });
+
+        base_bg.onMouseClickedProperty().set(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println(body.focusedProperty());
+            }
+        });
+
+
 
 //        scrollPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 //
@@ -149,6 +176,7 @@ public class VerDestinoControlador {
             }
         }
 
+
         if (entriesPane.getPrefHeight() > experiencesPane.getPrefHeight()) {
             experiencesPane.setPrefHeight(entriesPane.getPrefHeight());
         }
@@ -170,7 +198,6 @@ public class VerDestinoControlador {
         }
 
         departamento.setText(destino.getDepartamento().getNombre_pk());
-
     }
 
     private void setNombre_destino(String nombre_destino){
@@ -233,24 +260,27 @@ public class VerDestinoControlador {
         box.setAntialiasingLevel(0.4); // See notes below
         box.setLayoutX(container.layoutXProperty().get());
         box.setLayoutY(container.layoutYProperty().getValue());
-        targetPane.getChildren().add(box); // Adds the container to the scene
+        targetPane.getChildren().remove(1);
+        targetPane.getChildren().add(1,box); // Adds the container to the scene
     }
 
     private void imagesRotation(int direction, int current){
         if(current==0 && direction<0){
             current=images.size()-1;
-            scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false))));
-        } else if(current<images.size()-1 && direction>0) {
+            this.currentPos=current;
+            head.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false))));
+        } else if(current==images.size()-1 && direction>0) {
             current=0;
-            scrollPane.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false))));
+            head.setBackground(new Background(new BackgroundImage(images.get(current), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false))));
+        } else {
+            head.setBackground(new Background(new BackgroundImage(images.get(current+ direction), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false))));
         }
-        scrollPane.setBackground(new Background(new BackgroundImage(images.get(current + direction), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false))));
     }
 
     private static void setFasterScroller(ScrollPane scrollPane) {
         ScrollBar verticalScrollbar = (ScrollBar) scrollPane.lookup(".scroll-bar:vertical");
         double defaultUnitIncrement = verticalScrollbar.getUnitIncrement();
-        verticalScrollbar.setUnitIncrement(defaultUnitIncrement * 10);
+        verticalScrollbar.setUnitIncrement(defaultUnitIncrement * 100);
     }
 
 }

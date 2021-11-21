@@ -53,7 +53,10 @@ public class VerExperienciaControlador {
 
     private Usuario usuario;
 
-    public void init(Experiencia experiencia) {
+    private Stage primaryStage;
+
+    public void init(Experiencia experiencia, Stage stage) {
+        primaryStage = stage;
         this.experiencia = experiencia;
         try {
             InputStream x = new ByteArrayInputStream(experiencia.getImagen());
@@ -108,6 +111,7 @@ public class VerExperienciaControlador {
         stage.setResizable(false);
         stage.show();
         reservaControlador.init(experiencia,stage);
+        primaryStage.close();
     }
 }
 

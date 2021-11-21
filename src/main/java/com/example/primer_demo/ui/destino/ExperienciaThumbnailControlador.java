@@ -55,7 +55,7 @@ public class ExperienciaThumbnailControlador {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        verExperienciaControlador.init(experiencia);
+        verExperienciaControlador.init(experiencia, stage);
     }
 
 
