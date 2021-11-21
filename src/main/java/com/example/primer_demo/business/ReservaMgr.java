@@ -1,6 +1,7 @@
 package com.example.primer_demo.business;
 
 import com.example.primer_demo.business.entities.Reserva;
+import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.persistance.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +20,10 @@ public class ReservaMgr {
 
     @Autowired
     private ReservaRepository reservaRepository;
+
+    public Iterable<Reserva> allReservasUsuario(Usuario usuario){
+        return reservaRepository.findAllByUsuario(usuario);
+    }
 
     @Value("${spring.datasource.url}")
     private String url;

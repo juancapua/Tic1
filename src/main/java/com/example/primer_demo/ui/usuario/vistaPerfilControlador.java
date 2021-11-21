@@ -1,6 +1,7 @@
 package com.example.primer_demo.ui.usuario;
 
 import com.example.primer_demo.PrimerDemoApplication;
+import com.example.primer_demo.business.ReservaMgr;
 import com.example.primer_demo.business.entities.Etiqueta;
 import com.example.primer_demo.business.entities.Experiencia;
 import com.example.primer_demo.business.entities.Reserva;
@@ -26,6 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -33,6 +35,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -41,6 +44,9 @@ public class vistaPerfilControlador {
     private Usuario usuario;
 
     private Parent root;
+
+    @Autowired
+    private ReservaMgr reservaMgr;
 
     @FXML
     private TableColumn<Reserva, String> columnaDireccion;
@@ -102,7 +108,7 @@ public class vistaPerfilControlador {
             vbox.getChildren().add(label);
         }
 
-        Set<Reserva> reservas = this.usuario.getReservas();
+        List<Reserva> reservas = (List<Reserva>) reservaMgr.allReservasUsuario(this.usuario);
 
         listaObservable = FXCollections.observableArrayList();
         listaObservable.addAll(reservas);
@@ -123,6 +129,7 @@ public class vistaPerfilControlador {
     void cancelarReserva(ActionEvent event) throws IOException {
         Reserva eleccion = tabla.getSelectionModel().getSelectedItem();
         if(eleccion != null) {
+            close(event);
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
 
@@ -132,12 +139,9 @@ public class vistaPerfilControlador {
             stage.getIcons().add(new Image("images/logo_final.png"));
             stage.setResizable(false);
             editReservaControlador editReservaControlador = fxmlLoader.getController();
-            editReservaControlador.setReserva(eleccion);
+            editReservaControlador.setReserva(eleccion, this.usuario);
             stage.show();
         }
-        Set<Reserva> reservas = this.usuario.getReservas();
-        listaObservable.removeAll();
-        listaObservable.addAll(reservas);
 
 
     }

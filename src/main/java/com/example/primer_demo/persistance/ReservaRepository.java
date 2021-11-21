@@ -1,6 +1,7 @@
 package com.example.primer_demo.persistance;
 
 import com.example.primer_demo.business.entities.Reserva;
+import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.business.entities.UsuarioOperador;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -16,5 +17,7 @@ import java.time.LocalTime;
 
 @Repository
 public interface ReservaRepository extends CrudRepository<Reserva, Integer> {
+
+    Iterable<Reserva> findAllByUsuario(Usuario usuario);
 
 }

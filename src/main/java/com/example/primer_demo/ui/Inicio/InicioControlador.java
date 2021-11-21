@@ -75,7 +75,7 @@ public class InicioControlador {
     private ComboBox<String> filtroDepartamento;
 
     private Boolean departamentofiltro = false;
-    
+
 
     public void setUsuario(Usuario usuario){
         this.usuario = usuario;

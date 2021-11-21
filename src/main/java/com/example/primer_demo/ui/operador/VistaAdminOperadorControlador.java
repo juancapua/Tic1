@@ -46,7 +46,7 @@ public class VistaAdminOperadorControlador{
     private OperadorRepository operadorRepository;
 
     @Autowired
-    DestinoMgr destinoMgr;
+    private DestinoMgr destinoMgr;
 
     @Autowired
     private UsuarioOperadorMgr usuarioOperadorMgr;
