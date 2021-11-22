@@ -30,7 +30,7 @@ public class editReservaControlador {
     private Parent root;
 
     @Autowired
-    ReservaRepository reservaRepository;
+    private ReservaMgr reservaMgr;
 
 
     public void setReserva(Reserva reserva, Usuario usuario){
@@ -56,7 +56,7 @@ public class editReservaControlador {
 
     @FXML
     void eliminarReserva(ActionEvent event) throws SQLException, IOException {
-        reservaRepository.delete(this.reserva);
+        reservaMgr.deleteReserva(this.reserva);
         showAlert("Eliminacion exitosa", "La reserva indicada se eliminino correctamente");
         close(event);
         FXMLLoader fxmlLoader = new FXMLLoader();

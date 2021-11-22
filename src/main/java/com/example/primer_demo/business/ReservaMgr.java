@@ -25,4 +25,8 @@ public class ReservaMgr {
         return reservaRepository.findAllByUsuario(usuario);
     }
 
+    public void deleteReserva(Reserva reserva){
+        reservaRepository.delete(reserva);
+    }
+
 }
