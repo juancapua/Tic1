@@ -8,5 +8,5 @@ REQUISITOS DE EJECUCIÓN
 PASOS DE INSTALACIÓN
 1. Abrir un servidor MySQL en localhost:3306 usuario: *root* contraseña: _root_
 2. Crear un schema _demo_tic_
-3. Abrir _TursimoTic.jar_
+3. Abrir _TICTravel.jar_
 

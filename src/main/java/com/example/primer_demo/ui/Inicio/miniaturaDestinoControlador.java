@@ -2,6 +2,7 @@ package com.example.primer_demo.ui.Inicio;
 
 import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.entities.Destino;
+import com.example.primer_demo.business.entities.Etiqueta;
 import com.example.primer_demo.business.entities.Usuario;
 import com.example.primer_demo.ui.destino.VerDestinoControlador;
 import javafx.event.ActionEvent;
@@ -10,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -19,6 +21,9 @@ import org.springframework.stereotype.Component;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Component
 public class miniaturaDestinoControlador {
@@ -57,6 +62,12 @@ public class miniaturaDestinoControlador {
             InputStream inputStream = new ByteArrayInputStream(destino.getImages().get(0));
             imageView.setImage(new Image(inputStream));
         }
+
+        List<String> etiquetas = new ArrayList<>();
+        for(Etiqueta etiqueta: destino.getEtiquetas()){
+            etiquetas.add(etiqueta.getNombre());
+        }
+        Tooltip.install(imageView,new Tooltip(Arrays.toString(etiquetas.toArray())));
 
 
     }
