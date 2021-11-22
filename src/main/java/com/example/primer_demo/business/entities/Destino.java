@@ -202,4 +202,7 @@ public class Destino{
     }
 
 
+    public int getId() {
+        return id;
+    }
 }

@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class Entrada {
 
     @Id
-    @GeneratedValue
-    private String id;
+    @GeneratedValue(generator = "generator")
+    private Integer id;
 
     private String titulo;
     private String texto;
@@ -21,7 +21,13 @@ public class Entrada {
 
     }
 
-    public String getId() {
+    public Entrada(String titulo, String texto, Destino destino){
+        this.texto = texto;
+        this.titulo = titulo;
+        this.destino = destino;
+    }
+
+    public Integer getId() {
         return id;
     }
 

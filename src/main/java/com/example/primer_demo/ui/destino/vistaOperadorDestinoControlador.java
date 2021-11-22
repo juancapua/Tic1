@@ -202,4 +202,17 @@ public class vistaOperadorDestinoControlador {
         stage.close();
     }
 
+    public void abrirEntradas(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+
+        root = fxmlLoader.load(AddEntrada.class.getResourceAsStream("addEntrada.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("images/logo_final.png"));
+        stage.setResizable(false);
+        AddEntrada entradasControlador = fxmlLoader.getController();
+        entradasControlador.init(destino);
+        stage.show();
+    }
 }

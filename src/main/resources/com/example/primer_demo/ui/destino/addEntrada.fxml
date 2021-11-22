@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="809.0" style="-fx-background-color: #154360;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.destino.AddEntrada">
+   <children>
+      <Text fill="WHITE" layoutX="124.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entradas">
+         <font>
+            <Font name="Britannic Bold" size="29.0" />
+         </font>
+      </Text>
+      <TextField fx:id="titulo" layoutX="471.0" layoutY="84.0" promptText="Titulo" />
+      <TextArea fx:id="entrada" layoutX="369.0" layoutY="135.0" prefHeight="174.0" prefWidth="346.0" promptText="Entrada" />
+      <Button fx:id="guardar" layoutX="465.0" layoutY="350.0" mnemonicParsing="false" onAction="#guardar" prefHeight="25.0" prefWidth="153.0" style="-fx-background-radius: 50; -fx-background-color: #ffffff;" text="Guardar" textFill="#000000">
+      </Button>
+      <ListView fx:id="listView" editable="true" layoutX="47.0" layoutY="85.0" prefHeight="279.0" prefWidth="268.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </ListView>
+   </children>
+</AnchorPane>

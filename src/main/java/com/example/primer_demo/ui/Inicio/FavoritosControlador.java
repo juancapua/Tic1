@@ -29,7 +29,7 @@ import java.util.Set;
 public class FavoritosControlador {
 
     @Autowired
-    ExperienciaRepository experienciaRepository;
+    private ExperienciaRepository experienciaRepository;
 
     @FXML
     private ListView<String> lista;

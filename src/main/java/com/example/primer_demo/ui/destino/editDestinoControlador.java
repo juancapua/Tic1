@@ -155,6 +155,7 @@ public class editDestinoControlador {
     }
 
 
+    public void agregarEntrada(ActionEvent actionEvent) {
 
-
+    }
 }
