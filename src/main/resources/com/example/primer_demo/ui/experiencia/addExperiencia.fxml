@@ -16,7 +16,7 @@
       <TextField fx:id="txtDescripcion" layoutX="236.0" layoutY="68.0" style="-fx-background-radius: 50;" />
       <TextField fx:id="txtHorario_cie" layoutX="236.0" layoutY="154.0" style="-fx-background-radius: 50;" />
       <TextField fx:id="txtAforo" layoutX="236.0" layoutY="199.0" style="-fx-background-radius: 50;" />
-      <CheckBox fx:id="se_reserva" layoutX="260.0" layoutY="277.0" mnemonicParsing="false" text="Se reserva?" />
+      <CheckBox fx:id="se_reserva" layoutX="260.0" layoutY="309.0" mnemonicParsing="false" text="Se reserva?" />
       <Button layoutX="226.0" layoutY="358.0" mnemonicParsing="false" onAction="#addExperiencia" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #154360; -fx-background-radius: 50;" text="Agregar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
@@ -26,7 +26,8 @@
       <Label layoutX="135.0" layoutY="115.0" text="Horario apertura:" />
       <Label layoutX="146.0" layoutY="158.0" text="Horario cierre:" />
       <Label layoutX="184.0" layoutY="203.0" text="Aforo:" />
-      <TextField fx:id="duraciontxt" layoutX="236.0" layoutY="240.0" style="-fx-background-radius: 50;" />
-      <Label layoutX="169.0" layoutY="244.0" text="Duracion:" />
+      <TextField fx:id="duraciontxt" layoutX="236.0" layoutY="272.0" promptText="En horas, si aplica" style="-fx-background-radius: 50;" />
+      <Label layoutX="169.0" layoutY="276.0" text="Duracion:" />
+      <CheckBox fx:id="porHora" layoutX="257.0" layoutY="236.0" mnemonicParsing="false" text="Es por hora?" />
    </children>
 </AnchorPane>

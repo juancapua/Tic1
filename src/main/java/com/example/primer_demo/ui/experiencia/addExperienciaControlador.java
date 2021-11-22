@@ -55,6 +55,9 @@ public class addExperienciaControlador {
     @FXML
     private TextField duraciontxt;
 
+    @FXML
+    private CheckBox porHora;
+
 
     @FXML
     void addExperiencia(ActionEvent event){
@@ -74,9 +77,13 @@ public class addExperienciaControlador {
                 Integer aforo = Integer.parseInt(txtAforo.getText());
                 Boolean reserva = se_reserva.isSelected();
                 Integer duracion = Integer.parseInt(duraciontxt.getText());
+                String tipo = null;
+                if(!porHora.isSelected()){
+                    tipo = "PED";
+                }
 
                 try {
-                    experienciaMgr.agregarExperiencia(nombre, desc, apertura, cierre, aforo, reserva, this.destino, null, duracion);
+                    experienciaMgr.agregarExperiencia(nombre, desc, apertura, cierre, aforo, reserva, this.destino, tipo, duracion);
                     showAlert("Experiencia agregado", "Se agrego con exito la experiencia!");
 
                     close(event);

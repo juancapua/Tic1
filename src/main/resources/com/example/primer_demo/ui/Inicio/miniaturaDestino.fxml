@@ -8,10 +8,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="166.0" prefWidth="705.0" scaleShape="false" style="-fx-background-color: #154360; -fx-border-color: Black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.Inicio.miniaturaDestinoControlador">
+<AnchorPane prefHeight="175.0" prefWidth="710.0" scaleShape="false" style="-fx-background-color: #154360; -fx-border-color: Black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primer_demo.ui.Inicio.miniaturaDestinoControlador">
    <children>
-      <Label fx:id="titulo" layoutX="267.0" layoutY="27.0" text="Titulo:" textFill="WHITE" />
-      <Label fx:id="desc" layoutX="270.0" layoutY="67.0" text="Desc:" textFill="WHITE" />
+      <Label fx:id="titulo" layoutX="267.0" layoutY="27.0" text="Titulo:" textFill="WHITE">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="desc" layoutX="270.0" layoutY="67.0" text="Desc:" textFill="WHITE">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font></Label>
       <AnchorPane layoutY="-5.0" prefHeight="178.0" prefWidth="259.0">
          <children>
             <ImageView fx:id="imageView" fitHeight="129.0" fitWidth="203.0" layoutX="28.0" layoutY="32.0" pickOnBounds="true">
@@ -29,6 +35,9 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Label fx:id="horario" layoutX="270.0" layoutY="102.0" text="Horario:" textFill="WHITE" />
+      <Label fx:id="horario" layoutX="270.0" layoutY="102.0" text="Horario:" textFill="WHITE">
+         <font>
+            <Font name="Britannic Bold" size="14.0" />
+         </font></Label>
    </children>
 </AnchorPane>

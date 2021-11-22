@@ -81,8 +81,6 @@ public class InicioControlador {
         this.usuario = usuario;
         texto.setText(this.usuario.getNombreDeUsuario());
 
-        System.out.println(usuario.getReservas().iterator().next().getFecha());
-
         Set<String> etiquetasUsuario = new HashSet<>();
         for(Etiqueta x: this.usuario.getEtiquetas()){
             etiquetasUsuario.add(x.getNombre());
