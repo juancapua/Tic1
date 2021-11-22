@@ -200,28 +200,6 @@ public class Controlador {
     }
 
 
-//    private Stage stage;
-//    private Scene scene;
-//    private Parent root;
-//
-//    public void cambiarASample(ActionEvent event) throws IOException {
-//        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//
-//
-//    }
-//    public void cambiarASample2(ActionEvent event) throws IOException {
-//        Parent root = FXMLLoader.load(getClass().getResource("sample2.fxml"));
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//
-//    }
-
     private void showAlert(String title, String contextText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

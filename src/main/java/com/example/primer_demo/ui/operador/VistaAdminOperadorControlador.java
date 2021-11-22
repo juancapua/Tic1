@@ -70,10 +70,6 @@ public class VistaAdminOperadorControlador{
         txtDireccion.setText("Direccion: " + operador.getDireccion());
         txtTelefono.setText("Telefono: "+ operador.getTelefono());
 
-//        List<UsuarioOperador> usuarios = new ArrayList<>();
-//        for(UsuarioOperador x: usuarioOperadorRepository.findAllByOperador(operador)){
-//            usuarios.add(x);
-//        }
         Set<UsuarioOperador> usuarios = operador.getUsuarioOperadorList();
         listaObservable = FXCollections.observableArrayList();
         listaObservable.addAll(usuarios);
@@ -245,36 +241,4 @@ public class VistaAdminOperadorControlador{
 
     }
 
-
-
-
-//    @Override
-//    public void initialize(URL location, ResourceBundle resources) {
-//
-//        txtEmpresa.setText("Empresa: " + operador.getNombreDeUsuario());
-//        txtMail.setText("Mail: " + operador.getMail());
-//        txtDireccion.setText("Direccion: " + operador.getDireccion());
-//        txtTelefono.setText("Telefono: "+ operador.getTelefono());
-//
-//
-//        List<UsuarioOperador> usuarios = operador.getUsuarioOperadorList();
-//        if(usuarios.size() != 0) {
-//            listaObservable = FXCollections.observableArrayList();
-//            listaObservable.addAll(usuarios);
-//            tabla.setItems(listaObservable);
-//            columnaUsuarios.setCellValueFactory(new PropertyValueFactory<>("nombreDeUsuario"));
-//            columnaEstado.setCellValueFactory(cellData -> {
-//                boolean estado = cellData.getValue().getEstado();
-//                String estadoAsString;
-//                if (!estado) {
-//                    estadoAsString = "Bloqueado";
-//                } else {
-//                    estadoAsString = "Habilitado";
-//                }
-//                return new ReadOnlyStringWrapper(estadoAsString);
-//            });
-//        }
-//
-//
-//    }
 }
