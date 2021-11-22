@@ -1,6 +1,7 @@
 package com.example.primer_demo.ui.experiencia;
 
 import com.example.primer_demo.business.ReservaMgr;
+import com.example.primer_demo.business.entities.Dia;
 import com.example.primer_demo.business.entities.Experiencia;
 import com.example.primer_demo.business.entities.Reserva;
 import com.example.primer_demo.business.entities.Usuario;
@@ -102,6 +103,9 @@ public class HacerReservaControlador {
     @FXML
     private Text detalles;
 
+    @FXML
+    private Text horaLabel;
+
     private LocalDate fechaReserva;
     private LocalTime horaReserva;
 
@@ -150,6 +154,7 @@ public class HacerReservaControlador {
             loadReservaHoras();
             datePicker.setVisible(false);
             check.setVisible(false);
+            horaLabel.setVisible(false);
         } else {
             horarios.setVisible(false);
         }
@@ -188,11 +193,7 @@ public class HacerReservaControlador {
     }
 
     public void reservar(Usuario usuario, Experiencia experiencia, LocalTime hora, LocalDate fecha, Integer personas) {
-        try{
-            insertarReserva(usuario.getNombreDeUsuario(),experiencia.getId(),horaReserva,fechaReserva,personas);
-        } catch (Exception e){
-
-        }
+        reservaRepository.save(new Reserva(fecha,experiencia,usuario,hora,personas));
     }
 
     private void loadReservaHoras() {
@@ -200,8 +201,9 @@ public class HacerReservaControlador {
         if (intervalo == 0) {
             intervalo = 24 / experiencia.getDuracion();
         }
+
         Grid grilla = new GridBase(intervalo,
-                7);
+                experiencia.getDestino().getDias().size());
         ObservableList<ObservableList<SpreadsheetCell>> rows = FXCollections.observableArrayList();
         Iterable<Reserva> reservas = reservaRepository.findAll();
         for (int row = 0; row < grilla.getRowCount(); ++row) {
@@ -236,13 +238,48 @@ public class HacerReservaControlador {
         LocalDate jueves = now.plusDays(11 - dayOfWeek);
         LocalDate viernes = now.plusDays(12 - dayOfWeek);
         LocalDate sabado = now.plusDays(13 - dayOfWeek);
-        grilla.getColumnHeaders().setAll("Dom " + domingo.format(DateTimeFormatter.ofPattern("dd/MM")),
-                "Lun " + lunes.format(DateTimeFormatter.ofPattern("dd/MM")),
-                "Mar " + martes.format(DateTimeFormatter.ofPattern("dd/MM")),
-                "Mie " + miercoles.format(DateTimeFormatter.ofPattern("dd/MM")),
-                "Jue " + jueves.format(DateTimeFormatter.ofPattern("dd/MM")),
-                "Vie " + viernes.format(DateTimeFormatter.ofPattern("dd/MM")),
-                "Sab " + sabado.format(DateTimeFormatter.ofPattern("dd/MM")));
+        int count = 0;
+        for (Dia dia: experiencia.getDestino().getDias()) {
+            switch (dia.getNombre()){
+                case "Domingo":
+                    grilla.getColumnHeaders().add("Dom " + domingo.format(DateTimeFormatter.ofPattern("dd/MM")));
+                    count++;
+                    break;
+                case "Lunes":
+                    grilla.getColumnHeaders().add("Dom " + lunes.format(DateTimeFormatter.ofPattern("dd/MM")));
+                    count++;
+                    break;
+                case "Martes":
+                    grilla.getColumnHeaders().add("Dom " + martes.format(DateTimeFormatter.ofPattern("dd/MM")));
+                    count++;
+                    break;
+                case "Miércoles":
+                    grilla.getColumnHeaders().add("Dom " + miercoles.format(DateTimeFormatter.ofPattern("dd/MM")));
+                    count++;
+                    break;
+                case "Jueves":
+                    grilla.getColumnHeaders().add("Dom " + jueves.format(DateTimeFormatter.ofPattern("dd/MM")));
+                    count++;
+                    break;
+                case "Viernes":
+                    grilla.getColumnHeaders().add(count,"Dom " + viernes.format(DateTimeFormatter.ofPattern("dd/MM")));
+                    count++;
+                    break;
+                case "Sabado":
+                    grilla.getColumnHeaders().add(count,"Dom " + sabado.format(DateTimeFormatter.ofPattern("dd/MM")));
+                    count++;
+                    break;
+            }
+            if (experiencia.getDestino().getDias().size()==0){
+                grilla.getColumnHeaders().setAll("Dom " + domingo.format(DateTimeFormatter.ofPattern("dd/MM")),
+                        "Lun " + lunes.format(DateTimeFormatter.ofPattern("dd/MM")),
+                        "Mar " + martes.format(DateTimeFormatter.ofPattern("dd/MM")),
+                        "Mie " + miercoles.format(DateTimeFormatter.ofPattern("dd/MM")),
+                        "Jue " + jueves.format(DateTimeFormatter.ofPattern("dd/MM")),
+                        "Vie " + viernes.format(DateTimeFormatter.ofPattern("dd/MM")),
+                        "Sab " + sabado.format(DateTimeFormatter.ofPattern("dd/MM")));
+            }
+        }
         horarios = new SpreadsheetView(grilla);
         System.out.println(horarios.getOnMouseMoved());
         System.out.println(horarios.getOnMouseClicked());
@@ -303,11 +340,6 @@ public class HacerReservaControlador {
     public void confirmar(ActionEvent actionEvent) {
         reservar(InicioControlador.usuario, experiencia, horaReserva, fechaReserva, spinner.getValue());
         primaryStage.close();
-    }
-
-
-    public void insertarReserva(String usuario, Integer experiencia, LocalTime hora, LocalDate fecha, int personas) throws SQLException {
-        reservaMgr.insertarReserva(usuario, experiencia, hora, fecha, personas);
     }
 
 }

@@ -4,6 +4,7 @@ import com.example.primer_demo.PrimerDemoApplication;
 import com.example.primer_demo.business.ReservaMgr;
 import com.example.primer_demo.business.entities.Reserva;
 import com.example.primer_demo.business.entities.Usuario;
+import com.example.primer_demo.persistance.ReservaRepository;
 import com.example.primer_demo.ui.usuario.vistaPerfilControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,7 +30,8 @@ public class editReservaControlador {
     private Parent root;
 
     @Autowired
-    private ReservaMgr reservaMgr;
+    ReservaRepository reservaRepository;
+
 
     public void setReserva(Reserva reserva, Usuario usuario){
         this.reserva = reserva;
@@ -54,7 +56,7 @@ public class editReservaControlador {
 
     @FXML
     void eliminarReserva(ActionEvent event) throws SQLException, IOException {
-        reservaMgr.deleteReserva(this.reserva);
+        reservaRepository.delete(this.reserva);
         showAlert("Eliminacion exitosa", "La reserva indicada se eliminino correctamente");
         close(event);
         FXMLLoader fxmlLoader = new FXMLLoader();

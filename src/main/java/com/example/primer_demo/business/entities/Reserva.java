@@ -7,7 +7,6 @@ import java.time.LocalTime;
 import java.util.Set;
 
 @Entity
-@IdClass(ReservaPK.class)
 public class Reserva implements Serializable {
 
     public Reserva(){
@@ -30,13 +29,10 @@ public class Reserva implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Id
     private LocalDate fecha;
 
 
     @ManyToOne(optional = false)
-    @Id
-    @JoinColumn(name = "id_experiencia")
     private Experiencia experiencia;
 
     public Experiencia getExperiencia() {
@@ -49,8 +45,6 @@ public class Reserva implements Serializable {
 
 
     @ManyToOne(optional = false)
-    @Id
-    @JoinColumn(name = "usuario_nombre_de_usuario")
     private Usuario usuario;
 
     public Usuario getUsuario() {
@@ -61,7 +55,6 @@ public class Reserva implements Serializable {
         this.usuario = usuario;
     }
 
-    @Id
     private LocalTime hora;
 
     public LocalTime getHora() {
