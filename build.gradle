@@ -4,11 +4,23 @@ plugins {
 	id 'java'
 	id 'application'
 	id 'org.openjfx.javafxplugin' version '0.0.9'
+	id 'java-library'
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+version = '1.0'
+
+application {
+	mainModule = 'com.example.primer_demo.PrimerDemoApplication'
+	mainClass = 'com.example.primer_demo.PrimerDemoApplication'
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(11)
+	}
+}
+
 
 repositories {
 	mavenCentral()

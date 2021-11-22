@@ -60,6 +60,9 @@ public class InicioControlador {
     private Button exit;
 
     @FXML
+    private Button favoritos;
+
+    @FXML
     private Label texto;
 
     @FXML
@@ -345,4 +348,16 @@ public class InicioControlador {
         }
      }
 
+    public void abrirFavoritos(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(PrimerDemoApplication.getContext()::getBean);
+        root = fxmlLoader.load(FavoritosControlador.class.getResourceAsStream("favoritos.fxml"));
+        FavoritosControlador favoritosControlador  = fxmlLoader.getController();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+        favoritosControlador.init(usuario,stage);
+    }
 }
