@@ -114,7 +114,7 @@ public class HacerReservaControlador {
     public HacerReservaControlador() {
     }
 
-    public void init(Experiencia experiencia, Stage primaryStage) throws InterruptedException {
+    public void init(Experiencia experiencia, Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.experiencia = experiencia;
         detalles.setText(experiencia.getDescripcion());
@@ -214,6 +214,7 @@ public class HacerReservaControlador {
                 LocalDate now = LocalDate.now();
                 for (Reserva res : reservas) {
                     boolean b = res.getExperiencia().getId() == experiencia.getId() &&
+                            res.getHabilitada() == true &&
                             res.getFecha().getDayOfMonth() == now.plusDays(column + 7 - now.getDayOfWeek().getValue()).getDayOfMonth() &&
                             res.getHora().getHour() == row * experiencia.getDuracion() + experiencia.getHorario_apertura().getHour();
                     if (b) {
