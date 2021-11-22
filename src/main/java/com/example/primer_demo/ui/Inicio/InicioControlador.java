@@ -31,10 +31,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 
 @Component
 public class InicioControlador {
@@ -91,7 +88,7 @@ public class InicioControlador {
 
         Iterable<Destino> destinos = destinoMgr.allDestinos();
 
-        Set<Destino> destinosOrdenados = new HashSet<>();
+        List<Destino> destinosOrdenados = new ArrayList<>();
         for(Destino y: destinos){
             for(Etiqueta destinoEtiquetas: y.getEtiquetas()){
                 if(etiquetasUsuario.contains(destinoEtiquetas.getNombre())){
