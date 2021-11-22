@@ -20,4 +20,6 @@ public interface ReservaRepository extends CrudRepository<Reserva, Integer> {
 
     Iterable<Reserva> findAllByUsuario(Usuario usuario);
 
+    Iterable<Reserva> findAllByUsuarioAndHabilitadaTrue(Usuario usuario);
+
 }

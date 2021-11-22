@@ -22,11 +22,12 @@ public class ReservaMgr {
     private ReservaRepository reservaRepository;
 
     public Iterable<Reserva> allReservasUsuario(Usuario usuario){
-        return reservaRepository.findAllByUsuario(usuario);
+        return reservaRepository.findAllByUsuarioAndHabilitadaTrue(usuario);
     }
 
     public void deleteReserva(Reserva reserva){
-        reservaRepository.delete(reserva);
+        reserva.setHabilitada(false);
+        reservaRepository.save(reserva);
     }
 
 }

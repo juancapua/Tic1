@@ -23,6 +23,7 @@ public class Reserva implements Serializable {
             this.hora = hora;
         }
         this.setPersonas(personas);
+        this.habilitada = true;
     }
 
     @Id
@@ -30,6 +31,8 @@ public class Reserva implements Serializable {
     private Long id;
 
     private LocalDate fecha;
+
+    private Boolean habilitada;
 
 
     @ManyToOne(optional = false)
@@ -93,5 +96,11 @@ public class Reserva implements Serializable {
         Personas = personas;
     }
 
+    public Boolean getHabilitada() {
+        return habilitada;
+    }
 
+    public void setHabilitada(Boolean habilitada) {
+        this.habilitada = habilitada;
+    }
 }
