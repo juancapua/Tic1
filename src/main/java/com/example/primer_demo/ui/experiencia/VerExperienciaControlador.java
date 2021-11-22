@@ -131,6 +131,7 @@ public class VerExperienciaControlador {
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.getIcons().add(new Image("images/logo_final.png"));
         stage.setResizable(false);
         stage.show();
         reservaControlador.init(experiencia,stage);

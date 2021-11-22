@@ -83,6 +83,7 @@ public class miniaturaDestinoControlador {
         Scene scene = new Scene(root);
         scene.getStylesheets().add(VerDestinoControlador.class.getResource("style.css").toExternalForm());
         stage.setScene(scene);
+        stage.getIcons().add(new Image("images/logo_final.png"));
         stage.setResizable(false);
         stage.show();
         verDestinoControlador.init(destino, stage);
