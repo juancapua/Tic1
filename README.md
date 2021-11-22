@@ -10,3 +10,17 @@ PASOS DE INSTALACIÓN
 2. Crear un schema _demo_tic_
 3. Abrir _TICTravel.jar_
 
+PASOS PARA ENTRAR COMO ADMIN
+
+Usuario: admin
+Password: admin
+
+PASOS PARA ENTRAR COMO OPERADOR
+
+Usuario: juan s.a
+Password: 1234
+
+PASOS PARA ENTRAR COMO USUARIO OPERADOR
+
+Usuario: pepito
+Password: 1234
