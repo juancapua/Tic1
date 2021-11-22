@@ -107,6 +107,11 @@ public class operadorControlador {
     }
 
     @FXML
+    void recargar(ActionEvent event){
+        setOperador(operador.getNombreDeUsuario());
+    }
+
+    @FXML
     void bloquearDestino(ActionEvent event){
         Destino seleccion = tabla.getSelectionModel().getSelectedItem();
         if(seleccion != null){

@@ -92,6 +92,11 @@ public class HomeUsuarioOperador{
     }
 
     @FXML
+    void recargar(ActionEvent event){
+        setOperador(operador.getNombreDeUsuario());
+    }
+
+    @FXML
     void desbloquearDestino(ActionEvent event){
         Destino seleccion = tabla.getSelectionModel().getSelectedItem();
         if(seleccion != null){

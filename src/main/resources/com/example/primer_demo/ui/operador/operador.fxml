@@ -46,11 +46,16 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView fx:id="tabla" layoutX="204.0" layoutY="31.0" prefHeight="343.0" prefWidth="371.0">
+      <TableView fx:id="tabla" layoutX="202.0" layoutY="16.0" prefHeight="343.0" prefWidth="371.0">
          <columns>
             <TableColumn fx:id="columnaDetinos" prefWidth="186.0" text="Destino" />
             <TableColumn fx:id="columnaEstado" prefWidth="184.0" text="Estado" />
          </columns>
       </TableView>
+      <Button layoutX="307.0" layoutY="366.0" mnemonicParsing="false" onAction="#recargar" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: #154360; -fx-background-radius: 50;" text="Recargar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>
